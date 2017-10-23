@@ -1,5 +1,6 @@
 ## Of course we start off with importing the visual module as explained in the course text of Lesson 4
 ## note however, that we'll also be importing and using the modules event and core
+## a change
 from psychopy import visual, event, core
 import time 
 
