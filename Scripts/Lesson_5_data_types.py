@@ -121,38 +121,36 @@ print(c)
 a = 5
 b = 2
 c = a**b
-
 print(c)
 
 a = 5
 c = a**2
-
 print(c)
 
 c = 5**2
-
 print(c)
+
 
 #################
 ## Square root ##
 #################
 
 ## Note that there is no specific function for square root (unless we import the package 'math', then we have 'math.sqrt()')
-## When we did not import 'math', we create the square root of a number by doing the number to the power (.5)
-    ## The square root of a number can be seen as the inverse of doing that number to the power of two
-    ## Therefore,  taking the square root can be seen as doing a number to the power "1/2" (which is the inverse of 2 (2**(-1)) )
+## When we do not import 'math', we create the square root of a number by exponentiating the number to the power (.5)
+    ## The square root of a number can be seen as the inverse of exponentiating that number to the power of two
+    ## Therefore,  taking the square root can be seen as exponentiating a number to the power "1/2" (which is the inverse of 2 (2**(-1)) )
 
 c = 16**(.5)
-
 print(c)
 
 ## NOTE: the type of this output will be 'float', which is a number that has a value after the comma
 ## a = 4
-    ## print a
-## This above code would yield '4' as output, and the type of 'a' would be 'int'
+    ## print(a)
+## The code above would yield '4' as output, and the type of 'a' would be 'int'
 ## b = float(a)
-    ## print b
+    ## print(b)
 ## This code in turn would yield '4.0' as output, and the type of 'b' would be 'float'
+
 
 ###############
 ## Remainder ##
