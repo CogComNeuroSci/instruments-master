@@ -3,8 +3,6 @@
 ############
 
 from __future__ import division
-from psychopy import core
-import time
 
 
 #########################################
@@ -48,41 +46,20 @@ print("The number is {0}".format(number))
 
 print("The number is {}".format(number))
 
-## The format string allows a great deal of flexibility for writing to the screen. Here is another example:
-number1=1
-number2=3
-total=number1+number2
-print("The total of {0} and {1} equals {2}".format(number1,number2,total))
+## The formating of strings allows a great deal of flexibility for writing to the screen. Here is another example:
+number1 = 1
+number2 = 3
+total = number1 + number2
+print("The total of {0} and {1} equals {2}".format(number1, number2, total))
 ## Can you make sense of this code?
 
 ## Another way to use the format string is for control over nice floating point representations.
 print("nice number {:.2f}".format(number1/number2))
-##This code says that the format should be such that there are two decimal-value digits. 
+##This :.2f code says that the format should be such that there are two decimal-value digits. 
 
 ## We can also use format() to represent percentages. We do it as follows:
 print("percentage is {:%}".format(number1/number2))
 
-## Here, we let PsychoPy wait for 1 second to execute the following command
-## Between the brackets, we define how many seconds PsychoPy waits to execute the rest of the code
-print("Wait a second...")
-time.sleep(1)
-
-## Here, we let PsychoPy wait for 2 second to execute the following command
-print("Or maybe two...")
-time.sleep(2)
-
-print("Done!")
-
-## Again, we let PsychoPy wait for 1 second to execute the following command
-## The commands time.sleep() and core.wait() are in essence the same, as they both halt the execution of a program
-print("Wait a second...")
-core.wait(1)
-
-## Again, the execution is halted for 2 seconds 
-print("Or maybe two...")
-core.wait(2)
-
-print("Done!")
 
 #########
 ## END ##
