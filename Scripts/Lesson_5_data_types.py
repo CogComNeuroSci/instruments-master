@@ -106,7 +106,7 @@ print(c)
 
 c = 88/4
 
-print (c)
+print(c)
 
 # Python interprets / on integers as long division (e.g., 7/2 = 3).
 # If you don't like it, you can import a different definition of division as follows:
@@ -176,7 +176,7 @@ print(c)
 
 c = 102%10
 
-print(c) 
+print(c)
 
 ############
 ## String ##
@@ -204,7 +204,7 @@ Sparta = 'ArE yOu NoT eNtErTaInEd?'
 print(Sparta)
 
 print(Sparta.lower())
-print (Sparta.upper())
+print(Sparta.upper())
 
 print(Sparta)
 
