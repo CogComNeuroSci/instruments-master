@@ -3,10 +3,8 @@
 ############
 
 from __future__ import division
-from psychopy import core, visual, event
+from psychopy import core
 import time
-import platform
-import ctypes
 
 
 ###################
