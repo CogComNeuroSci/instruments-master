@@ -625,7 +625,7 @@ WrongKeyName = ['First name']
 print(type(WrongKeyName), WrongKeyName)
 
 ## dictionary_error = {WrongKeyName: 'Bran', 'Last name': 'Stark', 'Call': 'Winter is coming'}
-## print dictionary_error
+## print(dictionary_error)
 
 ## That were the main remarks on dictionaries
 ## We note that other functions still are available
