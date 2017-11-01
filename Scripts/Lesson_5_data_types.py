@@ -8,7 +8,7 @@
 ## By printing the type of 'number', we can see that 'number' has the type 'int', which is short for 'integer'
 
 number = 7
-print (type(number))
+print(type(number))
 
 ## We can do basic computations on integers
 ## Below, we provide a few examples
@@ -27,7 +27,7 @@ a = 6
 b = 13
 c = a+b
 
-print (c)
+print(c)
 
 a = 6
 c = a+13
@@ -36,7 +36,7 @@ print (c)
 
 c = 6+13
 
-print (c)
+print(c)
 
 #################
 ## Subtraction ##
@@ -50,16 +50,16 @@ a = 33
 b = 13
 c = a-b
 
-print (c)
+print(c)
 
 a = 33
 c = a-13
 
-print (c)
+print(c)
 
 c = 33-13
 
-print (c)
+print(c)
 
 ####################
 ## Multiplication ##
@@ -73,16 +73,16 @@ a = 7
 b = 3
 c = a*b
 
-print (c)
+print(c)
 
 a = 7
 c = a*3
 
-print (c)
+print(c)
 
 c = 7*3
 
-print (c)
+print(c)
 
 
 ##############
@@ -97,12 +97,12 @@ a = 88
 b = 4
 c = a/b
 
-print (c)
+print(c)
 
 a = 88
 c = a/4
 
-print (c)
+print(c)
 
 c = 88/4
 
@@ -130,16 +130,16 @@ a = 5
 b = 2
 c = a**b
 
-print (c)
+print(c)
 
 a = 5
 c = a**2
 
-print (c)
+print(c)
 
 c = 5**2
 
-print (c)
+print(c)
 
 #################
 ## Square root ##
@@ -152,7 +152,7 @@ print (c)
 
 c = 16**(.5)
 
-print (c)
+print(c)
 
 ## NOTE: the type of this output will be 'float', which is a number that has a value after the comma
 ## a = 4
@@ -172,11 +172,11 @@ print (c)
 
 c = 18%5
 
-print (c)
+print(c)
 
 c = 102%10
 
-print (c) 
+print(c) 
 
 ############
 ## String ##
@@ -186,13 +186,13 @@ print (c)
 ## Again, we can determine the type of a variable by using type()
 
 letter = 'M'
-print (type(letter))
+print(type(letter))
 
 word = 'Monty'
-print (type(word))
+print(type(word))
 
 sentence = "The name 'Python' originates from Monty Python"
-print (type(sentence))
+print(type(sentence))
 
 ## We can do some basic operations on the strings we define
 ## For convenience, we note down some of these basic operations
@@ -201,15 +201,15 @@ print (type(sentence))
     ## Keep in mind that these operations DO NOT change the original string: Sparta itself will stay unaltered after the .lower and .upper operations
 
 Sparta = 'ArE yOu NoT eNtErTaInEd?'
-print (Sparta)
+print(Sparta)
 
-print (Sparta.lower())
+print(Sparta.lower())
 print (Sparta.upper())
 
-print (Sparta)
+print(Sparta)
 
 ## Returning the length of a string
-print (len(Sparta))
+print(len(Sparta))
 
 ## Could how many times a specific letter/word is included in a string
     ## ! Mind that this operation is case sensitive !
@@ -232,9 +232,9 @@ print(Sparta.startswith("ArE"))
 ## We can also return specific words using this operation
 
 SpartaSplit = Sparta.split(" ")
-print SpartaSplit
+print(SpartaSplit)
 
-print SpartaSplit[0]
+print(SpartaSplit[0])
 
 ## Formatting examples, showing another way to print variables
 ## Explanation of the code we see below:
@@ -243,10 +243,10 @@ print SpartaSplit[0]
     ## Print position 2, then 1, then 0 (other notation)
     ## Print 0, then 1, then 0, yielding 'abracadabra'
 
-print ('{0}, {1}, {2}'.format('a', 'b', 'c'))
-print ('{2}, {1}, {0}'.format('a', 'b', 'c'))
-print ('{2}, {1}, {0}'.format(*'abc'))
-print ('{0}{1}{0}'.format('abra', 'cad'))
+print('{0}, {1}, {2}'.format('a', 'b', 'c'))
+print('{2}, {1}, {0}'.format('a', 'b', 'c'))
+print('{2}, {1}, {0}'.format(*'abc'))
+print('{0}{1}{0}'.format('abra', 'cad'))
 
 ## This is only a subset of the operations we can perform on strings
 ## For more operations, we refer to the documentation on Python:
@@ -264,8 +264,8 @@ print ('{0}{1}{0}'.format('abra', 'cad'))
 number_list = [1, 2, 3, 4, 5 ]
 letter_list = ["a", "b", "c", "d"]
 
-print number_list
-print letter_list
+print(number_list)
+print(letter_list)
 
 ## Now we will focus on some functions that are available for lists
 ## We only describe a few of the functions we can use to change lists
@@ -277,26 +277,26 @@ print letter_list
     ## Selecting the second item, counting from right to left
     ## Selecting all items, from the second untill the end (end included) 
 
-print number_list[0]
-print letter_list[1:5]
-print letter_list[-2]
-print number_list[1:]
+print(number_list[0])
+print(letter_list[1:5])
+print(letter_list[-2])
+print(number_list[1:])
 
 ## We can select certain values in lists, and replace them 
 
 number_list[0] = 20
-print number_list
+print(number_list)
 
 ## Delete certain items
 
 del number_list[0]
-print number_list
+print(number_list)
 
 ## Concatenation
 subset1 = [1, 2, 3]
 subset2 = [4, 5, 6]
 set = subset1 + subset2
-print set
+print(set)
 
 ## Repeat a list
 ## In this particular example, the list is repeated repeated 4 times
@@ -304,35 +304,35 @@ print set
     ## We just repeat the list n amounts of times
 
 rep = subset1 * 4
-print rep
+print(rep)
 
 ## Logical statements
 ## Returns True if the statement is correct, returns False if the statement is wrong
 ## Here, we have a 3 in subset1, therefore the statement will return a True here
 
 logical1 = 3 in subset1
-print logical1
+print(logical1)
 
 ## Here, we have no 5 in subset2, therefore the statement will return a False here
 
 logical2 = 5 in subset1
-print logical2
+print(logical2)
 
 ## List comprehension
 ## In this code, we print every value in subset2
 
 for x in subset2:
-    print x
+    print(x)
 
 ## Get the maximum and the minimum value of a list
 
-print (max(subset2))
-print (min(subset2))
+print(max(subset2))
+print(min(subset2))
 
 ## Returns how many times an object is seen in a certain list
 ## Here, we see that the item '1' is located one time in the list subset1
 
-print subset1.count(1)
+print(subset1.count(1))
 
 ## Again, we have a lot of functions that can be used in to alter lists
 ## We refer to the Python documentation for further information on lists
@@ -347,10 +347,10 @@ print subset1.count(1)
 element = 6
 list = [1, 2, 3, 4, 5]
 
-print list
+print(list)
 
 list.append(element)
-print list
+print(list)
 
 ## Similar to the function 'append()' we als have the function 'extend()'
     ## This function will also append elements to an already existing list 
@@ -376,12 +376,12 @@ print list
 list = [1, 2, 3, 4, 5]
 list.append([6,7])
 
-print list
+print(list)
 
 list = [1, 2, 3, 4, 5]
 list.extend([6,7])
 
-print list
+print(list)
 
 ## We can easily find out how many times an element occurs in a certain list by using the function 'count()'
 ## For example, here we want to find out how many times a '0' occurs in the list
@@ -391,7 +391,7 @@ print list
 
 long_list = [0, 1, 2, 3, 0, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 0, 20, 21, 22, 23, 0, 25, 26, 27, 28, 29, 30, 31, 32, 33, 34, 0, 36, 0, 38, 39, 40, 41, 42, 43, 0, 45, 46, 47, 48, 49, 50, 51]
 
-print long_list.count(0)
+print(long_list.count(0))
 
 ## If we want to insert certain elements in a list, we can use the function 'insert()'
 ## In the function we have to define two parameters:
@@ -406,7 +406,7 @@ print long_list.count(0)
 list = [1, 2, 3, 4, 5]
 list.insert(2,100)
 
-print list
+print(list)
 
 ## If we want to delete certain items from a list, we can use the function pop()
 ## By default, the last item in the list is deleted
@@ -417,12 +417,12 @@ print list
 list = [1, 2, 3, 4, 5]
 list.pop()
 
-print list
+print(list)
 
 list = [10, 20, 30, 40, 50]
 list.pop(2)
 
-print list
+print(list)
 
 ## We can also use remove() to delete a certain item from a list
 ## Keep in mind that only one element is deleted
@@ -436,19 +436,19 @@ print list
 list = [100, 200, 300, 100, 400, 100, 500]
 list.remove(100)
 
-print list
+print(list)
 
 list = [100, 200, 300, 100, 400, 100, 500]
 list.remove(200)
 
-print list
+print(list)
 
 ## Maybe less interesting for us, but still worthy noting, we can also reverse the elements in a list
 
 list = [100, 200, 300, 100, 400, 100, 500]
 list.reverse()
 
-print list
+print(list)
 
 ## The last function we mention can sort the elements in a list
 ## In the particular case, the items are ordered numerically, with the smallest item on the far left, and the largest on the far right
@@ -457,12 +457,12 @@ print list
 list = [200, 500, 200, 100, 200, 500, 400, 300, 200, 300, 300, 100, 400, 100, 500]
 list.sort()
 
-print list
+print(list)
 
 list = ['wild feverfew','hummingbird sage flower','desert sage','butterfly weed','violet snowdrop','blue wooly curls','red sage','golden currant']
 list.sort()
 
-print list
+print(list)
 
 ## These are (in our opinion), the most relevant functions that are available for lists in Python
 ## We encourage that you explore further functionalities for yourself
@@ -502,9 +502,9 @@ tup1 = ('Instruments of Experimental Psychology', 'Cognitive Psychology I', 2017
 tup2 = (1, 2, 3, 4, 5 )
 tup3 = 'a', 'b', 'c', 'd'
 
-print tup1
-print tup2
-print tup3
+print(tup1)
+print(tup2)
+print(tup3)
 
 ## If we want to empty the tuple, we can just write the name of the tuple, and equate it with ()
 ## If we only want to assign one value to a tuple, we assign that value, and write a comma after it
@@ -518,13 +518,13 @@ print tup3
             ## print type(tup1)
 
 tup1 = ()
-print tup1
+print(tup1)
 
 tup1 = (50,)
-print (tup1)
+print(tup1)
 
 tup1 = (50)
-print (tup1)
+print(tup1)
 
 ## To select certain values in a tuple, we can use the same notations we used when manipulating lists
 ## The first one gives the following output:
@@ -540,8 +540,8 @@ tup1 = ('Instruments of Experimental Psychology', 'Cognitive Psychology I', 2017
 tup2 = (1, 2, 3, 4, 5 )
 tup3 = 'a', 'b', 'c', 'd'
 
-print type(tup1[0]), (tup1[0])
-print type(tup2[1:3]), (tup2[1:3])
+print(type(tup1[0]), (tup1[0]))
+print(type(tup2[1:3]), (tup2[1:3]))
 
 ## We can alter tuples by glueing already existing tuples together
 ## Keep in mind that this only works for tuples!
@@ -550,7 +550,7 @@ print type(tup2[1:3]), (tup2[1:3])
         ## This because 'tup1[0]' is a string, and combining strings (or integers) and tuples is a bad idea
 
 tup4 = tup1[0:2]+tup2[1:3]
-print (tup4)
+print(tup4)
 
 ## Deleting a tuple is pretty straightforward, as we can use a function we defined before: del
 ## We can delete an entire tuple, but not specific elements (again, because tuples are immutable)
@@ -560,13 +560,13 @@ del tup4
 ## Other basic operations already mentioned with lists can also be used on tuples
 ## Below, we define a few examples
 
-print len(tup1)
+print(len(tup1))
 
-print 'a' in tup3
-print 'j' in tup3
+print('a' in tup3)
+print('j' in tup3)
 
 for i in range(4):
-    print tup2
+    print(tup2)
 
 ## To convert a list to a tuple, we can use tuple()
 ## This mechanism is the same as list(), where we convert something to a list
@@ -591,8 +591,8 @@ dictionary = {'Function': 'Student', 'Age': 21, 'Bachelor': 3}
 
 print(dictionary)
 
-print "Function: ", dictionary['Function']
-print "Age: ", dictionary['Age']
+print("Function: ", dictionary['Function'])
+print("Age: ", dictionary['Age'])
 ## print "University: ", dictionary['University']
 
 ## To update a dictionary, we simply link a new value with the key 
@@ -600,8 +600,8 @@ print "Age: ", dictionary['Age']
 dictionary['Age'] = 22
 dictionary['School'] = 'Ghent University'
 
-print "Age: ", dictionary['Age']
-print "School: ", dictionary['School']
+print("Age: ", dictionary['Age'])
+print("School: ", dictionary['School'])
 
 ## When you don't need the items in the dictionary anymore, you can do some operations to delete items in the dictionary
 ## Alternatively, you can also delete the entire dictionary  using a simple operation
@@ -614,10 +614,10 @@ print "School: ", dictionary['School']
 ## Specific examples of each implementations can be seen below
 
 del dictionary['School']
-print dictionary
+print(dictionary)
 
 dictionary.clear()
-print dictionary
+print(dictionary)
 
 del dictionary
 ##print dictionary
@@ -631,7 +631,7 @@ del dictionary
 
 dictionary = {'Name': 'Bran', 'Name': 'Stark', 'Call': 'Winter is coming'}
 
-print "Name: ", dictionary['Name']
+print("Name: ", dictionary['Name'])
 
 ## A last remark is that the names of the keys must consist of immutable (unchangeable) objects
 ## Because of this property, the names of the keys must be a string, integer or a tuple
@@ -642,10 +642,10 @@ print "Name: ", dictionary['Name']
         ## Uncomment to see for yourself
 
 dictionary = {'First name': 'Bran', 'Last name': 'Stark', 'Call': 'Winter is coming'}
-print dictionary
+print(dictionary)
 
 WrongKeyName = ['First name']
-print type(WrongKeyName), WrongKeyName
+print(type(WrongKeyName), WrongKeyName)
 
 ## dictionary_error = {WrongKeyName: 'Bran', 'Last name': 'Stark', 'Call': 'Winter is coming'}
 ## print dictionary_error
@@ -658,22 +658,22 @@ print type(WrongKeyName), WrongKeyName
     ## False if it not defined in the dictionary
     ## True if it is defined
 
-print dictionary.has_key('Name')
-print dictionary.has_key('First name')
+print(dictionary.has_key('Name'))
+print(dictionary.has_key('First name'))
 
 ## Get an overview of all the keys and what value is stored in the key
 ## Returns pairs of the keys and their associated value
 
-print dictionary.items()
+print(dictionary.items())
 
 ## Get an idea about the keys you defined in your dictionary
 ## No associated values are printed here
 
-print dictionary.keys()
+print(dictionary.keys())
 
 ## To get an idea about the values we have in the dictionary, we can use the function values()
 
-print dictionary.values()
+print(dictionary.values())
 
 ## Of course, other functions are available
     ## We encourage to discover these for yourself
