@@ -631,8 +631,8 @@ print(type(WrongKeyName), WrongKeyName)
 ## We note that other functions still are available
 ## We provide a short rundown on some of the most eminent functions
 
-## Returns whether a certain key is in your dictionary
-    ## False if it not defined in the dictionary
+## has_key returns whether a certain key is in your dictionary
+    ## False if it is not defined in the dictionary
     ## True if it is defined
 
 print(dictionary.has_key('Name'))
@@ -655,7 +655,7 @@ print(dictionary.values())
 ## Of course, other functions are available
     ## We encourage to discover these for yourself
 ## When in doubt about properties/functions of dictionaries
-    # Google is your friend!
+    ## Google is your friend!
 
 #########
 ## END ##
