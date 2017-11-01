@@ -32,7 +32,7 @@ print(c)
 a = 6
 c = a+13
 
-print (c)
+print(c)
 
 c = 6+13
 
