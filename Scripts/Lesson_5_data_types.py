@@ -188,6 +188,7 @@ print(type(sentence))
 
 ## Changing between upper and lower case
     ## Keep in mind that these operations DO NOT change the original string: Sparta itself will stay unaltered after the .lower and .upper operations
+
 Sparta = 'ArE yOu NoT eNtErTaInEd?'
 print(Sparta)
 print(Sparta.lower())
@@ -195,25 +196,30 @@ print(Sparta.upper())
 print(Sparta)
 
 ## Returning the length of a string
+
 print(len(Sparta))
 
 ## Count how many times a specific letter/word is included in a string
     ## Note that this operation is case sensitive!
         ## If we would define 'e', the answer would be 1
         ## If we would define 'E', the answer would be 3
+
 print(Sparta.count("e"))
 print(Sparta.count("E"))
 
 ## Select a certain part of a string
+
 print(Sparta[4:7])
 
 ## Check whether a string starts with a certain word or not
     ## Again, this is case sensitive
+
 print(Sparta.startswith("Are"))
 print(Sparta.startswith("ArE"))
 
 ## Splitting a sentence into words
 ## We can also return specific words using this operation
+
 SpartaSplit = Sparta.split(" ")
 print(SpartaSplit)
 print(SpartaSplit[0])
@@ -224,6 +230,7 @@ print(SpartaSplit[0])
     ## Print position 2, then 1, then 0
     ## Print position 2, then 1, then 0 (other notation)
     ## Print 0, then 1, then 0, yielding 'abracadabra'
+
 print('{0}, {1}, {2}'.format('a', 'b', 'c'))
 print('{2}, {1}, {0}'.format('a', 'b', 'c'))
 print('{2}, {1}, {0}'.format(*'abc'))
@@ -243,9 +250,8 @@ print('{0}{1}{0}'.format('abra', 'cad'))
 ## Lists are combinations of variables
 ## The most important thing we need to keep in mind is that lists can contain different types of variables
 
-number_list = [1, 2, 3, 4, 5 ]
+number_list = [1, 2, 3, 4, 5]
 letter_list = ["a", "b", "c", "d"]
-
 print(number_list)
 print(letter_list)
 
@@ -271,7 +277,7 @@ print(number_list)
 
 ## Delete certain items
 
-del number_list[0]
+del(number_list[0])
 print(number_list)
 
 ## Concatenation
@@ -281,9 +287,9 @@ set = subset1 + subset2
 print(set)
 
 ## Repeat a list
-## In this particular example, the list is repeated repeated 4 times
+## In this particular example, the list is repeated 4 times
     ## Mind that this is no mathematical computation: we do not multiply every item with 4
-    ## We just repeat the list n amounts of times
+    ## We just repeat the list n amount of times
 
 rep = subset1 * 4
 print(rep)
