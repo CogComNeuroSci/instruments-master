@@ -9,30 +9,31 @@ import time
 import platform
 import ctypes
 
-print ('Hi there')
-print ('This is the second line')
-print ('Bye')
+print('Hi there')
+print('This is the second line')
+print('Bye')
+
 
 ###################
 ## Errors issued ##
 ###################
 
 ## words, letters and sentences cannot be printed when they are not put between ''
-## print (Hi there)
+## print(Hi there)
 
 ## If we put a statements that consists of letters between '' or "", this can be printed without problems
-print ("Hi there")
+print("Hi there")
 
 ## Note that in this case, the statement is put between '", which is bad, it should be '' or ""
-## print ('Hi there")
+## print('Hi there")
 
 ## This statement is not printed because the brackets are not closed
-## print ("Hi there"
+## print("Hi there"
 
 
 ## Printing numbers is more or less the same as printing text, although we do not need '' or "" to print our value
 number = 10
-print (number)
+print(number)
 
 ## We now discuss some formatting issues
 ## In the line of code below, we print a decimal number
@@ -43,12 +44,12 @@ print (number)
 ## "The number is 10"
 ## Try replacing the 10 with another numerical value to see what will happen!
 
-print ('The number is {0}'.format(number))
+print('The number is {0}'.format(number))
 
 # The zero between {} indicates means that this is the first number (Python starts counting at zero).
 # Actually, because there is just one number, the explicit rank order (0) is required and we can write
 
-print ('The number is {}'.format(number))
+print('The number is {}'.format(number))
 
 # The format string allows a great deal of flexibility for writing to the screen. Here is another example:
 number1=1
@@ -66,25 +67,25 @@ print("percentage is {:%}".format(number1/number2))
 
 ## Here, we let PsychoPy wait for 1 second to execute the following command
 ## Between the brackets, we define how many seconds PsychoPy waits to execute the rest of the code
-print ('Wait a second...')
+print('Wait a second...')
 time.sleep(1)
 
 ## Here, we let PsychoPy wait for 2 second to execute the following command
-print ('Or maybe two...')
+print('Or maybe two...')
 time.sleep(2)
 
-print ('Done!')
+print('Done!')
 
 ## Again, we let PsychoPy wait for 1 second to execute the following command
 ## The commands time.sleep() and core.wait() are in essence the same, as they both halt the execution of a program
-print 'Wait a second...'
+print('Wait a second...')
 core.wait(1)
 
 ## Again, the execution is halted for 2 seconds 
-print 'Or maybe two...'
+print('Or maybe two...')
 core.wait(2)
 
-print 'Done!'
+print('Done!')
 
 #########
 ## END ##
