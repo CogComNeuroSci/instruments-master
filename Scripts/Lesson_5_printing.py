@@ -24,6 +24,10 @@ print("Hi there")
 ## print("Hi there"
 
 
+#######################
+## printing integers ##
+#######################
+
 ## Printing numbers is more or less the same as printing text, although we do not need '' or "" to print our value
 number = 10
 print(number)
@@ -39,23 +43,23 @@ print(number)
 
 print("The number is {0}".format(number))
 
-# The zero between {} indicates means that this is the first number (Python starts counting at zero).
-# Actually, because there is just one number, the explicit rank order (0) is required and we can write
+## The zero between {} indicates that this is the first number (Python starts counting at zero).
+## Actually, because there is just one number, the explicit rank order 0 is not required and we can write
 
 print("The number is {}".format(number))
 
-# The format string allows a great deal of flexibility for writing to the screen. Here is another example:
+## The format string allows a great deal of flexibility for writing to the screen. Here is another example:
 number1=1
 number2=3
 total=number1+number2
 print("The total of {0} and {1} equals {2}".format(number1,number2,total))
-# Can you make sense of this code?
+## Can you make sense of this code?
 
-# Another way to use the format string is for control over nice floating point representations.
+## Another way to use the format string is for control over nice floating point representations.
 print("nice number {:.2f}".format(number1/number2))
-# This code says that the format should be such that there are two decimal-value digits. 
+##This code says that the format should be such that there are two decimal-value digits. 
 
-# We can also use format() to represent percentages. We do it as follows:
+## We can also use format() to represent percentages. We do it as follows:
 print("percentage is {:%}".format(number1/number2))
 
 ## Here, we let PsychoPy wait for 1 second to execute the following command
