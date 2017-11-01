@@ -46,7 +46,7 @@ print("The number is {0}".format(number))
 
 print("The number is {}".format(number))
 
-## The formating of strings allows a great deal of flexibility for writing to the screen. Here is another example:
+## The formatting of strings allows a great deal of flexibility for writing to the screen. Here is another example:
 number1 = 1
 number2 = 3
 total = number1 + number2
