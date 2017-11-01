@@ -7,11 +7,11 @@ from psychopy import core
 import time
 
 
-###################
-## Errors issued ##
-###################
+#########################################
+## Errors issued when printing strings ##
+#########################################
 
-## words, letters and sentences cannot be printed when they are not put between ''
+## words, letters and sentences cannot be printed when they are not put between quotes
 ## print(Hi there)
 
 ## If we put a statements that consists of letters between '' or "", this can be printed without problems
