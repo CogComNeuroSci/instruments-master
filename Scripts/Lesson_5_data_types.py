@@ -263,7 +263,7 @@ print(letter_list)
     ## Select the first item of a list
     ## Select the second, third and fourth item of the list, the fourth included
     ## Selecting the second item, counting from right to left
-    ## Selecting all items, from the second untill the end (end included) 
+    ## Selecting all items, from the second until the end (end included) 
 
 print(number_list[0])
 print(letter_list[1:5])
@@ -343,7 +343,7 @@ print(list)
 list.append(element)
 print(list)
 
-## Similar to the function 'append()' we als have the function 'extend()'
+## Similar to the function 'append()' we also have the function 'extend()'
     ## This function will also append elements to an already existing list 
 ## The major difference between the two is that:
     ## append will add elements at the end of the list
@@ -457,7 +457,7 @@ print(list)
     ## Note that the default is a tuple, so a = 'a','b','c' will be a tuple!
     ## When we want a list, we should explicitly use []
 ## A very important difference between tuples and lists is that the elements in tuples cannot be changed afterwards (in Python terms: tuples are immutable)
-    ## Immutable means that the items in the collection cannot be altered after they are initialised
+    ## Immutable means that the items in the collection cannot be altered after they are initialized
     ## To explain, we create two collections of items: a list and a tuple:
         ## list = ['a','b','c','d']
         ## tuple = 'a', 'b', 'c', 'd'
@@ -473,7 +473,7 @@ print(list)
             ## tuple[0] = 'e'
         ## TypeError: 'tuple' object does not support item assignment
     ## In other words: tuples do not support the replacement of one element by another value
-    ## The fact that tuples are immutable makes them very handy if we want to make sure that values are not changed due to some error or anomalie when running the code
+    ## The fact that tuples are immutable makes them very handy if we want to make sure that values are not changed due to some error or anomaly when running the code
     ## On the other hand, mutable data types such as lists have as an advantage that you can change/replace values as you see fit
 ## Depending on your purpose, you might want to use tuples or lists
 
@@ -523,7 +523,7 @@ tup3 = 'a', 'b', 'c', 'd'
 print(type(tup1[0]), (tup1[0]))
 print(type(tup2[1:3]), (tup2[1:3]))
 
-## We can alter tuples by glueing already existing tuples together
+## We can alter tuples by gluing already existing tuples together
 ## Keep in mind that this only works for tuples!
     ## Trying to concatenate (glue together) a string and a tuple will not work out
     ## Knowing this, we can also predict that the code 'tup4 = tup1[0]+tup2[1:3]' will not work
@@ -555,7 +555,7 @@ print('j' in tup3)
 
 ## Dictionaries have an easy setup
 ## They are contained using curly brackets {}
-## All items within the dictionary are seperated by commas. 
+## All items within the dictionary are separated by commas. 
 ## An item consists of a key and a value
 ## These values can be called by their corresponding key.
 ## For example, we can define a key called 'Function', and when we print 'dictionary["Function"]', we will see the value associated
@@ -584,7 +584,7 @@ print("School: ", dictionary['School'])
 ## Alternatively, you can also delete the entire dictionary  using a simple operation
     ## To remove a specific entry, we can use the del() function
     ## To remove all entries in a dictionary, we can use clear()
-        ## The print will yield an empty dictionary, visualised by '{}'
+        ## The print will yield an empty dictionary, visualized by '{}'
     ## To remove the entire dictionary, we can also use del()
         ## The final print statement will yield a NameError, as 'dictionary' will be seen as undefined
             ## This is of course the case because the dictionary was deleted 
