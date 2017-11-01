@@ -559,9 +559,6 @@ print(len(tup1))
 print('a' in tup3)
 print('j' in tup3)
 
-for i in range(4):
-    print(tup2)
-
 ## To convert a list to a tuple, we can use tuple()
 ## This mechanism is the same as list(), where we convert something to a list
 
