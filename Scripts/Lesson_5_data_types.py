@@ -13,6 +13,7 @@ print(type(number))
 ## We can do basic computations on integers
 ## Below, we provide a few examples
 
+
 ##############
 ## Addition ##
 ##############
@@ -26,17 +27,15 @@ print(type(number))
 a = 6
 b = 13
 c = a+b
-
 print(c)
 
 a = 6
 c = a+13
-
 print(c)
 
 c = 6+13
-
 print(c)
+
 
 #################
 ## Subtraction ##
@@ -49,17 +48,15 @@ print(c)
 a = 33
 b = 13
 c = a-b
-
 print(c)
 
 a = 33
 c = a-13
-
 print(c)
 
 c = 33-13
-
 print(c)
+
 
 ####################
 ## Multiplication ##
@@ -72,16 +69,13 @@ print(c)
 a = 7
 b = 3
 c = a*b
-
 print(c)
 
 a = 7
 c = a*3
-
 print(c)
 
 c = 7*3
-
 print(c)
 
 
@@ -96,16 +90,13 @@ print(c)
 a = 88
 b = 4
 c = a/b
-
 print(c)
 
 a = 88
 c = a/4
-
 print(c)
 
 c = 88/4
-
 print(c)
 
 # Python interprets / on integers as long division (e.g., 7/2 = 3).
@@ -114,6 +105,7 @@ print(c)
 # from __future__ import division
 # print(7/2) # becomes standard division
 # print(7//2.0) # remains long division
+
 
 ####################
 ## Exponentiation ##
