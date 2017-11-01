@@ -294,29 +294,38 @@ print(set)
 rep = subset1 * 4
 print(rep)
 
-## Logical statements
+
+########################
+## Logical statements ##
+########################
+
 ## Returns True if the statement is correct, returns False if the statement is wrong
-## Here, we have a 3 in subset1, therefore the statement will return a True here
+## For example, we have a '3' in subset1, therefore the statement will return a True here
 
 logical1 = 3 in subset1
 print(logical1)
 
-## Here, we have no 5 in subset2, therefore the statement will return a False here
+## However, we have no '5' in subset1, therefore the statement will return a False here
 
 logical2 = 5 in subset1
 print(logical2)
+
+
+#################
+## Neat tricks ##
+#################
 
 ## Get the maximum and the minimum value of a list
 
 print(max(subset2))
 print(min(subset2))
 
-## Returns how many times an object is seen in a certain list
+## Return how many times an object is seen in a certain list
 ## Here, we see that the item '1' is located one time in the list subset1
 
 print(subset1.count(1))
 
-## Again, we have a lot of functions that can be used in to alter lists
+## Again, we have a lot of functions that can be used to alter lists
 ## We refer to the Python documentation for further information on lists
     ## https://docs.python.org/2/tutorial/datastructures.html
 
@@ -324,7 +333,7 @@ print(subset1.count(1))
 ## Of course, we will only provide a short overview of some of the most important/handy functions
 
 ## An object can be added at the end of a list
-## This is called 'append', but is basically a synonym for 'add this element at the end'
+## This is called 'append()', but is basically a synonym for 'add this element at the end'
 
 element = 6
 list = [1, 2, 3, 4, 5]
@@ -357,12 +366,10 @@ print(list)
 
 list = [1, 2, 3, 4, 5]
 list.append([6,7])
-
 print(list)
 
 list = [1, 2, 3, 4, 5]
 list.extend([6,7])
-
 print(list)
 
 ## We can easily find out how many times an element occurs in a certain list by using the function 'count()'
@@ -372,7 +379,6 @@ print(list)
         ## Meaning that we have seven zeros in the list 'long_list'
 
 long_list = [0, 1, 2, 3, 0, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 0, 20, 21, 22, 23, 0, 25, 26, 27, 28, 29, 30, 31, 32, 33, 34, 0, 36, 0, 38, 39, 40, 41, 42, 43, 0, 45, 46, 47, 48, 49, 50, 51]
-
 print(long_list.count(0))
 
 ## If we want to insert certain elements in a list, we can use the function 'insert()'
@@ -387,7 +393,6 @@ print(long_list.count(0))
 
 list = [1, 2, 3, 4, 5]
 list.insert(2,100)
-
 print(list)
 
 ## If we want to delete certain items from a list, we can use the function pop()
@@ -398,58 +403,50 @@ print(list)
 
 list = [1, 2, 3, 4, 5]
 list.pop()
-
 print(list)
 
 list = [10, 20, 30, 40, 50]
 list.pop(2)
-
 print(list)
 
 ## We can also use remove() to delete a certain item from a list
 ## Keep in mind that only one element is deleted
     ## So, in the first lines below, only the first '100' is deleted
-    ## Again, remove is very handy when we want to delete an item and we do not know the index
+    ## Again, remove() is very handy when we want to delete an item and we do not know the index
         ## e.g. we want to delete the '100', but we don't know where it is situated
     ## However, we will be unable to delete all the '100' items in the list using one single command
-## For deleting one element, remove() can be very useful
-    ## Especially as we are not obliged to define the index, as is the case with pop()
 
 list = [100, 200, 300, 100, 400, 100, 500]
 list.remove(100)
-
 print(list)
 
 list = [100, 200, 300, 100, 400, 100, 500]
 list.remove(200)
-
 print(list)
 
 ## Maybe less interesting for us, but still worthy noting, we can also reverse the elements in a list
 
 list = [100, 200, 300, 100, 400, 100, 500]
 list.reverse()
-
 print(list)
 
 ## The last function we mention can sort the elements in a list
 ## In the particular case, the items are ordered numerically, with the smallest item on the far left, and the largest on the far right
-## Note that when we order a list with words in it, it will be of course order alphabetically
+## Note that when we order a list with words in it, it will of course be ordered alphabetically
 
 list = [200, 500, 200, 100, 200, 500, 400, 300, 200, 300, 300, 100, 400, 100, 500]
 list.sort()
-
 print(list)
 
 list = ['wild feverfew','hummingbird sage flower','desert sage','butterfly weed','violet snowdrop','blue wooly curls','red sage','golden currant']
 list.sort()
-
 print(list)
 
 ## These are (in our opinion), the most relevant functions that are available for lists in Python
 ## We encourage that you explore further functionalities for yourself
     # You never explore too much about programming!
     # Learning extra information on how you can accomplish something will only make things easier in the future when a problem pops up!
+
 
 ############
 ## Tuples ##
