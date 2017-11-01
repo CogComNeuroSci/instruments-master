@@ -174,10 +174,10 @@ print(c)
 ## Strings represent a letter/word/sentence
 ## Again, we can determine the type of a variable by using type()
 
-letter = 'M'
+letter = "M"
 print(type(letter))
 
-word = 'Monty'
+word = "Monty"
 print(type(word))
 
 sentence = "The name 'Python' originates from Monty Python"
@@ -189,7 +189,7 @@ print(type(sentence))
 ## Changing between upper and lower case
     ## Keep in mind that these operations DO NOT change the original string: Sparta itself will stay unaltered after the .lower and .upper operations
 
-Sparta = 'ArE yOu NoT eNtErTaInEd?'
+Sparta = "ArE yOu NoT eNtErTaInEd?"
 print(Sparta)
 print(Sparta.lower())
 print(Sparta.upper())
@@ -231,10 +231,10 @@ print(SpartaSplit[0])
     ## Print position 2, then 1, then 0 (other notation)
     ## Print 0, then 1, then 0, yielding 'abracadabra'
 
-print('{0}, {1}, {2}'.format('a', 'b', 'c'))
-print('{2}, {1}, {0}'.format('a', 'b', 'c'))
-print('{2}, {1}, {0}'.format(*'abc'))
-print('{0}{1}{0}'.format('abra', 'cad'))
+print("{0}, {1}, {2}".format("a", "b", "c"))
+print("{2}, {1}, {0}".format("a", "b", "c"))
+print("{2}, {1}, {0}".format(*"abc"))
+print("{0}{1}{0}".format("abra", "cad"))
 
 ## This is only a subset of the operations we can perform on strings
 ## For more operations, we refer to the documentation on Python:
@@ -438,7 +438,7 @@ list = [200, 500, 200, 100, 200, 500, 400, 300, 200, 300, 300, 100, 400, 100, 50
 list.sort()
 print(list)
 
-list = ['wild feverfew','hummingbird sage flower','desert sage','butterfly weed','violet snowdrop','blue wooly curls','red sage','golden currant']
+list = ["wild feverfew","hummingbird sage flower","desert sage","butterfly weed","violet snowdrop","blue wooly curls","red sage","golden currant"]
 list.sort()
 print(list)
 
@@ -477,9 +477,9 @@ print(list)
     ## On the other hand, mutable data types such as lists have as an advantage that you can change/replace values as you see fit
 ## Depending on your purpose, you might want to use tuples or lists
 
-tup1 = ('Instruments of Experimental Psychology', 'Cognitive Psychology I', 2017, 2018)
+tup1 = ("Instruments of Experimental Psychology", "Cognitive Psychology I", 2017, 2018)
 tup2 = (1, 2, 3, 4, 5 )
-tup3 = 'a', 'b', 'c', 'd'
+tup3 = "a", "b", "c", "d"
 print(tup1)
 print(tup2)
 print(tup3)
@@ -516,9 +516,9 @@ print(type(tup1))
     ## If we select multiple items, the type of the output will be a tuple!
         ## Remember that tuples are immutable, so replacing values in this output will be impossible!
 
-tup1 = ('Instruments of Experimental Psychology', 'Cognitive Psychology I', 2017, 2018)
+tup1 = ("Instruments of Experimental Psychology", "Cognitive Psychology I", 2017, 2018)
 tup2 = (1, 2, 3, 4, 5 )
-tup3 = 'a', 'b', 'c', 'd'
+tup3 = "a", "b", "c", "d"
 
 print(type(tup1[0]), (tup1[0]))
 print(type(tup2[1:3]), (tup2[1:3]))
@@ -542,8 +542,8 @@ del(tup4)
 
 print(len(tup1))
 
-print('a' in tup3)
-print('j' in tup3)
+print("a" in tup3)
+print("j" in tup3)
 
 ## To convert a list to a tuple, we can use tuple()
 ## This mechanism is the same as list(), where we convert something to a list
@@ -565,20 +565,20 @@ print('j' in tup3)
 ## To illustrate, we try to print what is stored in the key 'University'
 ## Uncomment to see what happens
 
-dictionary = {'Function': 'Student', 'Age': 21, 'Bachelor': 3}
+dictionary = {"Function": "Student", "Age": 21, "Bachelor": 3}
 print(dictionary)
 
-print("Function: ", dictionary['Function'])
-print("Age: ", dictionary['Age'])
-## print("University: ", dictionary['University'])
+print("Function: ", dictionary["Function"])
+print("Age: ", dictionary["Age"])
+## print("University: ", dictionary["University"])
 
 ## To update a dictionary, we simply link a new value with the key 
 
-dictionary['Age'] = 22
-dictionary['School'] = 'Ghent University'
+dictionary["Age"] = 22
+dictionary["School"] = "Ghent University"
 
-print("Age: ", dictionary['Age'])
-print("School: ", dictionary['School'])
+print("Age: ", dictionary["Age"])
+print("School: ", dictionary["School"])
 
 ## When you don't need the items in the dictionary anymore, you can do some operations to delete items in the dictionary
 ## Alternatively, you can also delete the entire dictionary  using a simple operation
@@ -590,7 +590,7 @@ print("School: ", dictionary['School'])
             ## This is of course the case because the dictionary was deleted 
 ## Specific examples of each implementations can be seen below
 
-del(dictionary['School'])
+del(dictionary["School"])
 print(dictionary)
 
 dictionary.clear()
@@ -606,9 +606,9 @@ del(dictionary)
     ## In the code below for example, the value 'Stark' is the last variable assigned to the key 'Name'
     ## Therefore, this is the value that is printed when the key 'Name' is called
 
-dictionary = {'Name': 'Bran', 'Name': 'Stark', 'Call': 'Winter is coming'}
+dictionary = {"Name": "Bran", "Name": "Stark", "Call": "Winter is coming"}
 
-print("Name: ", dictionary['Name'])
+print("Name: ", dictionary["Name"])
 
 ## A last remark is that the names of the keys must consist of immutable (unchangeable) objects
 ## Because of this property, the names of the keys must be a string, integer or a tuple
@@ -618,10 +618,10 @@ print("Name: ", dictionary['Name'])
         ## TypeError: unhashable type: 'list'
         ## Uncomment to see for yourself
 
-dictionary = {'First name': 'Bran', 'Last name': 'Stark', 'Call': 'Winter is coming'}
+dictionary = {"First name": "Bran", "Last name": "Stark", "Call": "Winter is coming"}
 print(dictionary)
 
-WrongKeyName = ['First name']
+WrongKeyName = ["First name"]
 print(type(WrongKeyName), WrongKeyName)
 
 ## dictionary_error = {WrongKeyName: 'Bran', 'Last name': 'Stark', 'Call': 'Winter is coming'}
@@ -635,8 +635,8 @@ print(type(WrongKeyName), WrongKeyName)
     ## False if it is not defined in the dictionary
     ## True if it is defined
 
-print(dictionary.has_key('Name'))
-print(dictionary.has_key('First name'))
+print(dictionary.has_key("Name"))
+print(dictionary.has_key("First name"))
 
 ## Get an overview of all the keys and what value is stored in the key
 ## Returns pairs of the keys and their associated value
