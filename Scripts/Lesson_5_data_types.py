@@ -318,12 +318,6 @@ print(logical1)
 logical2 = 5 in subset1
 print(logical2)
 
-## List comprehension
-## In this code, we print every value in subset2
-
-for x in subset2:
-    print(x)
-
 ## Get the maximum and the minimum value of a list
 
 print(max(subset2))
