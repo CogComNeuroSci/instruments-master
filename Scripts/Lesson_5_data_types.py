@@ -469,18 +469,17 @@ print(list)
             ## In Python terms: a list is mutable, as the items in the list can still be changed afterwards
     ## In the tuple, we can also try to change the first value:
         ## tuple[0] = 'e'
-    ## When we try to print the tuple, we will see the following error:
+    ## When we try to change the tuple, we will see the following error:
             ## tuple[0] = 'e'
         ## TypeError: 'tuple' object does not support item assignment
     ## In other words: tuples do not support the replacement of one element by another value
-    ## That tuples are immutable makes them very handy if we want to make sure that values are not changed due to some error or anomalie when running the code
+    ## The fact that tuples are immutable makes them very handy if we want to make sure that values are not changed due to some error or anomalie when running the code
     ## On the other hand, mutable data types such as lists have as an advantage that you can change/replace values as you see fit
 ## Depending on your purpose, you might want to use tuples or lists
 
 tup1 = ('Instruments of Experimental Psychology', 'Cognitive Psychology I', 2017, 2018)
 tup2 = (1, 2, 3, 4, 5 )
 tup3 = 'a', 'b', 'c', 'd'
-
 print(tup1)
 print(tup2)
 print(tup3)
@@ -501,9 +500,11 @@ print(tup1)
 
 tup1 = (50,)
 print(tup1)
+print(type(tup1))
 
 tup1 = (50)
 print(tup1)
+print(type(tup1))
 
 ## To select certain values in a tuple, we can use the same notations we used when manipulating lists
 ## The first one gives the following output:
