@@ -549,7 +549,7 @@ print(tup4)
 ## Deleting a tuple is pretty straightforward, as we can use a function we defined before: del
 ## We can delete an entire tuple, but not specific elements (again, because tuples are immutable)
 
-del tup4
+del(tup4)
 
 ## Other basic operations already mentioned with lists can also be used on tuples
 ## Below, we define a few examples
@@ -607,13 +607,13 @@ print("School: ", dictionary['School'])
             ## This is of course the case because the dictionary was deleted 
 ## Specific examples of each implementations can be seen below
 
-del dictionary['School']
+del(dictionary['School'])
 print(dictionary)
 
 dictionary.clear()
 print(dictionary)
 
-del dictionary
+del(dictionary)
 ##print dictionary
 
 ## Dictionaries have some advantages, however, there are also some major disadvantages
