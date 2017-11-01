@@ -512,7 +512,7 @@ print(type(tup1))
 ## The second one gives the following output:
     ## (2, 3)
 ## Keep in mind that the type of the output differs:
-    ## If one item is select, it will have the type you would expect ('Instruments of Experimental Psychology' is a string, '2017' is an integer)
+    ## If one item is selected, it will have the type you would expect ('Instruments of Experimental Psychology' is a string, '2017' is an integer)
     ## If we select multiple items, the type of the output will be a tuple!
         ## Remember that tuples are immutable, so replacing values in this output will be impossible!
 
@@ -548,16 +548,17 @@ print('j' in tup3)
 ## To convert a list to a tuple, we can use tuple()
 ## This mechanism is the same as list(), where we convert something to a list
 
+
 ##################
 ## Dictionaries ##
 ##################
 
 ## Dictionaries have an easy setup
-## They are contained using curly brackets ( {} )
+## They are contained using curly brackets {}
 ## All items within the dictionary are seperated by commas. 
 ## An item consists of a key and a value
 ## These values can be called by their corresponding key.
-## For example, we can define a key called 'Function', and when we print 'dictionary['Function']', we will see the value associated
+## For example, we can define a key called 'Function', and when we print 'dictionary["Function"]', we will see the value associated
 ## to that key.
 ## In this case, we will see 'Student', as the item 'Function': 'Student' was defined in the dictionary
 ## Of course, we cannot call items that are not defined in the dictionary
@@ -565,12 +566,11 @@ print('j' in tup3)
 ## Uncomment to see what happens
 
 dictionary = {'Function': 'Student', 'Age': 21, 'Bachelor': 3}
-
 print(dictionary)
 
 print("Function: ", dictionary['Function'])
 print("Age: ", dictionary['Age'])
-## print "University: ", dictionary['University']
+## print("University: ", dictionary['University'])
 
 ## To update a dictionary, we simply link a new value with the key 
 
@@ -585,7 +585,7 @@ print("School: ", dictionary['School'])
     ## To remove a specific entry, we can use the del() function
     ## To remove all entries in a dictionary, we can use clear()
         ## The print will yield an empty dictionary, visualised by '{}'
-    ## To remove the entire dictionary, we can also use del
+    ## To remove the entire dictionary, we can also use del()
         ## The final print statement will yield a NameError, as 'dictionary' will be seen as undefined
             ## This is of course the case because the dictionary was deleted 
 ## Specific examples of each implementations can be seen below
@@ -597,7 +597,7 @@ dictionary.clear()
 print(dictionary)
 
 del(dictionary)
-##print dictionary
+##print(dictionary)
 
 ## Dictionaries have some advantages, however, there are also some major disadvantages
 ## An example is the issue with the definition of the name of the keys
