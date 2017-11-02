@@ -25,7 +25,7 @@ if name == "Daenerys Targaryen":
 if name != "Daenerys Targaryen":
     print("'{0}', This name is unknown to me".format(name))
 
-## We can also make the set of requirements complexer, for instance by requiring two conditions to be met
+## We can also make the set of requirements more complex, for instance by requiring two conditions to be met
 
 name = "Daenerys Targaryen"
 door_open = 1
@@ -35,7 +35,7 @@ if name == "Daenerys Targaryen" and door_open == 1:
 
 ## In the code below, we define two specific conditions: we check the input for two specific strings
 ## Again, depending on the input, our output will be different
-## Note that if the input string doesn"t match with either defined strings, we have no output
+## Note that if the input string doesn't match with either of the defined strings, we have no output
 ## Try to type your own name between the "", and look at the output
 
 name = "Viserys Targaryen"
@@ -54,9 +54,9 @@ if name == "Viserys Targaryen":
 
 print("# if statement 2 #")
 
-## Of course, we don"t want to specify every condition that may occur, and luckily, we don"t have to!
+## Of course, we don't want to specify every condition that may occur, and luckily, we don't have to!
 ## We can use the "else" statement to define what we want to happen if no condition is fulfilled
-## In the case below, we see that we only have a specific response for Daenerys Targaryen, for every other name there is the default "This name is unknown to me"
+## In the case below, we see that we only have a specific response for "Daenerys Targaryen", for every other name there is the default "This name is unknown to me"
 
 name = "Jorah Mormont"
 
@@ -72,10 +72,10 @@ else:
 
 ## This is a first example of the use of an if...elif...else statement. 
 ## We first verify whether x is smaller than zero. 
-    ## If x is indeed smaller than zero the response ‘Negative’ is printed and we exit the if...elif...else-statement. 
+    ## If x is indeed smaller than zero the response "Negative" is printed and we exit the if...elif...else-statement. 
     ## If this condition is not met, we proceed to check whether the second condition is met: is x equal to zero. 
-    ## Again, if this condition is met the action is executed (‘Zero’ is displayed in the output box) and we leave the loop. 
-    ## Alternatively, when x is not equal to zero we proceed to the else-statement and execute the remaining action (displaying ‘Positive’ in the output box).
+    ## Again, if this condition is met the action is executed ("Zero" is displayed in the output window) and we leave the loop. 
+    ## Alternatively, when x is also not equal to zero we proceed to the else-statement and execute the remaining action (displaying "Positive" in the output window).
 
 print("# if statement 3.1 #")
 
@@ -120,8 +120,8 @@ if (x < 0) == False and (x <= 0) == False:
 
 print("# if statement 4 #")
 
-## If you want to define different conditions, we can also use the 'elif' statement
-## These elif statements closely resembles the switch case statements used in other programming languages (such as c++)
+## If you want to define a series of subsequent conditions, we can also use the 'elif' statement
+## These elif statements closely resemble the "switch case" statements used in other programming languages (such as c++)
 ## Looking at the code below, we see that if and elif statements are very similar, however, there is one big difference:
     ## Using 'if' statements, the code will check every condition you have defined
         ## This characteristic is especially useful if you have defined certain exceptions to a condition
@@ -214,7 +214,7 @@ while True:
 print("# if statement 8 #")
 
 ## Another statement that can manipulate the flow of the loop is the 'continue' statement
-## The role of continue is to skip all the other commands in the loop, and just start again with the loop from the beginning
+## The role of continue is to skip all the other commands in the loop, and to skip to the next iteration of the loop
 ## The continue function can be easily explained by the following code:
     ## The if statement checks whether the number can be divided by 2 without having a remainder
     ## If this statements evaluates as True, a continue statement is encountered, and the print just below will be skipped
@@ -252,13 +252,13 @@ for letter in "Spell this":
 print("# if statement 10 #")
 
 ## If you want to check whether multiple conditions are met at the same time, you can use the 'and' statement
-## The and statement will only execute the indented code (the code connected to the if statement, marked by the ...) if all statements/conditions connected by 'and' are true
+## The and statement will only execute the indented code (the code connected to the if statement, marked by the ....) if all statements/conditions connected by 'and' are true
 ## In the example below, we see that both the first name and the last name should have a specific value before the print command is executed
-## Try to comment out the 'Rickon Stark', and uncomment 'Arya Stark', and look at what is outputted next
-    ## Tip: if you work on a Windows: select what you want to comment away, press 'ctrl' and then the '-key (the 4-key)
+## Try to comment out 'Rickon Stark', and uncomment 'Arya Stark', and look at what is outputted next
+    ## Tip: if you work on a Windows: select what you want to comment away, press 'ctrl' and then the '-key
     ## Another tip: quickly uncomment by selecting the desired code, press 'ctrl', then shift, and then the '-key
-    ## For other OS: look in the 'Edit' tab, and below you will see the short cut
-    ## Short cuts can be altered in the 'File' tab
+    ## For other OS: look in the 'Edit' tab, and below you will see the shortcut
+    ## Shortcuts can be altered in the 'File' tab under 'Preferences'
 
 #FirstName = "Arya"
 #LastName = "Stark"
@@ -281,7 +281,7 @@ else:
 
 print("# if statement 11 #")
 
-## Similar to the and statement, the 'or' statement also has influence on the output in an if statement
+## Similar to the and statement, the 'or' statement also has influence on the output of an if statement
 ## Here the idea is that the if statement will execute if at least 1 condition is fulfilled
 ## This means that if we have 5 conditions connected by 'or' statements, and 1 of these conditions is fulfilled, then the indented code will be executed
 ## To make this more intuitive, let us look at the code below:
