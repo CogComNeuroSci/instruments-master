@@ -21,9 +21,9 @@ print("# if statement 1 #")
 name = "Daenerys Targaryen"
 
 if name == "Daenerys Targaryen":
-    print("Welcome, %s, Mother of Dragons") %name
+    print("Welcome, {0}, Mother of Dragons".format(name))
 if name != "Daenerys Targaryen":
-    print(""%s", This name is unknown to me") %name
+    print("'{0}', This name is unknown to me".format(name))
 
 ## We can also make the set of requirements complexer, for instance by requiring two conditions to be met
 
@@ -31,7 +31,7 @@ name = "Daenerys Targaryen"
 door_open = 1
 
 if name == "Daenerys Targaryen" and door_open == 1:
-    print("Welcome, %s, Mother of Dragons") %name
+    print("Welcome, {0}, Mother of Dragons".format(name))
 
 ## In the code below, we define two specific conditions: we check the input for two specific strings
 ## Again, depending on the input, our output will be different
@@ -41,7 +41,7 @@ if name == "Daenerys Targaryen" and door_open == 1:
 name = "Viserys Targaryen"
 
 if name == "Daenerys Targaryen":
-    print("Welcome, %s, Mother of Dragons") %name
+    print("Welcome, {0}, Mother of Dragons".format(name))
 if name == "Viserys Targaryen":
     print("Go away, you traitor!")
 
@@ -61,9 +61,9 @@ print("# if statement 2 #")
 name = "Jorah Mormont"
 
 if name == "Daenerys Targaryen":
-    print("Welcome, %s, Mother of Dragons") %name
+    print("Welcome, {0}, Mother of Dragons".format(name))
 else:
-    print(""%s", This name is unknown to me") %name
+    print("'{0}', This name is unknown to me".format(name))
 
 
 ####################
@@ -157,15 +157,15 @@ print("# if statement 5 #")
 age = 0
 while age <= 100:
     if age == 18:
-        print("Your age is %d! You can drink alcohol and drive a car!") %age
+        print("Your age is {0}! You can drink alcohol and drive a car!".format(age))
     elif age == 21:
-        print("Your age is %d! You can drink alcohol in the US!") %age
+        print("Your age is {0}! You can drink alcohol in the US!".format(age))
     elif age == 65:
-        print("Your age is %d! From now on, you can retire!") %age
+        print("Your age is {0}! From now on, you can retire!".format(age))
     elif age == 100:
-        print("Your age is %d! You are living on Earth for a century!") %age
+        print("Your age is {0}! You are living on Earth for a century!".format(age))
     else:
-        print("Your age is %d.") %age
+        print("Your age is {0}.".format(age))
         
     age += 1
 
@@ -184,9 +184,9 @@ print("# if statement 6 #")
 
 for i in range(10):
     if i%3 == 0:
-        print("The number %d can be divided by three") %i
+        print("The number {0} can be divided by three".format(i))
     else:
-        print("The number %d is not divisible by three") %i 
+        print("The number {0} is not divisible by three".format(i))
 
 
 ####################
@@ -270,9 +270,9 @@ LastName = "Stark"
 #LastName = "Lannister"
 
 if (FirstName == "Arya") and (LastName == "Stark"):
-    print("Nymeria is in the castle, %s %s") % (FirstName,LastName)
+    print("Nymeria is in the castle, {0} {1}".format(FirstName,LastName))
 else:
-    print("Something"s off, Nymeria does not belong to %s %s!") % (FirstName,LastName)
+    print("Something's off, Nymeria does not belong to {0} {1}!".format(FirstName,LastName))
 
 
 #####################
@@ -303,7 +303,7 @@ LastName = "Stark"
 #LastName = "Lannister"
 
 if(FirstName == "Arya") or (LastName == "Stark"):
-    print("Nymeria is in the castle, %s %s!") % (FirstName,LastName)
+    print("Nymeria is in the castle, {0} {1}!".format(FirstName,LastName))
 else:
     print("Something"s off!")
 
