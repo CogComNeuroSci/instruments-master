@@ -6,7 +6,7 @@ print("# While loop 1 #")
 
 ## The while loop greatly resembles the for loop in the sense that it performs a certain action until a certain condition is fulfilled
 ## The example while loop below shows that a certain string is printed until the value 5 is reached
-## Translated in words, we could say that the while loop 'prints the integer 'i', as long as i is smaller than 5'
+## Translated in words, we could say that the while loop "prints the integer 'i', as long as i is smaller than 5"
 ## Going through the first iteration:
     ## i equals 0 (defined by the programmer)
     ## 'while i is smaller than 5' is true in this case, so the statements in the loop will be executed
@@ -30,7 +30,7 @@ while i < 5:
 print("# While loop 2 #")
 
 ## Another notation for the incrementation can be seen below
-## The statement 'i = i+1' is exactly the same as 'i += 1'
+## The statement 'i = i+1' is exactly the same as 'i += 1' as we saw in Lesson 5
 
 i = 0
 while i < 5:
@@ -54,7 +54,7 @@ while i < 5:
     i = i + 1
 
 ## Please note that the while loop will also be neglected if we replace 'i = 6' by 'i = 5'
-## This because the while loop will only execute as i is SMALLER than 5, which is not the case here 
+## This is the case because the while loop will only execute when i is SMALLER than 5, which is not the case here 
 
 i = 5
 while i < 5:
@@ -63,7 +63,7 @@ while i < 5:
 
 ## if we now replace 'while i < 5:' with 'while i <= 5:', our while loop will execute once
 ## Why is this the case?
-    ## Because now, the loop will execute while i is smaller than 5, but also when i EQUALS 5
+    ## Because now, the loop will execute when i is smaller than 5, but also when i EQUALS 5
 ## Thus, we will see '5' printed here
 
 i = 5
@@ -76,8 +76,8 @@ while i <= 5:
 ## while loop 4 ##
 ##################
 
-## We can use more complex criteria, for example by requiring one of two criteria to be met to continue the while loop.
-## To do this we insert 'or' between the two criteria.
+## We can use more complex criteria, for example by requiring one of two criteria to be met to execute the commands in the while loop.
+## To do this we insert "or" between the two criteria.
 
 print("# While loop 4.1 #")
 
@@ -88,7 +88,7 @@ while i < 5 or j > 3:
     i = i + 1
     j = j - 2
 
-## Alternatively we can require that both criteria are met to continue the while loop.
+## Alternatively we can require that both criteria are met to execute the commands in the while loop.
 ## This can be done by adding "and" between the two criteria.
 
 print("# While loop 4.2 #")
@@ -142,10 +142,9 @@ print("# While loop 6 #")
 
 ## A possible danger when working with while loops is that we can create infinite loops
 ## An example of this can be seen when the loop executes during a condition which is always met
-## Below, we have listed some examples of while loops that never end
-    # Please do not uncomment these, as your computer will not be able to escape the loop
-## Try for yourself to find out why the loop never stops
-## The answer is listed below
+## Below, we have included an example of a while loop that never ends
+    # Please do not uncomment the loop below, as your computer will not be able to escape the loop
+## Try to find out for yourself why the loop never stops
 
 #j = 0
 #while j < 5:
