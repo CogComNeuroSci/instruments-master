@@ -22,6 +22,7 @@ while i < 5:
     print(i)
     i = i + 1
 
+
 ##################
 ## while loop 2 ##
 ##################
@@ -35,6 +36,7 @@ i = 0
 while i < 5:
     print(i)
     i += 1
+
 
 ##################
 ## while loop 3 ##
@@ -69,6 +71,7 @@ while i <= 5:
     print(i)
     i = i + 1
 
+
 ##################
 ## while loop 4 ##
 ##################
@@ -96,6 +99,7 @@ while i < 5 and j > 3:
     print("i is %d and j is %d") %(i,j)
     i = i + 1
     j = j - 2
+
 
 ##################
 ## while loop 5 ##
@@ -128,6 +132,7 @@ print(Condition5)
 
 ## As we notice here, this condition check evaluates as 'False', therefore the loop will stop, and nothing will be printed
 ## This example can be seen as a deeper view into the mechanism of the while loop 
+
 
 ##################
 ## while loop 6 ##
