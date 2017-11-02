@@ -138,7 +138,7 @@ elif age == 65:
 elif age == 100:
     print("You are living on Earth for an entire century!")
 else:
-    print("Your age isn"t very special...")
+    print("Your age isn't very special...")
 
 
 ####################
@@ -305,7 +305,7 @@ LastName = "Stark"
 if(FirstName == "Arya") or (LastName == "Stark"):
     print("Nymeria is in the castle, {0} {1}!".format(FirstName,LastName))
 else:
-    print("Something"s off!")
+    print("Something's off!")
 
 
 #########
