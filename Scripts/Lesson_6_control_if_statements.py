@@ -2,7 +2,7 @@
 ## if statement 1 ##
 ####################
 
-print ("# if statement 1 #")
+print("# if statement 1 #")
 
 ## If statements can be used to select certain situations
 ## These statements can be used both in your ordinary code (as we will see shortly) and in loops (both in "for" and "while" loops)
@@ -21,9 +21,9 @@ print ("# if statement 1 #")
 name = "Daenerys Targaryen"
 
 if name == "Daenerys Targaryen":
-    print ("Welcome, %s, Mother of Dragons") %name
+    print("Welcome, %s, Mother of Dragons") %name
 if name != "Daenerys Targaryen":
-    print (""%s", This name is unknown to me") %name
+    print(""%s", This name is unknown to me") %name
 
 ## We can also make the set of requirements complexer, for instance by requiring two conditions to be met
 
@@ -31,7 +31,7 @@ name = "Daenerys Targaryen"
 door_open = 1
 
 if name == "Daenerys Targaryen" and door_open == 1:
-    print ("Welcome, %s, Mother of Dragons") %name
+    print("Welcome, %s, Mother of Dragons") %name
 
 ## In the code below, we define two specific conditions: we check the input for two specific strings
 ## Again, depending on the input, our output will be different
@@ -41,9 +41,9 @@ if name == "Daenerys Targaryen" and door_open == 1:
 name = "Viserys Targaryen"
 
 if name == "Daenerys Targaryen":
-    print ("Welcome, %s, Mother of Dragons") %name
+    print("Welcome, %s, Mother of Dragons") %name
 if name == "Viserys Targaryen":
-    print ("Go away, you traitor!")
+    print("Go away, you traitor!")
 
 ## Keep in mind that name == "Viserys Targaryen" evaluates here as True, and therefore the commands below this if statement are executed
 
@@ -52,7 +52,7 @@ if name == "Viserys Targaryen":
 ## if statement 2 ##
 ####################
 
-print ("# if statement 2 #")
+print("# if statement 2 #")
 
 ## Of course, we don"t want to specify every condition that may occur, and luckily, we don"t have to!
 ## We can use the "else" statement to define what we want to happen if no condition is fulfilled
@@ -61,9 +61,9 @@ print ("# if statement 2 #")
 name = "Jorah Mormont"
 
 if name == "Daenerys Targaryen":
-    print ("Welcome, %s, Mother of Dragons") %name
+    print("Welcome, %s, Mother of Dragons") %name
 else:
-    print (""%s", This name is unknown to me") %name
+    print(""%s", This name is unknown to me") %name
 
 
 ####################
@@ -77,48 +77,48 @@ else:
     ## Again, if this condition is met the action is executed (‘Zero’ is displayed in the output box) and we leave the loop. 
     ## Alternatively, when x is not equal to zero we proceed to the else-statement and execute the remaining action (displaying ‘Positive’ in the output box).
 
-print ("# if statement 3.1 #")
+print("# if statement 3.1 #")
 
 x = -2
 if x < 0:
-    print "Negative"
+    print("Negative")
 elif x == 0:
-    print "Zero"
+    print("Zero")
 else:
-    print "Positive"
+    print("Positive")
 
 ## Note that as soon as a certain condition is met, the remaining options are not considered anymore and we leave the if...elif...else-statement. 
 ## Even if one of the following conditions would also be met, we wouldn’t consider it anymore. 
 
-print ("# if statement 3.2 #")
+print("# if statement 3.2 #")
 
 x = -2
 if x < 0:
-    print "Negative"
+    print("Negative")
 elif x <= 0:
-    print "Smaller than or equal to zero"
+    print("Smaller than or equal to zero")
 else:
-    print "Positive"
+    print("Positive")
     
 ## If however you would like to execute each action associated with a condition that is met, you’ll need to use multiple if-statements. 
 ## The example below shows how you can adjust the previous example to execute all the actions for which the conditions are met.
 
-print ("# if statement 3.3 #")
+print("# if statement 3.3 #")
 
 x = -2
 if x < 0:
-    print "Negative"
+    print("Negative")
 if x <= 0:
-    print "Smaller than or equal to zero"
+    print("Smaller than or equal to zero")
 if (x < 0) == False and (x <= 0) == False:
-    print "Positive"
+    print("Positive")
 
 
 ####################
 ## if statement 4 ##
 ####################
 
-print ("# if statement 4 #")
+print("# if statement 4 #")
 
 ## If you want to define different conditions, we can also use the 'elif' statement
 ## These elif statements closely resembles the switch case statements used in other programming languages (such as c++)
@@ -130,22 +130,22 @@ print ("# if statement 4 #")
 age = 67
 
 if age == 18:
-    print ("You can drink everything and drive a car now!")
+    print("You can drink everything and drive a car now!")
 elif age == 21:
-    print ("You can drink everything in the US from now on!")
+    print("You can drink everything in the US from now on!")
 elif age == 65:
-    print ("From now on, you can retire!")
+    print("From now on, you can retire!")
 elif age == 100:
-    print ("You are living on Earth for an entire century!")
+    print("You are living on Earth for an entire century!")
 else:
-    print ("Your age isn"t very special...")
+    print("Your age isn"t very special...")
 
 
 ####################
 ## if statement 5 ##
 ####################
 
-print ("# if statement 5 #")
+print("# if statement 5 #")
 
 ## As mentioned earlier in the code, the if statement can also be used in loops
 ## Below, we will highlight an example an if statement both in a while loop and in a for loop
@@ -157,15 +157,15 @@ print ("# if statement 5 #")
 age = 0
 while age <= 100:
     if age == 18:
-        print ("Your age is %d! You can drink alcohol and drive a car!") %age
+        print("Your age is %d! You can drink alcohol and drive a car!") %age
     elif age == 21:
-        print ("Your age is %d! You can drink alcohol in the US!") %age
+        print("Your age is %d! You can drink alcohol in the US!") %age
     elif age == 65:
-        print ("Your age is %d! From now on, you can retire!") %age
+        print("Your age is %d! From now on, you can retire!") %age
     elif age == 100:
-        print ("Your age is %d! You are living on Earth for a century!") %age
+        print("Your age is %d! You are living on Earth for a century!") %age
     else:
-        print ("Your age is %d.") %age
+        print("Your age is %d.") %age
         
     age += 1
 
@@ -174,7 +174,7 @@ while age <= 100:
 ## if statement 6 ##
 ####################
 
-print ("# if statement 6 #")
+print("# if statement 6 #")
 
 ## For loop
 ## Here we write a loop where the numbers that can be divided by three are printed with a different sentence than the numbers that can't be divided by three
@@ -184,16 +184,16 @@ print ("# if statement 6 #")
 
 for i in range(10):
     if i%3 == 0:
-        print ("The number %d can be divided by three") %i
+        print("The number %d can be divided by three") %i
     else:
-        print ("The number %d is not divisible by three") %i 
+        print("The number %d is not divisible by three") %i 
 
 
 ####################
 ## if statement 7 ##
 ####################
 
-print ("# if statement 7 #")
+print("# if statement 7 #")
 
 ## If statements can also be used to control the ending of a loop
 ## The command used to escape from a loop is called 'break'
@@ -211,7 +211,7 @@ while True:
 ## if statement 8 ##
 ####################
 
-print ("# if statement 8 #")
+print("# if statement 8 #")
 
 ## Another statement that can manipulate the flow of the loop is the 'continue' statement
 ## The role of continue is to skip all the other commands in the loop, and just start again with the loop from the beginning
@@ -230,7 +230,7 @@ for number in range(10):
 ## if statement 9 ##
 ####################
 
-print ("# if statement 9 #")
+print("# if statement 9 #")
 
 ## Another command sometimes used in loops is the 'pass' command
 ## In essence, this command is a NULL operation, or in other words: it has no outcome
@@ -241,15 +241,15 @@ print ("# if statement 9 #")
 for letter in "Spell this": 
    if letter == " ":
       pass
-      print ("The space came right after this letter!")
-   print ("Letter :"), (letter)
+      print("The space came right after this letter!")
+   print("Letter :"), (letter)
 
 
 #####################
 ## if statement 10 ##
 #####################
 
-print ("# if statement 10 #")
+print("# if statement 10 #")
 
 ## If you want to check whether multiple conditions are met at the same time, you can use the 'and' statement
 ## The and statement will only execute the indented code (the code connected to the if statement, marked by the ...) if all statements/conditions connected by 'and' are true
@@ -270,16 +270,16 @@ LastName = "Stark"
 #LastName = "Lannister"
 
 if (FirstName == "Arya") and (LastName == "Stark"):
-    print ("Nymeria is in the castle, %s %s") % (FirstName,LastName)
+    print("Nymeria is in the castle, %s %s") % (FirstName,LastName)
 else:
-    print ("Something"s off, Nymeria does not belong to %s %s!") % (FirstName,LastName)
+    print("Something"s off, Nymeria does not belong to %s %s!") % (FirstName,LastName)
 
 
 #####################
 ## if statement 11 ##
 #####################
 
-print ("# if statement 11 #")
+print("# if statement 11 #")
 
 ## Similar to the and statement, the 'or' statement also has influence on the output in an if statement
 ## Here the idea is that the if statement will execute if at least 1 condition is fulfilled
@@ -302,10 +302,10 @@ LastName = "Stark"
 #FirstName = "Arya"
 #LastName = "Lannister"
 
-if (FirstName == "Arya") or (LastName == "Stark"):
-    print ("Nymeria is in the castle, %s %s!") % (FirstName,LastName)
+if(FirstName == "Arya") or (LastName == "Stark"):
+    print("Nymeria is in the castle, %s %s!") % (FirstName,LastName)
 else:
-    print ("Something"s off!")
+    print("Something"s off!")
 
 
 #########
