@@ -84,7 +84,7 @@ print("# While loop 4.1 #")
 i = 0
 j = 10
 while i < 5 or j > 3:
-    print("i is %d and j is %d") %(i,j)
+    print("i is {0} and j is {1}".format(i,j))
     i = i + 1
     j = j - 2
 
@@ -96,7 +96,7 @@ print("# While loop 4.2 #")
 i = 0
 j = 10
 while i < 5 and j > 3:
-    print("i is %d and j is %d") %(i,j)
+    print("i is {0} and j is {1}".format(i,j))
     i = i + 1
     j = j - 2
 
