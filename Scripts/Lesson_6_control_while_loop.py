@@ -2,7 +2,7 @@
 ## while loop 1 ##
 ##################
 
-print ("# While loop 1 #")
+print("# While loop 1 #")
 
 ## The while loop greatly resembles the for loop in the sense that it performs a certain action until a certain condition is fulfilled
 ## The example while loop below shows that a certain string is printed until the value 5 is reached
@@ -113,18 +113,18 @@ print(i == i)
 
 ## First iteration
 Condition0 = 0<5
-print (Condition0)
+print(Condition0)
 
 ## Second iteration
 Condition1 = 1<5
-print (Condition1)
+print(Condition1)
 
 ## As we can see, both conditions evaluate as 'True'
 ## The while loop will do everything that is stated in the loop as long as the condition check evaluates as 'True'
 
 ## Where the while loop stops
 Condition5 = 5<5
-print (Condition5)
+print(Condition5)
 
 ## As we notice here, this condition check evaluates as 'False', therefore the loop will stop, and nothing will be printed
 ## This example can be seen as a deeper view into the mechanism of the while loop 
@@ -133,7 +133,7 @@ print (Condition5)
 ## while loop 6 ##
 ##################
 
-print ("# While loop 6 #")
+print("# While loop 6 #")
 
 ## A possible danger when working with while loops is that we can create infinite loops
 ## An example of this can be seen when the loop executes during a condition which is always met
