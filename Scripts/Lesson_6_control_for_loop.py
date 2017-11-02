@@ -39,11 +39,9 @@ print("# For loop 2 #")
 ## Here we will print the index, which means that you print i in the output
 ## i is, as explained before, each number between 0 and 10
 ## Of course i can take different values based on the characteristics of the loop
-## "%d" means that a decimal number has to be inserted
-## What number is inserted is specified at the end of the statement, in our case this number is the index, called "i"
 
 for i in range(10):
-    print("%d. We like Python!") %i
+    print("{0}. We like Python!".format(i))
 
 
 ################
@@ -62,7 +60,7 @@ print("# For loop 3 #")
 name = "Jon Snow"
 
 for i in range(10):
-    print("You know nothing, %s...") %name
+    print("You know nothing, {0}...".format(name))
 
 
 ################
@@ -76,7 +74,7 @@ print("# For loop 4 #")
 ## Also notice that "name" was defined earlier, and this definition will still be used here
 
 for i in range(10):
-    print("%d. You know nothing, %s...") %(i, name)
+    print("{0}. You know nothing, {1}...".format(i, name))
 
 
 ################
@@ -93,7 +91,7 @@ print("# For loop 5 #")
 name = "the King in the North"
 
 for numbers in range(10):
-    print("%d. All hail %s!") % (numbers, name)
+    print("{0}. All hail {1}!".format(numbers, name))
 
 
 ################
