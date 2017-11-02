@@ -11,7 +11,7 @@ print("# For loop 1.1 #")
 for i in range(10):
     print("We like Python!")
 
-## Now let"s check what effect the indentations have on the code.
+## Now let's check what effect the indentations have on the code.
 ## Here we have added another print statement "print("Yes we do!")" and we indented it so it becomes part of the for loop.
 
 print("# For loop 1.2 #")
@@ -20,7 +20,7 @@ for i in range(10):
     print("We like Python!")
     print("Yes we do!")
 
-## Let"s compare that to what happens when we fail to indent the second print statement.
+## Let's compare that to what happens when we fail to indent the second print statement.
 
 print("# For loop 1.3 #")
 
@@ -52,7 +52,6 @@ print("# For loop 3 #")
 
 ## Global variables which were defined earlier can also be used in a loop
 ## Here we define a name, and this name is then printed using a for loop
-## Similar with the numbers, we also have to specify that a string has to be inputted, that"s why we type "%s"
 ## What the string exactly is, is again specified at the end of the statement
 ## Changing the name variable will alter the output
 ## Try this by writing your own name between the "", and look at the output!
@@ -83,8 +82,8 @@ for i in range(10):
 
 print("# For loop 5 #")
 
-## Notice that the term "i" is arbitrary, we can replace it by anything, and the loop will still work
-## To illustrate this, we change "i" by "numbers"
+## Notice that the index "i" is arbitrary, we can replace it by anything, and the loop will still work
+## To illustrate this, we change "i" to "numbers"
 ## Keep in mind that if you want to print the index, you should use the name you defined earlier
 ## Here, we will have to specify that the number we print is actually the index, which we called "numbers"
 
@@ -100,7 +99,7 @@ for numbers in range(10):
 
 print("# For loop 6 #")
 
-## Time now to use another description of the vallues that the index has to take on. 
+## Time now to use another description of the values that the index has to take on. 
 ## In the example below we drop range(10) and simply replace it by pointing to a vector with three items.
 ## The loop will go through each of the three position of the vector and print its contents.
 
@@ -120,7 +119,6 @@ print("# For loop 7 #")
 
 from psychopy import visual
 import time
-from time import sleep
 
 win = visual.Window(size=(500, 400), units="height", color = "white")
 
@@ -130,7 +128,7 @@ for i in sizes:
     circle = visual.Circle(win, radius = i, pos=(0,0), fillColor = "black")
     circle.draw()
     win.flip()
-    time.sleep(2)
+    time.sleep(1)
 
 
 #########
