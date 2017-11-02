@@ -2,7 +2,7 @@
 ## while loop 1 ##
 ##################
 
-print ('# While loop 1 #')
+print ("# While loop 1 #")
 
 ## The while loop greatly resembles the for loop in the sense that it performs a certain action until a certain condition is fulfilled
 ## The example while loop below shows that a certain string is printed until the value 5 is reached
@@ -26,7 +26,7 @@ while i < 5:
 ## while loop 2 ##
 ##################
 
-print ('# While loop 2 #')
+print ("# While loop 2 #")
 
 ## Another notation for the incrementation can be seen below
 ## The statement 'i = i+1' is exactly the same as 'i += 1'
@@ -40,7 +40,7 @@ while i < 5:
 ## while loop 3 ##
 ##################
 
-print ('# While loop 3 #')
+print ("# While loop 3 #")
 
 ## We can set the start value at any value, and the while loop will do an action as long as a certain condition is fulfilled
 ## If we would replace 'i = 0' with 'i = 6', the while loop would not be executed, as the condition 'i < 5' is not met
@@ -76,24 +76,24 @@ while i <= 5:
 ## We can use more complex criteria, for example by requiring one of two criteria to be met to continue the while loop.
 ## To do this we insert 'or' between the two criteria.
 
-print ('# While loop 4.1 #')
+print ("# While loop 4.1 #")
 
 i = 0
 j = 10
 while i < 5 or j > 3:
-    print('i is %d and j is %d') %(i,j)
+    print("i is %d and j is %d") %(i,j)
     i = i + 1
     j = j - 2
 
 ## Alternatively we can require that both criteria are met to continue the while loop.
-## This can be done by adding 'and' between the two criteria.
+## This can be done by adding "and" between the two criteria.
 
-print ('# While loop 42 #')
+print ("# While loop 4.2 #")
 
 i = 0
 j = 10
 while i < 5 and j > 3:
-    print('i is %d and j is %d') %(i,j)
+    print("i is %d and j is %d") %(i,j)
     i = i + 1
     j = j - 2
 
@@ -101,7 +101,7 @@ while i < 5 and j > 3:
 ## while loop 5 ##
 ##################
 
-print ('# While loop 5 #')
+print ("# While loop 5 #")
 
 ## To get more familiar with Boolean expressions, let's just print a Boolean answer in the output box.
 ## As i clearly equals i, the answer is of course 'True'
@@ -133,7 +133,7 @@ print (Condition5)
 ## while loop 6 ##
 ##################
 
-print ('# While loop 6 #')
+print ("# While loop 6 #")
 
 ## A possible danger when working with while loops is that we can create infinite loops
 ## An example of this can be seen when the loop executes during a condition which is always met
