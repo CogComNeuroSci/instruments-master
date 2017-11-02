@@ -1,7 +1,8 @@
 ################
 ## for loop 1 ##
 ################
-print("# For loop 1 #")
+
+print("# For loop 1.1 #")
 
 ## The sentence "We like Python!" will be printed 10 times in the output
 ## In essence, the for loop we see below can be translated as follows: "for every number we have between 0 and 10 (0 included, 10 not included), print "We like Python!" in the output
@@ -27,9 +28,11 @@ for i in range(10):
     print("We like Python!")
 print("Yes we do!")
 
+
 ################
 ## for loop 2 ##
 ################
+
 print("# For loop 2 #")
 
 ## We can also add varying values in a loop
@@ -42,9 +45,11 @@ print("# For loop 2 #")
 for i in range(10):
     print("%d. We like Python!") %i
 
+
 ################
 ## for loop 3 ##
 ################
+
 print("# For loop 3 #")
 
 ## Global variables which were defined earlier can also be used in a loop
@@ -59,9 +64,11 @@ name = "Jon Snow"
 for i in range(10):
     print("You know nothing, %s...") %name
 
+
 ################
 ## for loop 4 ##
 ################
+
 print("# For loop 4 #")
 
 ## Keep in mind that both strings (letters/words/sentences) and integers (numbers) can be manipulated in a loop
@@ -71,9 +78,11 @@ print("# For loop 4 #")
 for i in range(10):
     print("%d. You know nothing, %s...") %(i, name)
 
+
 ################
 ## for loop 5 ##
 ################
+
 print("# For loop 5 #")
 
 ## Notice that the term "i" is arbitrary, we can replace it by anything, and the loop will still work
@@ -86,9 +95,11 @@ name = "the King in the North"
 for numbers in range(10):
     print("%d. All hail %s!") % (numbers, name)
 
+
 ################
 ## for loop 6 ##
 ################
+
 print("# For loop 6 #")
 
 ## Time now to use another description of the vallues that the index has to take on. 
@@ -99,9 +110,11 @@ v = ("one", "two", "three")
 for i in v:
     print(i)
 
+
 ################
 ## for loop 7 ##
 ################
+
 print("# For loop 7 #")
 
 ## By now you should be sufficiently familiar with for loops so we can use them to display stimuli on the screen.
@@ -120,6 +133,7 @@ for i in sizes:
     circle.draw()
     win.flip()
     time.sleep(2)
+
 
 #########
 ## END ##
