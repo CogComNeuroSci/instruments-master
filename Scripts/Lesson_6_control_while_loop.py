@@ -107,7 +107,7 @@ while i < 5 and j > 3:
 
 print("# While loop 5 #")
 
-## To get more familiar with Boolean expressions, let's just print a Boolean answer in the output box.
+## To get more familiar with Boolean expressions, let's just print a Boolean answer in the output window.
 ## As i clearly equals i, the answer is of course 'True'
 
 print(i == i)
