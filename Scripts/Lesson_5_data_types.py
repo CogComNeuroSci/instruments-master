@@ -7,7 +7,7 @@
     ## We conveniently named our variable 'number'
 ## By printing the type of 'number', we can see that 'number' has the type 'int', which is short for 'integer'
 
-number = 7
+number = 8
 print (type(number))
 
 ## We can do basic computations on integers
