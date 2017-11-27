@@ -1,12 +1,6 @@
-from psychopy import core
-
-import time
-import datetime
-
-from time import sleep
-from time import gmtime, strftime
+import time, datetime
 from datetime import datetime
-
+from psychopy import core
 
 #####################
 ## Wait function 1 ##
