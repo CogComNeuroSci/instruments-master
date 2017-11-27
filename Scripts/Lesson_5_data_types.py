@@ -7,13 +7,9 @@
     ## We conveniently named our variable 'number'
 ## By printing the type of 'number', we can see that 'number' has the type 'int', which is short for 'integer'
 
-<<<<<<< HEAD
-number = 8
-print (type(number))
-=======
 number = 7
 print(type(number))
->>>>>>> 454b82ee625c7d5db0bf9f00673fd9e27faa820b
+
 
 ## We can do basic computations on integers
 ## Below, we provide a few examples
