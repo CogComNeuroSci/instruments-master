@@ -10,9 +10,9 @@ import pandas
 ## Define an input folder
 ## We want to have a list from all the files we have in this map
 
-input_folder = r'/Users/Pieter/Dropbox/Academiejaar 2016-2017/EPO/Code en lijsten exp EPO/Experiment versie 3/Stimuli/Verzameling stimuli/Stimuli blauw'
-if (platform.system() == 'Windows'): 
-    input_folder = 'C:' + input_folder
+input_folder = r"/Users/Pieter/Dropbox/Academiejaar 2016-2017/EPO/Code en lijsten exp EPO/Experiment versie 3/Stimuli/Verzameling stimuli/Stimuli blauw"
+if (platform.system() == "Windows"): 
+    input_folder = "C:" + input_folder
 
 ## This example uses list comprehension
     ## Basically, the line of code below concatenates/joins (binds together) the filenames of all regular existing files in the input folder
@@ -21,7 +21,7 @@ if (platform.system() == 'Windows'):
     ## The result is a very long list which contains all the file names of the files in a specific folder
 
 onlyfiles = [f for f in listdir(input_folder) if isfile(join(input_folder, f))]
-print onlyfiles
+print(onlyfiles)
 
 ## We want to give the file with all the names of our files the same name as the directory it originates from
 ## For example, we want to have a list of all the files we find in the folder 'Stimuli blauw'
@@ -32,10 +32,10 @@ print onlyfiles
     ## Note: index[-1] would have worked as well of course
 ## In this particular case, we would see that the last '/' appears at place 122
 
-c = '/'
+c = "/"
 index = [pos for pos, char in enumerate(input_folder) if char == c]
 max_index = max(index)
-print max_index
+print(max_index)
 
 ## We define the folder name (which will be the same as our file name) by defining everything behind the last '/' in the path definition
 
@@ -48,19 +48,20 @@ files = pandas.DataFrame(onlyfiles, columns = ["File name"])
 ## We can define a new folder where this new file is stored
 ## If no new folder is defined, the new document will be stored in map we were listing
 
-output_folder = r'\Users\Pieter\Documents\Vakantiejob code\scripts lessen'
-if (platform.system() == 'Windows'): 
-    output_folder = 'C:' + output_folder
+output_folder = r"\Users\Pieter\Documents\Vakantiejob code\scripts lessen"
+if (platform.system() == "Windows"): 
+    output_folder = "C:" + output_folder
 
 ## Output the file to .txt
 
-files.to_csv(output_folder + "/" + "%s.txt" %foldername, sep = '\t')
+files.to_csv(output_folder + "/" + "%s.txt" %foldername, sep = "\t")
 
 ## Note that due to the numbering of the files in the directory, the files are ordered in an 'odd' fashion
 ## This is the case because the files that only have one integer (blauw_2) are seen differently as the files with two integers (blauw_36)
 ## To get rid of the odd numbering, we can number all the files with two integers (blauw_02 instead of blauw_2)
 
-print files 
+print(files)
+
 
 #########
 ## END ##
