@@ -48,9 +48,9 @@ for r,d,f in os.walk("C:\\Program Files\\R"):
          if files == "Rscript.exe":
               path.append(os.path.join(r,files))
 
-print path[0]
+print(path[0])
 R_path = path[0].replace("\\", r"\\\\")
-print R_path 
+print(R_path) 
 
 ## The 'command' code refers to the location of the 'Rscript.exe' on your computer
     ## Keep in mind that this file is used to execute the R script we define below
@@ -61,14 +61,14 @@ command = R_path
 ## Here, we located somewhere in the 'documents' folder, but if you downloaded it, it will problably be situated in the 'downloads' folder
     ## In that case, the code would be something like 'Downloads\\max_number.R'
 
-path2script = 'C:\\Users\\Pieter\\Documents\\Vakantiejob code\\scripts lessen\\max_number.R'
+path2script = "C:\\Users\\Pieter\\Documents\\Vakantiejob code\\scripts lessen\\max_number.R"
 
 ## Here, we specify the arguments that are used in R to do a calculation/computation
 ## More specifically, we provide a list of numbers, and R will find the largest number from that list
 ## The process of finding the largest number is done entirely by R, Python plays no role in this!
 ## The result yielded by R is fed back to Python, where it will be printed in the output
 
-args = ['11', '3', '9', '215']
+args = ["11", "3", "9", "215"]
 
 ## Below, we build the subprocess command
 ## Actually, this is just a list which contains the three needed elements: 
@@ -97,12 +97,13 @@ cmd = [command, path2script] + args
     ## https://stackoverflow.com/questions/38181494/what-is-the-difference-between-using-universal-newlines-true-with-bufsize-1-an
 
 R_result = subprocess.check_output(cmd, universal_newlines=True)
-print type(R_result)
+print(type(R_result))
 
 number = int(R_result)
-print type(number)
+print(type(number))
 
-print('The maximum of the numbers is %d') %number
+print("The maximum of the numbers is {0}".format(number))
+
 
 #########
 ## END ##
