@@ -2,6 +2,7 @@ import time, datetime
 from datetime import datetime
 from psychopy import core
 
+
 #####################
 ## Wait function 1 ##
 #####################
@@ -9,9 +10,9 @@ from psychopy import core
 print("# Wait function 1 #")
 
 ## The most basic function when it comes to time delay is 'time.sleep()'
-## This function lets the program that you are running wait with the amount of seconds you specify between the brackets
-## In the code below, we have a print function which prints every two seconds
-## This type of set-up can be used to let Python do a certain action after a certain amount of time 
+## This function lets the program that you are running wait for the number of seconds you specify between the brackets
+## In the code below, we have a print function which is executed every two seconds
+## This type of setup can be used to let Python do a certain action after a certain amount of time 
 
 for i in range(5):
     time.sleep(2)
