@@ -1,6 +1,6 @@
 import time, datetime
 from datetime import datetime
-from psychopy import core
+from psychopy import core, event
 
 
 #####################
@@ -9,10 +9,10 @@ from psychopy import core
 
 print("# Wait function 1 #")
 
-## The most basic function when it comes to time delay is 'time.sleep()'
-## This function lets the program that you are running wait for the number of seconds you specify between the brackets
-## In the code below, we have a print function which is executed every two seconds
-## This type of setup can be used to let Python do a certain action after a certain amount of time 
+## The most basic function when it comes to time delay is 'time.sleep()'.
+## This function lets the program that you are running wait for the number of seconds you specify between the brackets.
+## In the code below, we have a print function which is executed every two seconds.
+## This type of setup can be used to let Python do a certain action after a certain amount of time.
 
 for i in range(5):
     time.sleep(2)
@@ -25,13 +25,15 @@ for i in range(5):
 
 print("# Wait function 2 #")
 
-## Another example of the use of timing is the measurement of reaction times 
-## We can define time using the datetime.now() function, which returns you the exact time based on the time of your computer
-## If we measure the time two times, and we subtract the later time from the earlier time, we can also use this as a reaction time measurement
-## However, we should keep in mind that the reaction time can also be measured using specific PsychoPy software, an example of this could be:
-    ## trial_timer = core.Clock() 
-    ## trial_timer.reset()
-    ## event.getKeys(timeStamped = trial_timer)
+## Another example of the use of timing is the measurement of reaction times.
+## We can define time using the datetime.now() function, which returns you the exact time based on the time of your computer.
+## If we measure the time two times, and we subtract the later time from the earlier time, we can also use this as a reaction time measurement.
+## However, we should keep in mind that the reaction time can also be measured using specific PsychoPy functions, an example of this could be:
+
+trial_timer = core.Clock() 
+trial_timer.reset()
+event.getKeys(timeStamped = trial_timer)
+
 ## In that specific case, we use the function core.clock (to define a clock from this time on) to define a 'trial timer', 
 ## and this can be used to write away the time when a keyboard key is pressed
     ## The function 'event.getKeys' registers when a keyboard response is given
