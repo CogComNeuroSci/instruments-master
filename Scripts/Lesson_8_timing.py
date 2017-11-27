@@ -1,4 +1,3 @@
-from __future__ import division
 from psychopy import core
 
 import time
@@ -8,11 +7,12 @@ from time import sleep
 from time import gmtime, strftime
 from datetime import datetime
 
+
 #####################
 ## Wait function 1 ##
 #####################
 
-print ('# Wait function 1 #')
+print("# Wait function 1 #")
 
 ## The most basic function when it comes to time delay is 'time.sleep()'
 ## This function lets the program that you are running wait with the amount of seconds you specify between the brackets
@@ -21,13 +21,14 @@ print ('# Wait function 1 #')
 
 for i in range(5):
     time.sleep(2)
-    print ('I print this sentence every 2 seconds')
+    print("I print this sentence every 2 seconds")
+
 
 #####################
 ## Wait function 2 ##
 #####################
 
-print ('# Wait function 2 #')
+print("# Wait function 2 #")
 
 ## Another example of the use of timing is the measurement of reaction times 
 ## We can define time using the datetime.now() function, which returns you the exact time based on the time of your computer
@@ -45,13 +46,15 @@ print ('# Wait function 2 #')
 t1 = datetime.now()
 t2 = datetime.now()
 
-RT = t2-t1
+RT = t2 - t1
+print(RT)
+
 
 #####################
 ## Wait function 3 ##
 #####################
 
-print ('# Wait function 3 #')
+print("# Wait function 3 #")
 
 ## When looking at the PsychoPy documentation, we see that some other functions involving time are offered
 ## An example of this is the 'core.wait()' function, which strongly resembles the time.sleep() function discussed earlier
@@ -69,10 +72,11 @@ core.CountdownTimer(0.5)
 t2 = datetime.now()
 
 RT = t2 - t1
-print (RT)
+print(RT)
 
 CountDown = core.CountdownTimer()
 CountDown.add(.5)
+
 
 #########
 ## END ##
