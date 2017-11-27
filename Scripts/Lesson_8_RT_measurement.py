@@ -25,13 +25,9 @@ for loop in range(n_trial):
     time.sleep(n)
     tekst2.draw()
     win.flip()
-    klok.reset()
-    event.clearEvents()
-    keys=event.getKeys()
-    while not keys:
-        keys=event.getKeys(key_list)
+    klok.reset() 
+    keys=event.waitKeys(key_list)
     tijd.append(klok.getTime())
-    event.clearEvents()
     if keys[-1] in correct_list[loop]:
         tekst_juist.draw()
     else:
