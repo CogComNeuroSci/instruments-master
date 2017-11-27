@@ -75,7 +75,7 @@ RT = t2 - t1
 print(RT)
 
 CountDown = core.CountdownTimer()
-CountDown.add(.5)
+CountDown.add(0.5)
 
 
 #########
