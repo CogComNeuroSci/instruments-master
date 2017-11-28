@@ -18,7 +18,7 @@ correct_list = ["f","f","j"]
 
 # graphical elements
 win = visual.Window(size=[500,400])
-text1 = visual.TextStim(win,text="are you ready...? ")
+text1 = visual.TextStim(win,text="are you ready...?")
 text2 = visual.TextStim(win,text="Go!")
 text_correct = visual.TextStim(win,text="correct :-)")
 text_error = visual.TextStim(win,text="wrong :-(")
