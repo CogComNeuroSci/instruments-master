@@ -1,44 +1,64 @@
-# some I/O testing in a basic "experiment"
-# import stuff
+"""
+some I/O testing in a basic "experiment"
+
+"""
+
+# import modules
+import time
 from psychopy import visual, event, core
 import numpy as np
 from numpy import random
-import time
 
-# initialize stuff
+# initializing
+my_clock = core.Clock()
+time_list = [] ## empty list
+n_trials = 3
+key_list = ["f","j"]
+correct_list = ["f","f","j"]
+
+# graphical elements
 win = visual.Window(size=[500,400])
-tekst1 = visual.TextStim(win,text="are you ready...? ")
-tekst2 = visual.TextStim(win,text="Go!")
-tekst_juist=visual.TextStim(win,text="correct :-)")
-tekst_fout=visual.TextStim(win,text="wrong :-(")
-klok=core.Clock()
-tijd=[] # empty list
-n_trial=3
-key_list=["f","j"]
-correct_list=["f","f","j"]
+text1 = visual.TextStim(win,text="are you ready...? ")
+text2 = visual.TextStim(win,text="Go!")
+text_correct = visual.TextStim(win,text="correct :-)")
+text_error = visual.TextStim(win,text="wrong :-(")
 
-# start the process
-for loop in range(n_trial):
-    n = random.randint(1,5) # wait a sec (or two)
-    tekst1.draw()
+# response registration
+for loop in range(n_trials):
+
+    ## display the first message and wait a second (or two)
+    n = random.randint(1,5)
+    text1.draw()
     win.flip()
     time.sleep(n)
-    tekst2.draw()
+
+    ## display the second message
+    text2.draw()
     win.flip()
-    klok.reset() 
-    keys=event.waitKeys(key_list)
-    tijd.append(klok.getTime())
+
+    ## reset the clock to measure the RT
+    my_clock.reset() 
+
+    ## wait for the key press and register it
+    keys = event.waitKeys(key_list)
+
+    ## register the time
+    time_list.append(my_clock.getTime())
+
+    ## display the accuracy feedback (predetermined)
     if keys[-1] in correct_list[loop]:
-        tekst_juist.draw()
+        text_correct.draw()
     else:
-        tekst_fout.draw()
+        text_error.draw()
     win.flip()
     time.sleep(1)
 
-# wrap it up
-meantime=np.mean(tijd)
+# display the average RT for one second
+meantime = np.mean(time_list)
 tekst3 = visual.TextStim(win,text="mean RT = {0:.1f} sec".format(meantime),pos=[0,0.5])
 tekst3.draw()
 win.flip()
 time.sleep(1)
+
+# wrap it up
 win.close()
