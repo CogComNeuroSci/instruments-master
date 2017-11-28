@@ -9,6 +9,9 @@ from psychopy import visual, event, core
 import numpy as np
 from numpy import random
 
+# initialize the window
+win = visual.Window(size=[500,400])
+
 # initializing
 my_clock = core.Clock()
 time_list = [] ## empty list
@@ -17,7 +20,6 @@ key_list = ["f","j"]
 correct_list = ["f","f","j"]
 
 # graphical elements
-win = visual.Window(size=[500,400])
 text1 = visual.TextStim(win,text="are you ready...?")
 text2 = visual.TextStim(win,text="Go!")
 text_correct = visual.TextStim(win,text="correct :-)")
