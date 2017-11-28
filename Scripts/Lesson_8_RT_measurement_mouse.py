@@ -1,47 +1,71 @@
-# some I/O testing in a basic "experiment"
-# now for a mouse button press readout
-# import stuff
+"""
+some I/O testing in a basic "experiment"
+now for a mouse button press readout
+
+"""
+
+# import modules
+import time
 from psychopy import visual, event, core
 import numpy as np
 from numpy import random
-import time
 
-# initialize stuff
+# initialize the window
 win = visual.Window(size=[500,400])
-tekst1 = visual.TextStim(win,text="are you ready to push a mouse button...? ")
-tekst2 = visual.TextStim(win,text="Go!")
-tekst_juist=visual.TextStim(win,text="correct :-)")
-tekst_fout=visual.TextStim(win,text="wrong :-(")
-klok=core.Clock()
-muis = event.Mouse()
-tijd=[] # empty list
-n_trial=3
-correct_list=["left","left","right"] # right-click means double-click on a Mac
 
-# start the process
-for loop in range(n_trial):
-    n = random.randint(1,5) # wait a sec (or two)
-    tekst1.draw()
+# initializing
+my_clock = core.Clock()
+time_list = [] ## empty list
+n_trials = 3
+correct_list = ["left","left","right"] ## right-click means double-click on a Mac
+my_mouse = event.Mouse()
+
+# graphical elements
+text1 = visual.TextStim(win,text="are you ready to push a mouse button...?")
+text2 = visual.TextStim(win,text="Go!")
+text_correct = visual.TextStim(win,text="correct :-)")
+text_error = visual.TextStim(win,text="wrong :-(")
+
+# response registration
+for loop in range(n_trials):
+
+    ## display the first message and wait a second (or two)
+    n = random.randint(1,5)
+    text1.draw()
     win.flip()
     time.sleep(n)
-    tekst2.draw()
+
+    ## display the second message
+    text2.draw()
     win.flip()
-    klok.reset() 
+
+    ## reset the clock to measure the RT
+    my_clock.reset() 
+
+    ## remove any remaining mouse events 
     event.clearEvents(eventType="mouse")
-    while np.sum(muis.getPressed())==0:
+    
+    ## wait for the mouse press and register it
+    while np.sum(my_mouse.getPressed())==0:
         pass
-    tijd.append(klok.getTime())
-    if (muis.getPressed()[0]==1 and correct_list[loop]=="left") or (muis.getPressed()[2]==1 and correct_list[loop]=="right"):
-        tekst_juist.draw()
+
+    ## register the time
+    time_list.append(my_clock.getTime())
+
+    ## display the accuracy feedback (predetermined)
+    if (my_mouse.getPressed()[0]==1 and correct_list[loop]=="left") or (my_mouse.getPressed()[2]==1 and correct_list[loop]=="right"):
+        text_correct.draw()
     else:
-        tekst_fout.draw()
+        text_error.draw()
     win.flip()
     time.sleep(1)
 
-# wrap it up
-meantime=np.mean(tijd)
-tekst3 = visual.TextStim(win,text="mean RT = {0:.1f} sec".format(meantime),pos=[0,0.5])
-tekst3.draw()
+# display the average RT for one second
+meantime = np.mean(time_list)
+text3 = visual.TextStim(win,text="mean RT = {0:.1f} sec".format(meantime),pos=[0,0.5])
+text3.draw()
 win.flip()
 time.sleep(1)
+
+# wrap it up
 win.close()
