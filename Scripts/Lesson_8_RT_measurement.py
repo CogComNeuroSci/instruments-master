@@ -55,8 +55,8 @@ for loop in range(n_trials):
 
 # display the average RT for one second
 meantime = np.mean(time_list)
-tekst3 = visual.TextStim(win,text="mean RT = {0:.1f} sec".format(meantime),pos=[0,0.5])
-tekst3.draw()
+text3 = visual.TextStim(win,text="mean RT = {0:.1f} sec".format(meantime),pos=[0,0.5])
+text3.draw()
 win.flip()
 time.sleep(1)
 
