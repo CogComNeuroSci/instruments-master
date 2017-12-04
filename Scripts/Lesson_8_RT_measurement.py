@@ -5,7 +5,7 @@ some I/O testing in a basic "experiment"
 
 # import modules
 import time
-from psychopy import visual, event, core
+from psychopy import visual, event, core, sound
 import numpy as np
 from numpy import random
 
@@ -24,6 +24,11 @@ text1 = visual.TextStim(win,text="are you ready...?")
 text2 = visual.TextStim(win,text="Go!")
 text_correct = visual.TextStim(win,text="correct :-)")
 text_error = visual.TextStim(win,text="wrong :-(")
+
+# feedback sound elements
+sound_duration=1.5
+right_sound=sound.Sound("A",octave=5,secs=sound_duration,stereo=True)
+wrong_sound=sound.Sound("A",octave=3,secs=sound_duration,stereo=True)
 
 # response registration
 for loop in range(n_trials):
@@ -50,10 +55,13 @@ for loop in range(n_trials):
     ## display the accuracy feedback (predetermined)
     if keys[-1] in correct_list[loop]:
         text_correct.draw()
+        sound_to_play= right_sound
     else:
         text_error.draw()
+        sound_to_play= wrong_sound
     win.flip()
-    time.sleep(1)
+    sound_to_play.play()
+    time.sleep(sound_duration)
 
 # display the average RT for one second
 meantime = np.mean(time_list)
