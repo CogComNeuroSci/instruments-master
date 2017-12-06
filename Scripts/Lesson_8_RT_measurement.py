@@ -20,6 +20,7 @@ key_list = ["f","j"]
 correct_list = ["f","f","j"]
 key_qwerty=["a","z"] # incomplete list!
 key_azerty=["q","w"] # incomplete list!
+key_board_azerty = True # switch the lists above if you use AZERTY
 
 # graphical elements
 text1 = visual.TextStim(win,text="are you ready...?")
@@ -52,7 +53,7 @@ for loop in range(n_trials):
     keys=[""]
     while not keys[0] in key_list:
         keys=event.waitKeys()
-        if keys[0] in key_azerty:
+        if key_board_azerty==True and keys[0] in key_azerty:
             keys[0] = key_qwerty[key_azerty.index(keys[0])]
 
     ## register the time
