@@ -18,6 +18,8 @@ time_list = [] ## empty list
 n_trials = 3
 key_list = ["f","j"]
 correct_list = ["f","f","j"]
+key_qwerty=["a","z"] # incomplete list!
+key_azerty=["q","w"] # incomplete list!
 
 # graphical elements
 text1 = visual.TextStim(win,text="are you ready...?")
@@ -47,7 +49,11 @@ for loop in range(n_trials):
     my_clock.reset() 
 
     ## wait for the key press and register it
-    keys = event.waitKeys(key_list)
+    keys=[""]
+    while not keys[0] in key_list:
+        keys=event.waitKeys()
+        if keys[0] in key_azerty:
+            keys[0] = key_qwerty[key_azerty.index(keys[0])]
 
     ## register the time
     time_list.append(my_clock.getTime())
