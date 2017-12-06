@@ -7,35 +7,37 @@ from time import sleep
 import numpy as np
 from numpy import random
 
-# part 2: initialisation
+# part 2: initialization
 n_trials = 5
-max_time = 10 # measured in seconds
-step_size = 0.1
+max_time = 10 ## measured in seconds
+step_size = 0.1*2 ## 10% of screen
 step_time = 0.1
 pos_car_blue_start = (-0.5,0)
 pos_car_green_start = (0.5,0)
 blue_counter = 0
 green_counter = 0
-wall_width = 0.1*2 # 10% of screen width
-wall_height = 0.2*2 # 20% of screen height
+wall_width = 0.1*2 ## 10% of screen width
+wall_height = 0.2*2 ## 20% of screen height
 
 # part 3: prepare graphic elements
 win = visual.Window([500,400])
 car_blue = visual.Circle(win,lineColor="blue",fillColor="blue",pos=pos_car_blue_start,size=0.1)
 car_green = visual.Circle(win,lineColor="green",fillColor="green",pos=pos_car_green_start,size=0.1)
+##car_blue = visual.ImageStim(win, image = "Car_blue.png", pos=pos_car_blue_start, size=0.2)
+##car_green = visual.ImageStim(win, image = "Car_green.png", pos=pos_car_green_start, size=0.2)
 wall = visual.Rect(win,width=wall_width,height=wall_height,lineColor="red",fillColor="red")
 crash_text = visual.TextStim(win,text="Botsing!")
 
 # part 4: driving around
-for loop in range(n_trials):
+for trial in range(n_trials):
     
     ## Display the trial number
-    trial_text = visual.TextStim(win,text="trial "+str(loop+1)+"!")
+    trial_text = visual.TextStim(win,text="trial "+str(trial+1)+"!")
     trial_text.draw()
     win.flip()
     sleep(0.5)
     
-    ## Initialise variables for this trial
+    ## Initialize variables for this trial
     time = 0
     crash = False
     car_blue.pos = pos_car_blue_start
@@ -90,15 +92,15 @@ for loop in range(n_trials):
 
 # part 5: print results on screen and finish
 if blue_counter==0 and green_counter==0:
-    to_print = "Er is niet gebotst!"
+    feedback = "Er is niet gebotst!"
 elif blue_counter==green_counter:
-    to_print = "Ze zijn even vaak gebotst!"
+    feedback = "Ze zijn even vaak gebotst!"
 elif blue_counter>green_counter:
-    to_print = "De blauwe is vaker gebotst!"
+    feedback = "De blauwe is vaker gebotst!"
 else:
-    to_print = "De groene is vaker gebotst!"
-text = visual.TextStim(win,text=to_print)
-text.draw()
+    feedback = "De groene is vaker gebotst!"
+feedback_text = visual.TextStim(win,text=feedback)
+feedback_text.draw()
 win.flip()
-sleep(1)
+sleep(3)
 win.close()
