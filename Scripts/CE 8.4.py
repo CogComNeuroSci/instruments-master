@@ -27,12 +27,13 @@ correct_list = ["f","f","j"]
 
 # create a DlgFromDict
 info = {    "Participant":  "", 
+            "Number":       0,
             "Gender":       ["female", "male"],
             "Age":          0,
             "ExpNr":        2017.6}
 infoDlg = gui.DlgFromDict(  dictionary  =info, 
                             title       ="Class Exercise 8.4",
-                            order       =["Participant", "Gender", "Age"],
+                            order       =["Participant", "Number", "Gender", "Age"],
                             fixed       =["ExpNr"])  ## this attribute can't be changed by the user
 
 # graphical elements
