@@ -2,7 +2,7 @@
 # by Esther De Loof & Tom Verguts, dec 2017
 
 # part 1: loading modules
-from psychopy import visual,event
+from psychopy import visual,event,core
 from time import sleep
 import numpy as np
 from numpy import random
@@ -16,13 +16,16 @@ pos_bfly_blue_start = (-0.5,0)
 pos_bfly_green_start = (0.5,0)
 blue_counter = 0
 green_counter = 0
+my_clock = core.Clock()
 
 # part 3: prepare graphic elements
 win = visual.Window([500,400])
 bfly_blue = visual.Circle(win,lineColor="blue",fillColor="blue",pos=pos_bfly_blue_start,size=0.1)
 bfly_green = visual.Circle(win,lineColor="green",fillColor="green",pos=pos_bfly_green_start,size=0.1)
+catcher = visual.Circle(win, radius=30, edges=13, units='pix')
 slow_text = visual.TextStim(win,text="Too slow!")
 catch_text = visual.TextStim(win,text="Caught!")
+mouse = event.Mouse()
 
 # part 4: flying around
 for trial in range(n_trials):
@@ -56,37 +59,43 @@ for trial in range(n_trials):
         bfly_green.pos[0] = np.minimum(bfly_green.pos[0],+1)
         bfly_green.pos[1] = np.minimum(bfly_green.pos[1],+1)
         
-        ## Display butterflies at this moment in time
-        bfly_blue.draw()
-        bfly_green.draw()
-        win.flip()
-        sleep(step_time)
+        ## Reset the clock to catch the butterfly in 0.1 seconds
+        my_clock.reset() 
         
-        ## Check catching
-        if np.absolute(bfly_blue.pos[0])<0.2 and np.absolute(bfly_blue.pos[1])<0.2:
+        while my_clock.getTime() < step_time and catch == False:
             
-            catch = True
-            blue_counter += 1
-            catch_text.color="blue"
-            catch_text.draw()
+            ## Register the position of the mouse
+            catcher.pos = mouse.getPos() * win.size / 2  # follow the mouse
+            
+            ## Display butterflies at this moment in time
+            bfly_blue.draw()
+            bfly_green.draw()
+            catcher.draw()
             win.flip()
-            sleep(1)
             
-        if np.absolute(bfly_green.pos[0])<0.2 and np.absolute(bfly_green.pos[1])<0.2:
-            
-            catch = True
-            green_counter += 1
-            catch_text.color="green"
-            catch_text.draw()
-            win.flip()
-            sleep(1)
-            
+            if bfly_blue.overlaps(catcher):
+                catch = True
+                blue_counter += 1
+                catch_text.color="blue"
+                catch_text.draw()
+                win.flip()
+                sleep(1)
+                
+            if bfly_green.overlaps(catcher):
+                catch = True
+                green_counter += 1
+                catch_text.color="green"
+                catch_text.draw()
+                win.flip()
+                sleep(1)
+                
+        ## Escape the while loop when the time is up
         if time >= max_time:
             slow_text.draw()
             win.flip()
             sleep(1)
             break
-        
+            
         ## Escape function to get out of infinite while loop
         if "f" in event.getKeys():
             break
