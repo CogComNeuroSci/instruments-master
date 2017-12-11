@@ -73,6 +73,7 @@ for trial in range(n_trials):
             catcher.draw()
             win.flip()
             
+            ## Check whether the butterflies are caught
             if bfly_blue.overlaps(catcher):
                 catch = True
                 blue_counter += 1
