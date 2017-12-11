@@ -36,8 +36,16 @@ infoDlg = gui.DlgFromDict(  dictionary  =info,
                             order       =["Participant", "Number", "Gender", "Age"],
                             fixed       =["ExpNr"])  ## this attribute can't be changed by the user
 
+print("Participant {0}, Number {1}, Gender {2}, Age {3}".format(info["Participant"], info["Number"], info["Gender"], info["Age"]))
+
+# welcome the participant
+text_welcome = visual.TextStim(win,text="Welcome {0}".format(info["Participant"]))
+text_welcome.draw()
+win.flip()
+time.sleep(3)
+
 # graphical elements
-text_ready = visual.TextStim(win,text="are you ready {0}?".format(info["Participant"]))
+text_ready = visual.TextStim(win,text="are you ready...?")
 text_go = visual.TextStim(win,text="Go!")
 text_correct = visual.TextStim(win,text="correct :-)")
 text_error = visual.TextStim(win,text="wrong :-(")
