@@ -34,7 +34,7 @@ text_error = visual.TextStim(win,text="wrong :-(")
 for loop in range(n_trials):
 
     ## display the first message and wait a second (or two)
-    n = random.randint(1,5)
+    n = random.randint(1,6)
     text_ready.draw()
     win.flip()
     time.sleep(n)
@@ -72,7 +72,7 @@ meantime = np.mean(RT)
 text_feedback = visual.TextStim(win,text="mean RT = {0:.1f} sec".format(meantime),pos=[0,0.5])
 text_feedback.draw()
 win.flip()
-time.sleep(3)
+time.sleep(1)
 
 # wrap it up
 win.close()
