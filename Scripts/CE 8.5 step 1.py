@@ -29,7 +29,7 @@ correct_list = ["f","f","j"]
 print 'Using %s(with %s) for sounds' % (sound.audioLib, sound.audioDriver)
 ## make the sounds
 sound_duration = 1.5
-right_sound = sound.Sound("A",octave=5,secs=sound_duration,stereo=True)
+right_sound = sound.Sound("A",octave=4,secs=sound_duration,stereo=True)
 wrong_sound = sound.Sound("A",octave=3,secs=sound_duration,stereo=True)
 
 # graphical elements
