@@ -39,7 +39,7 @@ infoDlg = gui.DlgFromDict(  dictionary  =info,
 print("Participant {0}, Number {1}, Gender {2}, Age {3}".format(info["Participant"], info["Number"], info["Gender"], info["Age"]))
 
 # welcome the participant
-text_welcome = visual.TextStim(win,text="Welcome {0}".format(info["Participant"]))
+text_welcome = visual.TextStim(win,text="Welcome to the experiment {0}!".format(info["Participant"]))
 text_welcome.draw()
 win.flip()
 time.sleep(3)
