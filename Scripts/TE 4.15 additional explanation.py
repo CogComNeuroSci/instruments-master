@@ -10,45 +10,44 @@ from psychopy import core, visual, event
 ## In the code below, we will draw a gabor patch
 ## Gabor patches are stimuli that drive early visual activity in a controlled fashion
     ## Because of this characteristic, they are a solid presence in any vision lab
-    ## For a very elaborate overview of the importance of Gabor patches, we refer to:
+        ## For a very elaborate overview of the importance of Gabor patches, we refer to:
         # http://neuroanatody.com/2016/05/whats-in-a-gabor-patch/
     ## Alternatively, we refer to a paper which uses Gabor patches to research the effect of perceptual experience on brain development:
         ## Blakemore, C., & Cooper, G. F. (1970). Development of the brain depends on the visual environment. Nature, 228(5270), 477-478.
-            ## The pdf version of this paper can be downloaded by using the link below (activate your VPN connection, just to be sure that it downloads without issues)
-            # https://www.researchgate.net/profile/Colin_Blakemore/publication/51273162_Development_of_the_Brain_Depends_on_the_Visual_Environment/links/5612970608ae400c16af1164/Development-of-the-Brain-Depends-on-the-Visual-Environment.pdf
-# The Gabor patch is widely used (mainly in perception research), and the paper is pretty short, so reading it is well worth your time and effort!
+        ## The pdf version of this paper can be downloaded by using the link below (activate your VPN connection, just to be sure that it downloads without issues)
+        # https://www.researchgate.net/profile/Colin_Blakemore/publication/51273162_Development_of_the_Brain_Depends_on_the_Visual_Environment/links/5612970608ae400c16af1164/Development-of-the-Brain-Depends-on-the-Visual-Environment.pdf
 
 ## As usual, we first create a window to draw in
 
-win = visual.Window([400, 400.0], allowGUI=False)
+win = visual.Window([400,400])
 
 ## Below, we start by declaring the name of our Gabor patch, namely 'gabor'
 ## To draw arbitrary bitmaps (a term which refers to the storage of digital images), we can use the specific function called 'GratingStim()'
     ## We can draw multiple types of bitmaps: circles, crosses, gabor patches... based on the defined arguments in GratingStim()
         ## This also suggests that the Gabor patch is indeed widely used, as there is a special argument in GratingStim() to draw one
 
-## First, we will define the arguments that are used here, further on, we define some possible extra arguments
+## First, we will define the arguments that are used here; further on, we define some possible extra arguments
     ## win signifies the window we are drawing the Gabor patch in, of course the name 'win' is arbitrary
     ## tex defines the structure to use as a grating on the stimulus
-        ## We have a lot of choice when it comes to define the grating used
+        ## We have a lot of choice when it comes to defining the grating used
             ## sin
             ## sqr
             ## saw
             ## tri
             ## None
-                ## None actually shows the 'bare foundation' of the Gabor patch we draw: a white circle that gradualy blends in the grey background
+                ## None actually shows the 'bare foundation' of the Gabor patch we draw: a white circle that gradualy blends in with the grey background
             ## If we define 'tex' as one of the others, we will see a grating instead of the white circle
                 ## The grating here actually greatly resembles the dictionary definition of grating:
                     ## a fixed frame of bars or the like covering an opening to exclude persons, animals, coarse material, 
                     ## or objects while admitting light, air, or fine material
-                ## So, the bars before the windows in a prison are also gratings
+                ## So, the bars in front of prison windows are also gratings
                 ## A similar pattern can also be seen in our Gabor patch
             # We recommend to play a bit with the different arguments of 'tex', and to spot the difference
-            ## Note that we can also use our own Numpy array to define tex, or even an imported image!
-                ## That we can use an array to define the grating is logical if we understand what a bitmap actually is
+            ## Note that we can also use our own Numpy array to define tex (you'll get to know Numpy arrays in Lesson 11 and 12), or even an imported image!
+                ## It is logical that we can use an array to define the grating if we understand what a bitmap actually is
                 ## Because this is beyond the scope of this course, we will let this slide, but for the interested reader, we refer to:
                     ## https://en.wikipedia.org/wiki/Bitmap
-                ## Which provides enough information on bitmaps to understand why we can use arrays to define the grating on our stimulus
+                ## which provides enough information on bitmaps to understand why we can use arrays to define the grating on our stimulus
     ## mask is used to define the shape of our stimulus
         ## circle
         ## gauss
@@ -59,11 +58,11 @@ win = visual.Window([400, 400.0], allowGUI=False)
     ## texRes sets the resolution of both tex and mask
         ## Keep in mind that the resolution always has to be square (number x number), and that number has to be power-of-two dimensions (e.g. 256, which equals 2**8)
             ## So, a valid resolution would be 256
-        ## Also, when an array or an external picture is provided, the dimensions of these are used, so the defined texRes will be neglected in that case
+        ## Also, when an array or an external picture is provided, the dimensions of these are used, so the defined texRes will be ignored in that case
         ## As a final note, we mention that the resolution will be upscaled until a required dimension is reached
             ## e.g. if the dimension was 233 x 233, then it will be upscaled to 256 x 256
     ## size obviously defines the size of the displayed stimulus
-        ## The arguments define the x-size and y-size, with the first argument being the x-size
+        ## The arguments define the width (x, horizontal axis) and height (y, vertical axis), with the first argument being the width
         ## Alternatively, both arguments can be negative (flipped across the x-axis or y-axis)
         ## As a side note, we can make the stimulus larger than the window
     ## sf stands for spatial frequency of the grating texture
@@ -84,18 +83,18 @@ win = visual.Window([400, 400.0], allowGUI=False)
         ## name is the name that is used when writing data about the drawing of this stimulus
             ## So, if we log information about 'gabor', we will see that the name of this drawing is 'gabor1' in our external text file
             ## When we have multiple patches in our experiment, this helps us to remember what kind of stimulus the participants saw
-                ## This when we have more descriptive names, such as 'gabor_phase1', 'gabor_testphase' etc.
+                ## It is always a good idea to have more descriptive names, such as 'gabor_phase1', 'gabor_testphase' etc.
                     ## 'gabor1' does not tell us that much really
                     # try to be descriptive when defining variables
             ## Name can also be set to 'None', meaning that this stimulus will be logged as 'unnamed TextStim'
         ## Obviously, name has to be a string
-    ## autoDraw determines whether a stimulus is drawn with every frame flip or not
+    ## autoDraw determines whether a stimulus is drawn with every frame flip or not (you'll get to understand this in Lesson 8)
         ## True means that this will happen
     ## phase represents the phase of the stimulus in each dimension of the texture
         ## This is defined by a scalar (float/integer), and not in degrees or radians (in which phase shifts are usually defined)
         ## To understand phase shifts, we refer to
             ## http://jwilson.coe.uga.edu/EMAT6680/Dunbar/Assignment1/sine_curves_KD.html
-        ## which provides a throrough introductory explanation on waves and transformations of waves 
+        ## which provides a thorough introductory explanation on waves and transformations of waves 
         ## For basic concepts on waves, we also refer to
             ## http://engineers4world.blogspot.be/2009/10/properties-and-characteristics-of-wave.html
         ## For a visualisation of a phase shift of a sine wave, we refer to
