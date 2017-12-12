@@ -51,14 +51,8 @@ for trial in range(n_trials):
         car_green.pos = car_green.pos+step_size*(2*random.randint(0,2,2)-1)
         
         ## Check boundary conditions at this moment in time
-        car_blue.pos[0] = np.maximum(car_blue.pos[0],-1)
-        car_blue.pos[1] = np.maximum(car_blue.pos[1],-1)
-        car_green.pos[0] = np.maximum(car_green.pos[0],-1)
-        car_green.pos[1] = np.maximum(car_green.pos[1],-1)
-        car_blue.pos[0] = np.minimum(car_blue.pos[0],+1)
-        car_blue.pos[1] = np.minimum(car_blue.pos[1],+1)
-        car_green.pos[0] = np.minimum(car_green.pos[0],+1)
-        car_green.pos[1] = np.minimum(car_green.pos[1],+1)
+        car_blue.pos = np.minimum(np.maximum(car_blue.pos,-1),1)
+        car_green.pos = np.minimum(np.maximum(car_green.pos,-1),1)
         
         ## Display wall and cars at this moment in time
         wall.draw()

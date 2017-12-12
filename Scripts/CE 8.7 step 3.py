@@ -59,14 +59,8 @@ for trial in range(n_trials):
         bfly_green.pos = bfly_green.pos+step_size*(2*random.randint(0,2,2)-1)
         
         ## Check boundary conditions at this moment in time
-        bfly_blue.pos[0] = np.maximum(bfly_blue.pos[0],-1)
-        bfly_blue.pos[1] = np.maximum(bfly_blue.pos[1],-1)
-        bfly_green.pos[0] = np.maximum(bfly_green.pos[0],-1)
-        bfly_green.pos[1] = np.maximum(bfly_green.pos[1],-1)
-        bfly_blue.pos[0] = np.minimum(bfly_blue.pos[0],+1)
-        bfly_blue.pos[1] = np.minimum(bfly_blue.pos[1],+1)
-        bfly_green.pos[0] = np.minimum(bfly_green.pos[0],+1)
-        bfly_green.pos[1] = np.minimum(bfly_green.pos[1],+1)
+        bfly_blue.pos = np.minimum(np.maximum(bfly_blue.pos,-1),1)
+        bfly_green.pos = np.minimum(np.maximum(bfly_green.pos,-1),1)
         
         ## Reset the clock to catch the butterfly in 0.1 seconds
         my_clock.reset() 
