@@ -14,5 +14,5 @@ print(greeting("Wim"))
 
 # illustration of two useful built-in functions, dir() and len();
 # Google "built-in functions python" for more info on available functions
-print(dir(str))      # all attributes of class str; some of those attributes we already used in Lesson 5
-print(len(greeting("Wim"))) # the length of the resultant string
+print(dir(str))                 # all attributes of class str; some of those attributes we already used in Lesson 5
+print(len(greeting("Wim")))     # the length of the resultant string
