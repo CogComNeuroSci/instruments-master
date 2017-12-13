@@ -100,20 +100,28 @@ for trial in range(n_trials):
             win.flip()
             
             ## Check whether the butterflies are caught
-            if bfly_blue.overlaps(catcher) or bfly_green.overlaps(catcher):
+            if bfly_blue.overlaps(catcher):
                 catch = True
-                if target == "blue" and bfly_blue.overlaps(catcher):
+                catch_text.color="blue"
+                if target == "blue":
                     blue_counter += 1
-                    catch_text.color="blue"
-                    catch_text.text="Caught!"
-                if target == "green" and bfly_green.overlaps(catcher):
-                    green_counter += 1
-                    catch_text.color="green"
                     catch_text.text="Caught!"
                 else:
                     abort_mission = True
                     catch_text.text="Wrong butterfly! Terminate!"
-                    sound_to_play.play()
+                catch_text.draw()
+                win.flip()
+                sleep(1)
+                
+            if bfly_green.overlaps(catcher):
+                catch = True
+                catch_text.color="green"
+                if target == "green":
+                    green_counter += 1
+                    catch_text.text="Caught!"
+                else:
+                    abort_mission = True
+                    catch_text.text="Wrong butterfly! Terminate!"
                 catch_text.draw()
                 win.flip()
                 sleep(1)
