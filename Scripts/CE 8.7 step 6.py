@@ -109,6 +109,7 @@ for trial in range(n_trials):
                 else:
                     abort_mission = True
                     catch_text.text="Wrong butterfly! Terminate!"
+                    sound_to_play.play()
                 catch_text.draw()
                 win.flip()
                 sleep(1)
@@ -122,6 +123,7 @@ for trial in range(n_trials):
                 else:
                     abort_mission = True
                     catch_text.text="Wrong butterfly! Terminate!"
+                    sound_to_play.play()
                 catch_text.draw()
                 win.flip()
                 sleep(1)
