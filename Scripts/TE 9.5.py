@@ -1,7 +1,5 @@
 # loading modules
 
-import numpy as np
-
 def q_search(string):
     string_count = 0 ## this is a case where initialization is necessary
     for i in string: ## using the fact that string is an iterable type
