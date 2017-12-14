@@ -36,9 +36,9 @@ def get_ready(max_wait = 5):
     win.flip()
 
 def readout_mouse():
+    my_clock.reset()
     event.clearEvents(eventType="mouse")
     my_mouse.clickReset()
-    my_clock.reset()
     while np.sum(my_mouse.getPressed())==0:
         pass
     keys = my_mouse.getPressed()
