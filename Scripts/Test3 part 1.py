@@ -25,7 +25,7 @@ deadline    = 1.5
 FB_time     = 1
 text_width  = 0.9
 my_clock    = core.Clock()
-FB_options  = ["Fout!","Goed!","Te traag!"]
+FB_options  = ["Wrong!","Correct!","Too slow!"]
 
 def check_input_device():
     info = {"Participant number":0,"Name":""}
