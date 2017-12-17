@@ -21,8 +21,8 @@ n_trials    = 10
 stim_size   = 0.2
 position    = [-0.8,0.8]
 fix_time    = 0.5
-FB_time     = 1
 deadlineplus= 0.1
+FB_time     = 1
 text_width  = 0.9
 my_clock    = core.Clock()
 FB_options  = ["Fout!","Goed!","Te traag!"]
@@ -180,7 +180,7 @@ for block in range(n_blocks):
         
         ## provide feedback for the current block
         if averageACC < 80:
-            retake_counter  = 1
+            retake_counter = 1
             if retake_counter < 5:
                 feedbackBlock.text =   ("In this block, your average accuracy was {0:.0f}%.\n"+
                                         "This is too low, so we'll retake this block.\n\n"+
@@ -190,7 +190,7 @@ for block in range(n_blocks):
                                         "This is still too low, but we won't retake the block again.\n\n"+
                                         "Push the space bar to proceed.").format(averageACC)
         else:
-            block_OK        = 1
+            block_OK = 1
             feedbackBlock.text =   ("In this block, your average accuracy was {0:.0f}%.\n"+
                                     "Your average RT was {1:.3f} seconds.\n\n"+
                                     "Push the space bar to proceed.").format(averageACC,averageRT)
