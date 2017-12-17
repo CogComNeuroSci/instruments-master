@@ -92,9 +92,6 @@ for block in range(n_blocks):
         trial_col = random.randint(0,len(colors))
         trial_pos = random.randint(0,len(position))
         
-        ## determine the congruence of the current trial
-        CONG.append(int(trial_col == trial_pos))
-        
         ## display the fixation cross on the screen
         fixation.draw()
         win.flip()
@@ -115,9 +112,10 @@ for block in range(n_blocks):
             if len(keys) != 0:
                 break
         
-        ## determine the RT and ACC
+        ## determine the RT, ACC and the congruence of the current trial
         if len(keys) != 0:
             RT.append(my_clock.getTime())
+            CONG.append(int(trial_col == trial_pos))
             if keys[0] == "f" and trial_col == 0:
                 ACC.append(1)
             elif keys[0] == "j" and trial_col == 1:
