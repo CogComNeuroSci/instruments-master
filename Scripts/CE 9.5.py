@@ -54,7 +54,6 @@ sleep(3)
 
 # get-ready function; it doesn't return anything, but it does something on the screen
 def trialNumber():
-    global trial
     trial_text = visual.TextStim(win,text="trial "+str(trial+1)+"!")
     trial_text.draw()
     win.flip()
@@ -80,7 +79,7 @@ def UpdatePosition():
 def UpdateTime():
     global time
     ## Update variables at this moment in time
-    time = time+step_time
+    time += step_time
     ## Reset the clock to catch the butterfly in 0.1 seconds
     my_clock.reset() 
 
@@ -94,7 +93,7 @@ def UpdateDisplay():
     win.flip()
 
 def CheckOverlap():
-    global catch, blue_counter, green_counter, abort_mission
+    global blue_counter, green_counter, catch, abort_mission
     if bfly_blue.overlaps(catcher):
         catch = True
         catch_text.color="blue"
@@ -169,13 +168,13 @@ for trial in range(n_trials):
 
 # part 5: print results on screen and finish
 if blue_counter==0 and green_counter==0:
-    feedback = "Er zijn geen vlinders gevangen!"
+    feedback = "No butterflies were caught!"
 elif blue_counter==green_counter:
-    feedback = "Ze zijn even vaak gevangen!"
+    feedback = "The same number of blue and green bfies were caught!"
 elif blue_counter>green_counter:
-    feedback = "De blauwe is vaker gevangen!"
+    feedback = "You caught more blue ones!"
 else:
-    feedback = "De groene is vaker gevangen!"
+    feedback = "You caught more green ones!"
 feedback_text = visual.TextStim(win,text=feedback)
 feedback_text.draw()
 win.flip()
