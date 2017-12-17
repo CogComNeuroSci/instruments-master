@@ -13,7 +13,7 @@ from numpy import random
 # initialize the window
 win_width = 1000
 win_height = 700
-win = visual.Window(size=[win_width,win_height])
+win = visual.Window([win_width,win_height])
 
 # initializing
 n_blocks    = 2
@@ -179,7 +179,7 @@ for block in range(n_blocks):
         
         ## provide feedback for the current block
         if averageACC < 80:
-            retake_counter = 1
+            retake_counter += 1
             if retake_counter < 5:
                 feedbackBlock.text =   ("In this block, your average accuracy was {0:.0f}%.\n"+
                                         "This is too low, so we'll retake this block.\n\n"+
@@ -201,7 +201,7 @@ for block in range(n_blocks):
         
     # end of the block retake block
     
-## say goodbye to the participant
+# say goodbye to the participant
 goodbye.draw()
 win.flip()
 event.waitKeys(keyList = "space")
