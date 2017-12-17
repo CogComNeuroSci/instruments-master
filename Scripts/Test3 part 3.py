@@ -127,12 +127,12 @@ for block in range(n_blocks):
             event.clearEvents(eventType="keyboard")
             my_clock.reset()
             while my_clock.getTime() < deadline:
-                keys = event.getKeys(keyList = ["f","j","t","b"])
+                keys = event.getKeys(keyList = ["f","j","e","b"])
                 if len(keys) != 0:
                     break
             
             ## Escape function to get out of the trial loop
-            if "t" in keys or "b" in keys:
+            if "e" in keys or "b" in keys:
                 break
             
             ## determine the RT and ACC
@@ -162,9 +162,9 @@ for block in range(n_blocks):
             # end of the trial loop
     
         ## Escape function to get out of the block loop
-        if "b" in keys:
+        if "e" in keys:
             break
-        if "t"in keys:
+        if "b"in keys:
             continue
         
         ## calculate average RT and ACC
