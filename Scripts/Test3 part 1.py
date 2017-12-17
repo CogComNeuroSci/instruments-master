@@ -5,6 +5,7 @@ Esther De Loof and Tom Verguts, december 2017
 """
 
 # import modules
+from __future__ import division
 from psychopy import visual, event, core, gui
 import numpy as np
 from numpy import random
@@ -17,11 +18,12 @@ win = visual.Window(size=[win_width,win_height])
 # initializing
 n_blocks    = 2
 n_trials    = 10
-key_list    = ["f","j"]
 stim_size   = 0.2
 position    = [-0.8,0.8]
 fix_time    = 0.5
 deadline    = 1.5
+FB_time     = 1
+text_width  = 0.9
 my_clock    = core.Clock()
 FB_options  = ["Fout!","Goed!","Te traag!"]
 
@@ -45,18 +47,20 @@ welcome         = visual.TextStim(win,text=(    "Hi {},\n"+
                                                 "Respond to the color of the square\n"+
                                                 "and ignore its location.\n\n"+
                                                 "Push the space bar to proceed.").format(participant_info["Name"]),
-                                   wrapWidth = win_width*0.9)
+                                   wrapWidth = win_width*text_width)
 instruct        = visual.TextStim(win,text=(    "Push left (letter 'f' on the keyboard)\n"+
                                                 "when the square is {0}.\n\n"+
                                                 "Push right (letter 'j' on the keyboard)\n"+
                                                 "when the square is {1}.\n\n"+
                                                 "Push the space bar to start the experiment.").format(colors[0], colors[1]),
-                                   wrapWidth = win_width*0.9)
-goodbye         = visual.TextStim(win,text="The is the end of the experiment.\n\nSignal to the experimenter that you are ready.\n\nThank you for your participation!",
-                                   wrapWidth = win_width*0.9)
-blockstart      = visual.TextStim(win,text="",wrapWidth = win_width*0.9)
-feedbackTrial   = visual.TextStim(win,text="",wrapWidth = win_width*0.9)
-feedbackBlock   = visual.TextStim(win,text="",wrapWidth = win_width*0.9)
+                                   wrapWidth = win_width*text_width)
+goodbye         = visual.TextStim(win,text=(    "The is the end of the experiment.\n\n"+
+                                                "Signal to the experimenter that you are ready.\n\n"+
+                                                "Thank you for your participation!"),
+                                   wrapWidth = win_width*text_width)
+blockstart      = visual.TextStim(win,text="",wrapWidth = win_width*text_width)
+feedbackTrial   = visual.TextStim(win,text="",wrapWidth = win_width*text_width)
+feedbackBlock   = visual.TextStim(win,text="",wrapWidth = win_width*text_width)
 
 # welcome and instructions
 welcome.draw()
@@ -70,7 +74,7 @@ event.waitKeys(keyList = "space")
 # start of the block loop
 for block in range(n_blocks):
 
-    ## initialise the RT, ACC and CONG for the current block
+    ## initialize the RT, ACC and CONG for the current block
     RT          = []
     ACC         = []
     CONG        = []
@@ -81,12 +85,12 @@ for block in range(n_blocks):
     win.flip()
     event.waitKeys(keyList = "space")
 
-# start of the trial loop
+    # start of the trial loop
     for trial in range(n_trials):
 
         ## determine the color of the left and right square
-        trial_col = random.randint(0,2)
-        trial_pos = random.randint(0,2)
+        trial_col = random.randint(0,len(colors))
+        trial_pos = random.randint(0,len(position))
         
         ## determine the congruence of the current trial
         CONG.append(int(trial_col == trial_pos))
@@ -104,15 +108,12 @@ for block in range(n_blocks):
         win.flip()
         
         ## wait for the response or response deadline
+        event.clearEvents(eventType="keyboard")
         my_clock.reset()
         while my_clock.getTime() < deadline:
-            keys = event.getKeys(keyList = ["f","j","t","b"])
+            keys = event.getKeys(keyList = ["f","j"])
             if len(keys) != 0:
                 break
-        
-        ## Escape function to get out of the trial loop
-        if "t" in keys or "b" in keys:
-            break
         
         ## determine the RT and ACC
         if len(keys) != 0:
@@ -123,35 +124,25 @@ for block in range(n_blocks):
                 ACC.append(1)
             else:
                 ACC.append(0)
+            feedbackTrial.text = FB_options[ACC[trial]]
         else:
-            RT.append(-1)   ## RT = -1 will be used to remove the too slow trials
-            ACC.append(2)   ## ACC = 2 will be used to determine the too slow feedback message
+            feedbackTrial.text = FB_options[2]
         
         ## display the feedback text
-        feedbackTrial.text = FB_options[ACC[trial]]
         feedbackTrial.draw()
         win.flip()
-        core.wait(1)
+        core.wait(FB_time)
         
         # end of the trial loop
-
-    ## Escape function to get out of the block loop
-    if "b" in keys:
-        break
-    if "t"in keys:
-        continue
-
-    ## remove the trials where the response was given too slowly
-    if -1 in RT:
-        remove = RT.index(-1)
     
-        del RT[remove]
-        del ACC[remove]
+    ## calculate average RT and ACC
+    averageRT   = np.mean(RT)
+    averageACC  = np.sum(ACC)/len(ACC)*100
     
     ## provide feedback for the current block
     feedbackBlock.text =   ("In this block, your average accuracy was {0:.0f}%.\n"+
-                            "Your average RT was {1:.1f} seconds.\n\n"+
-                            "Push the space bar proceed.").format(np.mean(ACC)*100,np.mean(RT))
+                            "Your average RT was {1:.3f} seconds.\n\n"+
+                            "Push the space bar to proceed.").format(averageACC,averageRT)
     feedbackBlock.draw()
     win.flip()
     event.waitKeys(keyList = "space")
