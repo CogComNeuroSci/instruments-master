@@ -109,7 +109,6 @@ for block in range(n_blocks):
                 deadline = deadline_cong
             else:
                 deadline = deadline_incong
-            print(deadline)
             
             ## display the fixation cross on the screen
             fixation.draw()
