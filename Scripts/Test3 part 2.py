@@ -122,7 +122,7 @@ for block in range(n_blocks):
                 ACC.append(1)
             else:
                 ACC.append(0)
-            feedbackTrial.text = FB_options[ACC[trial]]
+            feedbackTrial.text = FB_options[ACC[-1]]
         else:
             feedbackTrial.text = FB_options[2]
         
