@@ -135,7 +135,7 @@ for block in range(n_blocks):
     
     ## calculate average RT and ACC
     averageRT   = np.mean(RT)
-    averageACC  = np.sum(ACC)/len(ACC)*100
+    averageACC  = np.sum(ACC)/n_trials*100
     
     ## provide feedback for the current block
     feedbackBlock.text =   ("In this block, your average accuracy was {0:.0f}%.\n"+
