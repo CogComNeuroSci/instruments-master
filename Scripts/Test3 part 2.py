@@ -102,6 +102,7 @@ for block in range(n_blocks):
         stimulus.lineColor = colors[trial_col]
         stimulus.fillColor = colors[trial_col]
         stimulus.draw()
+        fixation.draw()
         win.flip()
         
         ## wait for the response or response deadline
