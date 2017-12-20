@@ -17,7 +17,7 @@ win = visual.Window([win_width,win_height])
 # initializing
 n_blocks    = 2
 n_prac      = 4
-n_trials    = 2 #16
+n_trials    = 16
 text_width  = 0.9
 text_size   = 0.075
 fix_time    = 0.5
