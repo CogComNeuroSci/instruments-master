@@ -1,5 +1,6 @@
 # visualize linear and nonlinear mappings in 3D
 # exercise in numpy use
+# run in psychopy environment
 # import
 from psychopy import visual,event,gui
 import numpy as np
