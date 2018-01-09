@@ -116,7 +116,7 @@ for block in range(n_blocks):
         ## determine the RT, ACC and the congruence of the current trial
         if len(keys) != 0:
             RT.append(my_clock.getTime())
-            CONG.append(int(trial_col == trial_pos))
+            CONG.append(int( (trial_pos == 0 and (trial_col == 0 or trial_col == 1)) or (trial_pos == 1 and (trial_col == 2 or trial_col == 3)) ))
             if keys[0] == "f" and (trial_col == 0 or trial_col == 1):
                 ACC.append(1)
             elif keys[0] == "j" and (trial_col == 2 or trial_col == 3):
@@ -125,6 +125,7 @@ for block in range(n_blocks):
                 ACC.append(0)
             feedbackTrial.text = FB_options[ACC[-1]]
         else:
+            ACC.append(0)
             feedbackTrial.text = FB_options[2]
         
         ## display the feedback text
@@ -140,7 +141,7 @@ for block in range(n_blocks):
     else:
         averageRT = 0
     if len(ACC) > 0:
-        averageACC  = np.sum(ACC)/n_trials*100
+        averageACC  = np.mean(ACC)*100
     else:
         averageACC = 0
     
@@ -154,7 +155,7 @@ for block in range(n_blocks):
 
     # end of the block loop
 
-## say goodbye to the participant
+# say goodbye to the participant
 goodbye.draw()
 win.flip()
 event.waitKeys(keyList = "space")

@@ -101,7 +101,7 @@ for block in range(n_blocks):
         stimulus.pos = [position[trial_pos],0]
         stimulus.lineColor = colors[trial_col]
         stimulus.fillColor = colors[trial_col]
-        stimulus.draw
+        stimulus.draw()
         fixation.draw()
         win.flip()
         
@@ -125,6 +125,7 @@ for block in range(n_blocks):
                 ACC.append(0)
             feedbackTrial.text = FB_options[ACC[-1]]
         else:
+            ACC.append(0)
             feedbackTrial.text = FB_options[2]
         
         ## display the feedback text
@@ -140,7 +141,7 @@ for block in range(n_blocks):
     else:
         averageRT = 0
     if len(ACC) > 0:
-        averageACC  = np.sum(ACC)/n_trials*100
+        averageACC  = np.mean(ACC)*100
     else:
         averageACC = 0
     
@@ -154,7 +155,7 @@ for block in range(n_blocks):
 
     # end of the block loop
 
-## say goodbye to the participant
+# say goodbye to the participant
 goodbye.draw()
 win.flip()
 event.waitKeys(keyList = "space")
