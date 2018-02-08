@@ -2,6 +2,7 @@
 # parity judgement task (even vs odd number discrimination)
 # using both ExperimentHandler and TrialHandler
 # attempts to write anyway in case of crash
+# written by Tom Verguts, Feb 2018
 from psychopy import data, visual, event, core
 visual_targets = [digit for digit in range(1,8)]
 targets_responses = []
@@ -13,14 +14,14 @@ for loop in visual_targets:
     else:
         correct_response = 'j' # odd numbers, press j
     targets_responses.append({'target':loop, 'correct_response':correct_response})
-# shakearound(targets_responses) # Esther's genius code to shake around the list according to one's experimental desires
-trials = data.TrialHandler(targets_responses,1,method='random')
+# shakearound(targets_responses) # Here you can add code from Lesson 11 (randomization) to shake around the list according to one's experimental desires
+trials = data.TrialHandler(targets_responses, nReps=1, method='random')
 win = visual.Window([400,400])
 experiment_timer = core.Clock()
 thisExp.addLoop(trials)
 for trial in trials: # a TrialHandler object is iterable
     experiment_timer.reset()
-    the_text = visual.TextStim(win,text=trial['target'],color='white')
+    the_text = visual.TextStim(win, text=trial['target'], color='white')
     the_text.draw()
     win.flip()
     trial_continue = True
@@ -32,11 +33,11 @@ for trial in trials: # a TrialHandler object is iterable
     accuracy = 0
     if response[0]==trial['correct_response']:
         accuracy = 1
-    trials.addData('response',response[0])
-    trials.addData('accuracy',accuracy)
+    trials.addData('response', response[0])
+    trials.addData('accuracy', accuracy)
     trials.addData('RT',rt)
     thisExp.nextEntry()
-thisExp.saveAsWideText(data_file,appendFile=False)
+thisExp.saveAsWideText(data_file, appendFile=False)
 thisExp.abort()
 win.close()
 core.quit()
