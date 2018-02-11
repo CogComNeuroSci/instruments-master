@@ -1,5 +1,5 @@
 # some operating system (os) manipulations
-# Text exercise 12.8: basic version
+# Text exercise 12.8: basic version (i.e., no actual experiment is attached)
 import os
 from psychopy import gui
 directory_to_write_to = "/Users/tom/Documents/pythonfiles/psychopy/lesson12/"

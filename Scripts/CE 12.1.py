@@ -1,7 +1,9 @@
 # some operating system (os) manipulations
-# Text exercise 12.8
+# Text exercise 12.8: with actual experiment attached
 # It is checked whether the directory and file already exists: the program keeps on querying
 # until a non-existent directory, session combination is provided
+# version with random color combination (to check out createFactorialTrialList)
+# accuracy is ignored here
 import os
 from psychopy import gui, data, visual, event, core
 
@@ -30,12 +32,8 @@ thisExp = data.ExperimentHandler(dataFileName=filename)
 ## main experiment now
 visual_targets = range(1,8)
 targets_responses = []
-for loop in visual_targets:
-    if loop%2 == 0:
-        correct_response = 'f' # even numbers, press f
-    else:
-        correct_response = 'j' # odd numbers, press j
-    targets_responses.append({'target':loop, 'correct_response':correct_response})
+factors = {"target": visual_targets, "color": ["red", "green"]}
+targets_responses = data.createFactorialTrialList(factors)
 # shakearound(targets_responses) # Here you can add code from Lesson 11 (randomization) to shake around the list according to one's experimental desires
 trials = data.TrialHandler(targets_responses, nReps=1, method='random')
 win = visual.Window([400,400])
@@ -43,7 +41,7 @@ experiment_timer = core.Clock()
 thisExp.addLoop(trials)
 for trial in trials: # a TrialHandler object is iterable
     experiment_timer.reset()
-    the_text = visual.TextStim(win, text=trial['target'], color='white')
+    the_text = visual.TextStim(win, text=trial['target'], color=trial['color'])
     the_text.draw()
     win.flip()
     trial_continue = True
@@ -52,11 +50,7 @@ for trial in trials: # a TrialHandler object is iterable
         if response:
             trial_continue = False
     rt = experiment_timer.getTime()
-    accuracy = 0
-    if response[0]==trial['correct_response']:
-        accuracy = 1
     trials.addData('response', response[0])
-    trials.addData('accuracy', accuracy)
     trials.addData('RT',rt)
     thisExp.nextEntry()
 thisExp.saveAsWideText(filename, appendFile=False)
