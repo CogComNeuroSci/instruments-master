@@ -1,7 +1,5 @@
-# some operating system (os) manipulations
-# Text exercise 12.8
-# It is checked whether the directory and file already exists: the program keeps on querying
-# until a non-existent directory, session combination is provided
+# Lesson 12, data file manipulations
+# Class Exercise 12.3
 import os
 from psychopy import gui, data, visual, event, core
 
@@ -27,23 +25,29 @@ while already_exists:
         print("This file already exists! Choose another name.")
 thisExp = data.ExperimentHandler(dataFileName=filename)
 
+def final_words():
+    end_text = visual.TextStim(win, text="That's all!\nThanks a lot for participating.")
+    end_text.draw()
+    win.flip()
+    event.waitKeys()
+
 ## main experiment now
-visual_targets = range(1,8)
-targets_responses = []
-for loop in visual_targets:
-    if loop%2 == 0:
-        correct_response = 'f' # even numbers, press f
-    else:
-        correct_response = 'j' # odd numbers, press j
-    targets_responses.append({'target':loop, 'correct_response':correct_response})
+first_number = 1
+last_number = 7
+visual_targets = range(first_number,last_number+1)
+correct_response = [["f","j"][x%2] for x in visual_targets]
+factors = {"target": visual_targets, "color": ["red", "green"]}
+targets_colors = data.createFactorialTrialList(factors)
 # shakearound(targets_responses) # Here you can add code from Lesson 11 (randomization) to shake around the list according to one's experimental desires
-trials = data.TrialHandler(targets_responses, nReps=1, method='random')
+trials = data.TrialHandler(targets_colors, nReps=2, method="random")
 win = visual.Window([400,400])
 experiment_timer = core.Clock()
+break_timer = core.Clock()
+break_text = visual.TextStim(win, text="Take a break!\nPress any key to continue")
 thisExp.addLoop(trials)
 for trial in trials: # a TrialHandler object is iterable
     experiment_timer.reset()
-    the_text = visual.TextStim(win, text=trial['target'], color='white')
+    the_text = visual.TextStim(win, text=trial["target"], color=trial["color"])
     the_text.draw()
     win.flip()
     trial_continue = True
@@ -53,13 +57,21 @@ for trial in trials: # a TrialHandler object is iterable
             trial_continue = False
     rt = experiment_timer.getTime()
     accuracy = 0
-    if response[0]==trial['correct_response']:
-        accuracy = 1
-    trials.addData('response', response[0])
-    trials.addData('accuracy', accuracy)
-    trials.addData('RT',rt)
+    if response[0]==correct_response[trial["target"]-1]:
+        accuracy = 1    
+    trials.addData("response", response[0])
+    trials.addData("accuracy", accuracy)
+    trials.addData("RT",rt)
     thisExp.nextEntry()
+    if trials.thisN == len(targets_colors)-1:
+        break_timer.reset()
+        break_text.draw()
+        win.flip()
+        event.waitKeys()
+        break_time = break_timer.getTime()
+        trials.addData("break time",break_time)
 thisExp.saveAsWideText(filename, appendFile=False)
 thisExp.abort()
+final_words()
 win.close()
 core.quit()
