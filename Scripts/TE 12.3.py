@@ -42,6 +42,7 @@ for trial in trials: # a TrialHandler object is iterable
         if response:
             trial_continue = False
     rt = experiment_timer.getTime()
+    trials.addData('accuracy', int(trial['target']==response[0]))
     trials.addData('response', response[0])
     trials.addData('RT',rt)
     thisExp.nextEntry()
