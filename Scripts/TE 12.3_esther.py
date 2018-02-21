@@ -36,7 +36,7 @@ def check_input_device():
 participant_info = check_input_device()
 
 # Data file
-data_file = "Simon_experiment" + str(participant_info["Participant number"]) + ".csv"
+data_file = "Simon_experiment" + str(participant_info["Participant number"])
 thisExp = data.ExperimentHandler(dataFileName = data_file, extraInfo = participant_info)
 
 # Within-subjects design
