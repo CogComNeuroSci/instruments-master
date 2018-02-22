@@ -12,6 +12,7 @@ from numpy import random
 import os
 import platform
 import pandas
+import random
 
 # set the directory
 my_directory = "/Users/esther/Documents/Research/IEP"
@@ -48,20 +49,9 @@ while already_exists:
 print("OK, let's get started!")
 thisExp = data.ExperimentHandler(dataFileName = file_name, extraInfo = info)
 
-# Within-subjects design
-Design = data.createFactorialTrialList({"Number": numbers, "Color": colors})
-
-# Add accuracy via data frame
-dataFrame = pandas.DataFrame.from_dict(Design)
-dataFrame["CorAns"] = dataFrame["Number"] % 2
-dataFrame["CorAns"].replace([0,1], ["f","j"], inplace = True)
-print(dataFrame)
-
-# Convert dataframe back to list of dictionaries
-trial_list = pandas.DataFrame.to_dict(dataFrame, orient = "records")
-
 # graphical elements
 stimulus        = visual.TextStim(win,text="")
+blockstart      = visual.TextStim(win,text="",wrapWidth = win_width*text_width)
 welcome         = visual.TextStim(win,text=(    "Hi {},\n"+
                                                 "Welcome to the parity judgement task!\n"+
                                                 "Respond to the number\n"+
@@ -77,6 +67,57 @@ goodbye         = visual.TextStim(win,text=(    "This is the end of the experime
                                                 "Thank you for your participation!"),
                                     wrapWidth = win_width*text_width)
 
+def announce_blockstart():
+    if block == 0:
+        blockstart.text = ("Welcome to the practice block!\n\n"+
+                           "Push the space bar to start.")
+    else:
+        blockstart.text = ( "Welcome to the experiment!\n\n"+
+                            "Push the space bar to start.").format(block)
+    blockstart.draw()
+    win.flip()
+    event.waitKeys(keyList = "space")
+    
+def randomize():
+    
+    # Within-subjects design
+    Design = data.createFactorialTrialList({"Number": numbers, "Color": colors})
+    
+    # Add accuracy via data frame
+    dataFrame = pandas.DataFrame.from_dict(Design)
+    dataFrame["CorAns"] = dataFrame["Number"] % 2
+    dataFrame["CorAns"].replace([0,1], ["f","j"], inplace = True)
+    
+    # Convert dataframe back to list of dictionaries
+    trial_list = pandas.DataFrame.to_dict(dataFrame, orient = "records")
+    
+    # create the trials
+    if block == 0:
+        trial_list = [trial_list[i] for i in random.sample(numbers,4)]
+        trials = data.TrialHandler(trialList = trial_list, nReps = 1, method = "random")
+    else:
+        trials = data.TrialHandler(trialList = trial_list, nReps = 1, method = "random")
+        thisExp.addLoop(trials)
+    
+    return trials
+
+def output():
+    global acc
+    if block > 0:
+        trials.addData("response", keys[0])
+        trials.addData("RT", my_clock.getTime())
+        
+        if keys[0] == trial["CorAns"]:
+            trials.addData("ACC", 1)
+        else:
+            trials.addData("ACC", 0)
+            
+        thisExp.nextEntry()
+        
+    else:
+        if keys[0] == trial["CorAns"]:
+            acc += 1
+
 # welcome and instructions
 welcome.draw()
 win.flip()
@@ -86,34 +127,42 @@ instruct.draw()
 win.flip()
 event.waitKeys(keyList = "space")
 
-# create the trials
-trials = data.TrialHandler(trialList = trial_list, nReps = 1, name = "Exp", method = "random")  # this will set the global seed - for the whole exp
-thisExp.addLoop(trials)
-
-# start of the trial loop
-for trial in trials:
+# start of the block loop
+block = 0
+while block < 2:
     
-    ## display the number on the screen
-    stimulus.color = trial["Color"]
-    stimulus.text = trial["Number"]
-    stimulus.draw()
-    win.flip()
+    # announce the block start
+    announce_blockstart()
     
-    ## wait for the response
-    event.clearEvents(eventType="keyboard")
-    my_clock.reset()
-    keys = event.waitKeys(keyList = ["f","j"])
+    # randomization
+    trials = randomize()
     
-    trials.addData("response", keys[0])
-    trials.addData("RT", my_clock.getTime())
+    # accuracy tracker
+    acc = 0
     
-    if keys[0] == trial["CorAns"]:
-        trials.addData("ACC", 1)
-    else:
-        trials.addData("ACC", 0)
-    
-    thisExp.nextEntry()
-# end of the trial loop
+    # start of the trial loop
+    for trial in trials:
+        
+        ## display the number on the screen
+        stimulus.color = trial["Color"]
+        stimulus.text = trial["Number"]
+        stimulus.draw()
+        win.flip()
+        
+        ## wait for the response
+        event.clearEvents(eventType="keyboard")
+        my_clock.reset()
+        keys = event.waitKeys(keyList = ["f","j"])
+        
+        ## register the output
+        output()
+        
+    # end of the trial loop
+        
+    # update the block number
+    if (block == 0 and acc == 4) or block > 0:
+        block += 1
+# end of the block loop
 
 # say goodbye to the participant
 goodbye.draw()
