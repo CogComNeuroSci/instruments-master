@@ -5,14 +5,16 @@ from psychopy import gui, data
 import random
 
 directory_to_write_to = "c:/Users/esther/Documents/Research/IEP/"
+
+myDlg = gui.Dlg(title = "get subject info")
+myDlg.addField("number?")
+
 already_exists = True
-myDlg = gui.Dlg(title=u"get subject info")
-myDlg.addField("number? ")
 while already_exists:
     myDlg.show()
     number = myDlg.data[0]
     filename = directory_to_write_to + "experimental_data_" + number
-    if not os.path.isfile(filename+".csv"):
+    if not os.path.isfile(filename + ".csv"):
         already_exists = False
 print("OK let's get started!")
 

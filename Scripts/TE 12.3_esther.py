@@ -50,15 +50,15 @@ welcome         = visual.TextStim(win,text=(    "Hi {},\n"+
                                                 "Respond to the letter\n"+
                                                 "and ignore its location.\n\n"+
                                                 "Push the space bar to proceed.").format(participant_info["Name"]),
-                                   wrapWidth = win_width*text_width)
+                                    wrapWidth = win_width*text_width)
 instruct        = visual.TextStim(win,text=(    "Push left (letter 'f') when the letter 'f' appears\n"+
                                                 "Push right (letter 'j') when the letter 'j' appears\n\n"+
                                                 "Push the space bar to start the experiment."),
-                                   wrapWidth = win_width*text_width)
+                                    wrapWidth = win_width*text_width)
 goodbye         = visual.TextStim(win,text=(    "This is the end of the experiment.\n\n"+
                                                 "Signal to the experimenter that you are ready.\n\n"+
                                                 "Thank you for your participation!"),
-                                   wrapWidth = win_width*text_width)
+                                    wrapWidth = win_width*text_width)
 blockstart      = visual.TextStim(win,text="",wrapWidth = win_width*text_width)
 feedbackTrial   = visual.TextStim(win,text="",wrapWidth = win_width*text_width)
 feedbackBlock   = visual.TextStim(win,text="",wrapWidth = win_width*text_width)
@@ -81,13 +81,13 @@ for block in range(n_blocks):
     win.flip()
     event.waitKeys(keyList = "space")
     
-    experiment = data.TrialHandler(trialList = Design, nReps = n_trials/4, name = "Exp", method = "random")
+    experiment = data.TrialHandler(trialList = Design, nReps = n_trials/4, method = "random")
     thisExp.addLoop(experiment)
     
     # start of the trial loop
     for trial in experiment:
         
-        ## determine the color of the left and right square
+        ## determine the letter and its position
         trial_let = trial['Letter']
         trial_pos = trial['Position']
         
@@ -96,7 +96,7 @@ for block in range(n_blocks):
         win.flip()
         core.wait(fix_time)
         
-        ## display the square on the screen
+        ## display the stimulus on the screen
         stimulus.pos = [position[trial_pos],0]
         stimulus.text = letters[trial_let]
         stimulus.draw()
@@ -135,12 +135,13 @@ for block in range(n_blocks):
         
         thisExp.nextEntry()
         
-        # end of the trial loop
+    # end of the trial loop
 
-    # end of the block loop
+# end of the block loop
 
 # say goodbye to the participant
 goodbye.draw()
 win.flip()
 event.waitKeys(keyList = "space")
+
 core.quit()
