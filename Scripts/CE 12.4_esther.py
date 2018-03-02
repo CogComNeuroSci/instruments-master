@@ -114,7 +114,7 @@ win.flip()
 event.waitKeys(keyList = "space")
 
 # create the trials
-trials = data.TrialHandler(trialList = trial_list, nReps = 1, name = "Exp", method = "sequential")  # this will set the global seed - for the whole exp
+trials = data.TrialHandler(trialList = trial_list, nReps = 1, method = "sequential")
 thisExp.addLoop(trials)
 
 # start of the trial loop
