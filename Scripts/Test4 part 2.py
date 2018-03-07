@@ -37,7 +37,7 @@ blockstart      = visual.TextStim(win,text="",wrapWidth = win_width*text_width)
 welcome         = visual.TextStim(win,text=(    "Hi {},\n"+
                                                 "Welcome to the lexical decision task!\n"+
                                                 "You'll have to judge whether a stimulus\n"+
-                                                "a word or a non-word.\n\n"+
+                                                "is a word or a non-word.\n\n"+
                                                 "Push the space bar to proceed.").format(info["Name"]),
                                     wrapWidth = win_width*text_width)
 instruct        = visual.TextStim(win,text=(    "Push left (letter 'f') for words\n"+
@@ -99,7 +99,7 @@ event.waitKeys(keyList = "space")
 
 # start of the block loop
 block = 0
-while block < 3:
+while block < (n_blocks + 1):
     
     # announce the block start
     announce_blockstart()
