@@ -31,16 +31,16 @@ myDlgName       = gui.DlgFromDict(dictionary = infoName, title = "Please enter y
 dur_fix     = 0.5
 dur_stim    = 2.5
 dur_fb      = 1
-words       = ["bloem", "kast", "schoen"]
-nonwords    = ["bielo", "kang", "troen"]
-answers     = ["f","j","ESC"]
-allwords    = words + nonwords
-n_blocks    = 3
-n_rep       = 24/len(allwords)
-cues_pos    = [-0.5,0.5]
 text_width  = 0.9
 win_width   = 1000
 win_height  = 700
+n_blocks    = 3
+cues_pos    = [-0.5,0.5]
+answers     = ["f","j"]
+words       = ["bloem", "kast", "schoen"]
+nonwords    = ["bielo", "kang", "troen"]
+allwords    = words + nonwords
+n_rep       = 24/len(allwords)
 my_clock    = core.Clock()
 
 # prepare graphic elements
