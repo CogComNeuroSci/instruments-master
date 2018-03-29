@@ -81,11 +81,7 @@ win.flip()
 event.waitKeys(keyList = "space")
 
 # start of the block loop
-block = 0
-while block < n_blocks:
-    
-    # update the block number
-    block += 1
+for block in range(n_blocks):
     
     # randomization
     Design = data.createFactorialTrialList({"StimulusNumber": range(len(allwords))})
