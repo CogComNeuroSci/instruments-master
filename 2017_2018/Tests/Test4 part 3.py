@@ -9,7 +9,7 @@ from psychopy import visual, event, core, gui, data
 import os, platform, math
 
 # set the directory
-my_directory = "/Users/esther/Documents/Research/IEP"
+my_directory = "/Users/esther/Documents/GitHub/instruments-master/2017_2018/Tests"
 if platform.system() == "Windows":
     my_directory = "C:" + my_directory
 os.chdir(my_directory) 

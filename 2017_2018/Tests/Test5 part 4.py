@@ -83,7 +83,7 @@ def randomize():
     dataFrame = pandas.DataFrame.from_dict(Design)
     
     # double the amount of trials
-    Extended = pandas.concat([dataFrame]*n_rep, ignore_index = True)
+    Extended = pandas.concat([dataFrame]*int(n_rep), ignore_index = True)
     
     # extract the trial indices
     index = list(Extended.index)
@@ -97,8 +97,8 @@ def randomize():
         Suggestion = Extended.iloc[index]
         
         ## check whether there are two consecutive trials with the same stimulus
-        current     = Suggestion.iloc[range(Suggestion.shape[0]-1)]
-        subsequent  = Suggestion.iloc[range(1,Suggestion.shape[0])]
+        current     = Suggestion.iloc[range(Suggestion.shape[0]-1)].reset_index(drop=True)
+        subsequent  = Suggestion.iloc[range(1,Suggestion.shape[0])].reset_index(drop=True)
         
         comparison  = current["StimulusNumber"] == subsequent["StimulusNumber"]
         
