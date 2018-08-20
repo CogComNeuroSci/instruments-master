@@ -10,15 +10,16 @@ from psychopy import visual, event, core, gui, data
 import os, platform, math
 
 # set the directory
-my_directory = "/Users/tom/Documents/EP_IEP/instruments-master/Scripts"
+#my_directory = "/Users/tom/Documents/EP_IEP/instruments-master/Scripts"
+my_directory = "/Users/esther/Documents/GitHub/instruments-master/2017_2018/Tests"
 if platform.system() == "Windows":
     my_directory = "C:" + my_directory
 os.chdir(my_directory) 
 
 # initialize the window
-win_width = 1000
-win_height = 700
-win = visual.Window([win_width, win_height])
+win_width   = 1000
+win_height  = 700
+win         = visual.Window([win_width, win_height])
 
 # initializing
 stimuli     = ["<<<", "<<>", "><<", "><>", "<><", "<>>", ">><", ">>>"]
@@ -76,9 +77,9 @@ def announce_blockstart():
 
 def randomize():
     Design = data.createFactorialTrialList({"StimulusNumber": range(len(stimuli))})
-    Design = [dict(item, Stimulus = stimuli[item["StimulusNumber"]])                             for item in Design]
-    Design = [dict(item, Response     = round(item["StimulusNumber"]/(len(stimuli)/2)))           for item in Design]
-    Design = [(dict(item, CorAns = "f") if (item["Response"] == mapping) else dict(item, CorAns = "j"))  for item in Design]
+    Design = [ dict(item, Stimulus  = stimuli[     item["StimulusNumber"]])                                        for item in Design]
+    Design = [ dict(item, Response  = math.floor(  item["StimulusNumber"]/(len(stimuli)/2)))                      for item in Design]
+    Design = [(dict(item, CorAns    = "f") if (    item["Response"] == mapping) else dict(item, CorAns = "j"))   for item in Design]
     print(Design)
     # create the trials
     trials = data.TrialHandler(trialList = Design, nReps = 1, method = "random")
@@ -89,12 +90,15 @@ def randomize():
 def output():
     global acc
     trials.addData("response", keys[0])
-    trials.addData("RT", my_clock.getTime())    
+    trials.addData("RT", my_clock.getTime())
+    print(keys[0])
+    print(trial["CorAns"])
     if keys[0] == trial["CorAns"]:
         trials.addData("ACC", 1)
         acc += 1
     else:
         trials.addData("ACC", 0)
+    print(acc)
     thisExp.nextEntry()
 
 # welcome and instructions
