@@ -91,14 +91,11 @@ def output():
     global acc
     trials.addData("response", keys[0])
     trials.addData("RT", my_clock.getTime())
-    print(keys[0])
-    print(trial["CorAns"])
     if keys[0] == trial["CorAns"]:
         trials.addData("ACC", 1)
         acc += 1
     else:
         trials.addData("ACC", 0)
-    print(acc)
     thisExp.nextEntry()
 
 # welcome and instructions
