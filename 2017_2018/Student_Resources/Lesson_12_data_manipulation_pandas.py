@@ -28,7 +28,7 @@ print ('# read and manipulate 1 #')
     ## no 'C:' is needed for Mac or Linux
 ## The code below ensures that the right notation is used to change your directory
 
-mydirectory = '/Users/Pieter/Documents/Vakantiejob code/scripts lessen/RandomisationFiles assignment'
+mydirectory = "/Users/esther/Documents/GitHub/instruments-master/2017_2018/Tests"
 if (platform.system() == 'Windows'): 
     mydirectory = 'C:' + mydirectory
 os.chdir(mydirectory) 

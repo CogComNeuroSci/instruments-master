@@ -632,13 +632,6 @@ print(type(WrongKeyName), WrongKeyName)
 ## We note that other functions still are available
 ## We provide a short rundown on some of the most eminent functions
 
-## has_key returns whether a certain key is in your dictionary
-    ## False if it is not defined in the dictionary
-    ## True if it is defined
-
-print(dictionary.has_key("Name"))
-print(dictionary.has_key("First name"))
-
 ## Get an overview of all the keys and what value is stored in the key
 ## Returns pairs of the keys and their associated value
 

@@ -29,7 +29,7 @@ def simple_randomisation(number_of_subjects,number_of_conditions):
     for i in range(1,number_of_conditions+1):
         step.append(i)
 
-    conditions.extend([step for i in range((number_of_subjects/number_of_conditions))])
+    conditions.extend([step for i in range(int(number_of_subjects/number_of_conditions))])
 
     cond = np.array(conditions)
     condit = np.ravel(cond)
@@ -43,4 +43,4 @@ def simple_randomisation(number_of_subjects,number_of_conditions):
 
     return data 
 
-print (simple_randomisation(20,2))
+print(simple_randomisation(20,2))

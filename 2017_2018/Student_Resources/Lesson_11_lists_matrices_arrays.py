@@ -9,7 +9,7 @@ from datetime import datetime
 ## manipulate data 1 ##
 #######################
 
-print ('# manipulate data 1 #')
+print('# manipulate data 1 #')
 
 ## To create a matrix in Python in an easy fashion, we can use 'list comprehension'
 ## To illustrate what this means, we look at an example adopted from 'http://www.python-course.eu/list_comprehension.php'
@@ -22,7 +22,7 @@ print ('# manipulate data 1 #')
 
 Celsius = [39.2, 36.5, 37.3, 37.8]
 Fahrenheit = [ ((float(9)/5)*x + 32) for x in Celsius ]
-print (Fahrenheit)
+print(Fahrenheit)
 
 #######################
 ## manipulate data 2 ##
@@ -41,16 +41,16 @@ for x in range(8):
         row.append(y)
     a.append(row)
 
-print (type(a)), (a)
+print(type(a)), (a)
 
 matrix = np.matrix(a)
-print (type(matrix)), (matrix)
+print(type(matrix)), (matrix)
 
 #######################
 ## manipulate data 3 ##
 #######################
 
-print ('# manipulate data 3 #')
+print('# manipulate data 3 #')
 
 ## Do note that there are two major ways to represent data: matrices and arrays
     ## Both have their advantages and disadvantages, but usually it is recommended to use arrays
@@ -79,7 +79,7 @@ print ('# manipulate data 3 #')
 ## manipulate data 4 ##
 #######################
 
-print ('# manipulate data 4 #')
+print('# manipulate data 4 #')
 
 ## We will use the matrix we defined earlier, and convert it to an array
 ## Below, we first convert the matrix to an array
@@ -90,32 +90,32 @@ print ('# manipulate data 4 #')
 ## Additionally, we also identify the length of the rows and columns (how many elements do we have in them) by using the function 'len()'
 
 array = np.array(matrix)
-print (type(array)), (array)
+print(type(array)), (array)
 
-print '---'
+print('---')
 
 FirstRow = array[0,:]
 ThirdRow = array[2,:]
 
-print (type(FirstRow)), (FirstRow)
-print (type(ThirdRow)), (ThirdRow)
+print(type(FirstRow)), (FirstRow)
+print(type(ThirdRow)), (ThirdRow)
 
-print '---'
+print('---')
 
 FirstColumn = array[:,0]
 ThirdColumn = array[:,2]
 
-print (type(FirstColumn)), (FirstColumn)
-print (type(ThirdColumn)), (ThirdColumn)
+print(type(FirstColumn)), (FirstColumn)
+print(type(ThirdColumn)), (ThirdColumn)
 
-print (len(FirstColumn))
-print (len(FirstRow))
+print(len(FirstColumn))
+print(len(FirstRow))
 
 #######################
 ## manipulate data 5 ##
 #######################
 
-print ('# manipulate data 5 #')
+print('# manipulate data 5 #')
 
 ## Individual number elements in arrays (keep in mind that arrays can also hold complex numbers and strings AND that arrays can contain mixed data types) are integers
 ## This is a very useful characteristic, as it allows us to do mathematical computations on specific elements
@@ -127,26 +127,26 @@ print ('# manipulate data 5 #')
     ## Transposing means that the columns become rows, and the rows become columns
 
 array[0,1] = 18
-print (array)
+print(array)
 
-print ('---')
+print('---')
 
 array[0,1] = (array[0,1]*2)/6 - 10
-print (array)
+print(array)
 
-print ('---')
+print('---')
 
 array[array == 2] = 10
-print (array)
+print(array)
 
-print ('---')
+print('---')
 
 array[:,0] = 20
 array[0,:] = 30
 
-print (array)
+print(array)
 
-print ('---')
+print('---')
 
 TransposedArray = np.transpose(array)
 print (TransposedArray)
@@ -155,7 +155,7 @@ print (TransposedArray)
 ## manipulate data 6 ##
 #######################
 
-print ('# manipulate data 6 #')
+print('# manipulate data 6 #')
 
 ## When we want to delete a certain value from an NumPy array, we can use the function np.delete()
 ## You can do this by using the index
@@ -172,9 +172,9 @@ print (a)
 index = [2, 3, 6]
 
 new_a = np.delete(a, index)
-print (new_a)
+print(new_a)
 
-print ('---')
+print('---')
 
 a = []
 for x in range(8):
@@ -187,13 +187,13 @@ matrix = np.matrix(a)
 array = np.array(matrix)
 
 array[array == 3] = -1
-print (array)
+print(array)
 
 #######################
 ## manipulate data 7 ##
 #######################
 
-print ('# manipulate data 7 #')
+print('# manipulate data 7 #')
 
 ## How to print a sequence of number
     ## Just printing a sequence
@@ -204,42 +204,42 @@ print ('# manipulate data 7 #')
     ## Going backwards/counting down appended to a list
 
 for i in range(10):
-    print (i)
+    print(i)
 
 numberSeq = []
 for i in range(8):
     numberSeq.append(i)
 
-print (numberSeq)
+print(numberSeq)
 
 numberSeq = []
 for i in range(20,25):
     numberSeq.append(i)
 
-print (numberSeq)
+print(numberSeq)
 
 numberSeq = []
 for i in range(0,25,5):
     numberSeq.append(i)
 
-print (numberSeq)
+print(numberSeq)
 
 numberSeq = []
 for i in range(100,0,-5):
     numberSeq.append(i)
 
-print (numberSeq)
+print(numberSeq)
 
 ## Repeat a certain value a number of times
 ## Note that repeating an action a couple of times requires a loop
 
 list = [1]
 RepList = list*62
-print (RepList)
+print(RepList)
 
 list = ['Why repeat?']
 RepList = list*62
-print (RepList)
+print(RepList)
 
 ## Bind lists together
 ## This also works with integers
@@ -253,21 +253,21 @@ lastname = ' Shepard'
 
 name = firstname + lastname
 name.split
-print (name)
+print(name)
 
 Birthday = 11
 Birthmonth = 4
 Birthyear = 2154
 
 fullBirth = Birthday+Birthmonth+Birthyear
-print (fullBirth)
+print(fullBirth)
 
 Birthday = [11]
 Birthmonth = [4]
 Birthyear = [2154]
 
 fullBirth = Birthday+Birthmonth+Birthyear
-print (fullBirth)
+print(fullBirth)
 
 ## You can also concatenate rows and columns of a vector using np.column_stack()
 ## An example of column concatenation can be seen below
@@ -279,12 +279,12 @@ print (fullBirth)
 a = np.array([[1, 2]])
 b = np.array([[3, 4]])
 array = np.column_stack((a,b))
-print (array)
+print(array)
 
 a = np.array([[1, 2]])
 b = np.array([[3, 4]])
 array = np.concatenate((a, b), axis=0)
-print (array)
+print(array)
 
 ## Check whether a number is 'NaN'
     ## Note: this function requires the import of 'math'
@@ -293,13 +293,13 @@ print (array)
     ##  Systematic use of NaNs was introduced by the IEEE 754 floating-point standard in 1985, along with the representation of other non-finite quantities like infinities"
 
 number = float('NaN')
-print (math.isnan(number))
+print(math.isnan(number))
 
 #######################
 ## manipulate data 8 ##
 #######################
 
-print ('# manipulate data 8 #')
+print('# manipulate data 8 #')
 
 ## Logical operations
     ## prints 'True' if the statement is logically true, prints 'False' if not true 
@@ -314,37 +314,37 @@ print ('# manipulate data 8 #')
     ## round, ceil, floor and trunc
     ## Some examples can be found on: https://www.tutorialspoint.com/python/number_round.htm
 
-print (6 > 5)
-print (5 > 6)
-print (6 == 6)
-print (5 == 6)
-print (5!= 6)
+print(6 > 5)
+print(5 > 6)
+print(6 == 6)
+print(5 == 6)
+print(5!= 6)
 
 statement1 = 6 > 5
 statement2 = 5 > 6
 
-print (int(statement1))
-print (int(statement2))
+print(int(statement1))
+print(int(statement2))
 
 remainder = (10%4)
-print (remainder)
-print (remainder == 0)
+print(remainder)
+print(remainder == 0)
 
 int = 80.23456
 
-print (round(int, 2))
-print (round(int, 4))
+print(round(int, 2))
+print(round(int, 4))
 
-print (math.ceil(int))
-print (math.floor(int))
+print(math.ceil(int))
+print(math.floor(int))
 
-print (math.trunc(int))
+print(math.trunc(int))
 
 #######################
 ## manipulate data 9 ##
 #######################
 
-print ('# manipulate data 9 #')
+print('# manipulate data 9 #')
 
 ## Using loops to alter data 
 ## The first approach may seem as the most intuitive way to replace values, however keep in mind that other approaches (such as using indexation, or list comprehension) are equally effective
@@ -356,7 +356,7 @@ print ('# manipulate data 9 #')
     ## Because of this, we encourage to use code that is 'efficient' in the sense that it doesn't take long to execute
 
 sentence = 'A master has failed more times than a beginner has tried'.split()
-print (sentence)
+print(sentence)
 
 t1 = datetime.now()
 time1 = t1.microsecond
@@ -366,26 +366,26 @@ for words in sentence:
     b = words.lower()
     c = len(words)
     d = [a,b,c]
-    print (d)
+    print(d)
     
 t2 = datetime.now()
 time2 = t2.microsecond
 
-print ('Time to execute in microseconds: %d') %(time2-time1)
+print('Time to execute in microseconds: %d')%(time2-time1)
 
-print ('---')
+print('---')
 
 t1 = datetime.now()
 time1 = t1.microsecond
 
 new = [[words.upper(), words.lower(), len(words)] for words in sentence]
 for i in new:
-     print i
+     print(i)
 
 t2 = datetime.now()
 time2 = t2.microsecond
 
-print ('Time to execute in microseconds: %d') %(time2-time1)
+print('Time to execute in microseconds: %d') %(time2-time1)
 
 #########
 ## END ##
