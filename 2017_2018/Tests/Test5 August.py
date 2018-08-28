@@ -12,23 +12,23 @@ import os, random, pandas, math
 test = 1
 
 # data file
-info            = {"Participant name": "", "Participant number": 0}
+info            = {"Participant number": 0, "Age": 0}
 already_exists  = True
 while already_exists:
     myDlg = gui.DlgFromDict(dictionary = info, title = "Flanker Task")
-    file_name = os.getcwd() + "/data_flanker_" + str(info["Participant name"])
+    file_name = os.getcwd() + "/data_flanker_" + str(info["Participant number"])
     if not os.path.isfile(file_name+".csv"):
         already_exists = False
     else:
         myDlg2 = gui.Dlg(title = "Error")
-        myDlg2.addText("This name was already used. Please ask the experimenter to help you to enter a unique number.")
+        myDlg2.addText("This number was already used. Please ask the experimenter to help you to enter a unique number.")
         myDlg2.show()
 print("OK, let's get started!")
 thisExp = data.ExperimentHandler(dataFileName = file_name, extraInfo = info)
 
 # participant name
-#infoName        = {"Name": ""}
-#myDlgName       = gui.DlgFromDict(dictionary = infoName, title = "Please enter your name")
+infoName        = {"Name": ""}
+myDlgName       = gui.DlgFromDict(dictionary = infoName, title = "Please enter your name")
 
 # initialization
 dur_fix         = 0.5
@@ -61,7 +61,7 @@ welcome         = visual.TextStim(win, text=(   "Hi {},\n"+
                                                 "Welcome to the flanker task!\n"+
                                                 "You'll have to judge whether a central arrow\n"+
                                                 "is pointing left or right.\n\n"+
-                                                "Push the space bar to proceed.").format(info["Participant name"]),
+                                                "Push the space bar to proceed.").format(infoName["Name"]),
                                     wrapWidth = win_width*text_width)
 instruct        = visual.TextStim(win, text=(   "The response options ''left'' and ''right'' \n"+ 
                                                 "will be displayed at different sides of the screen on each trial. \n\n"+
