@@ -223,6 +223,6 @@ for block in range(n_blocks):
     
 # end of the block loop
 
-thisExp.saveAsWideText(file_name+".csv", appendFile = False)
-thisExp.abort()
-core.quit()
+#thisExp.saveAsWideText(file_name+".csv", appendFile = False)
+#thisExp.abort()
+#core.quit()
