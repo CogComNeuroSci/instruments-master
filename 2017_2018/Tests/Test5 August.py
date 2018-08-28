@@ -92,18 +92,20 @@ def randomize():
     
     # nrep-licate the number of trials
     Extended = pandas.concat([dataFrame]*int(n_rep), ignore_index = True)
-    print(Extended)
     
-    # additional information
-    odd = bool(info["Participant number"] % 2 == 1)
-    ## odd      0: left / right (33%)     1: right / left (66%)
-    ## even     1: left / right (33%)     0: right / left (66%)
+    # additional information on response mapping
+    odd = int(info["Participant number"] % 2 == 1)
+    ## 0 = congruent mapping, 1 = incongruent mapping
+    ## even     0: left / right (66%)     1: right / left (33%)     mostly congruent (1)
+    ## odd      0: left / right (33%)     1: right / left (66%)     mostly incongruent (0)
     Extended["ResponseMapping"] = [1-odd for number in range(len(all_stim)*1)] + [odd for number in range(len(all_stim)*2)]
     
     Extended["LeftPos"]     = [ cues_pos[number] for number in Extended["ResponseMapping"]] # the position of the word Left
-    Extended["RightPos"]  =   [-cues_pos[number] for number in Extended["ResponseMapping"]] # the position of the word right
-    ## 0 = word, 1 = non-word
-    Extended["StimType"]    = Extended["StimulusNumber"] // math.floor(len(all_stim)/2)
+    Extended["RightPos"]    = [-cues_pos[number] for number in Extended["ResponseMapping"]] # the position of the word Right
+
+    # additional information on stimulus and correct response
+    ## 0: arrow points to the left, 1 = arrow points to the right
+    Extended["StimType"]    = abs(Extended["StimulusNumber"] // math.floor(len(all_stim)/2))
     Extended["CorAns"]      = Extended["ResponseMapping"] * 10 + Extended["StimType"]
     Extended["CorAns"].replace([0,1],   answers[0:2],        inplace = True)
     Extended["CorAns"].replace([10,11], answers[0:2][::-1],  inplace = True)
@@ -133,7 +135,7 @@ def randomize():
     # insert the random trial order
     Random = Extended.iloc[index]
     
-    #print(pandas.crosstab([Random.ResponseMapping, Random.StimType], Random.CorAns))
+    print(pandas.crosstab([Random.ResponseMapping, Random.StimType], Random.CorAns))
     
     # convert dataframe back to list of dictionaries
     trial_list = pandas.DataFrame.to_dict(Random, orient = "records")
