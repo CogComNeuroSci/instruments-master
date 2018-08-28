@@ -43,18 +43,18 @@ ESC             = "escape"
 answers         = ["f","j",ESC]
 left_stim       = ["<<<", "<<>", "><<", "><>"]
 right_stim      = ["<><", "<>>", ">><", ">>>"]
-all_stim            = left_stim + right_stim
+all_stim        = left_stim + right_stim
 ntrialsPerBlock = 24
 n_rep           = ntrialsPerBlock/len(all_stim)
 my_clock        = core.Clock()
 
 # prepare graphic elements
-win = visual.Window([win_width,win_height], color = "black")
+win             = visual.Window([win_width,win_height], color = "black")
 
 fixation        = visual.TextStim(win, text = "+")
 central         = visual.TextStim(win, text = "")
-cue_woord       = visual.TextStim(win, text = "left",         color = "red")
-cue_nonwoord    = visual.TextStim(win, text = "right",     color = "red")
+cue_left        = visual.TextStim(win, text = "left",  color = "red")
+cue_right       = visual.TextStim(win, text = "right", color = "red")
 feedback        = visual.TextStim(win, text = "")
 
 welcome         = visual.TextStim(win, text=(   "Hi {},\n"+
@@ -93,6 +93,7 @@ def randomize():
     # nrep-licate the number of trials
     Extended = pandas.concat([dataFrame]*int(n_rep), ignore_index = True)
     print(Extended)
+    
     # additional information
     odd = bool(info["Participant number"] % 2 == 1)
     ## odd      0: left / right (33%)     1: right / left (66%)
@@ -167,8 +168,8 @@ for block in range(n_blocks):
         
         ## implement properties of this trial
         central.text        = trial["Stimulus"]
-        cue_woord.pos       = (trial["LeftPos"], 0)
-        cue_nonwoord.pos    = (trial["RightPos"], 0)
+        cue_left.pos        = (trial["LeftPos"], 0)
+        cue_right.pos       = (trial["RightPos"], 0)
         
         ## display the fixation
         fixation.draw()
@@ -176,8 +177,8 @@ for block in range(n_blocks):
         core.wait(dur_fix)
         
         ## display the stimulus
-        cue_woord.draw()
-        cue_nonwoord.draw()
+        cue_left.draw()
+        cue_right.draw()
         central.draw()
         win.flip()
         
