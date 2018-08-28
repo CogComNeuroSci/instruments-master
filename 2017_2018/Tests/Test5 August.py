@@ -32,7 +32,7 @@ myDlgName       = gui.DlgFromDict(dictionary = infoName, title = "Please enter y
 
 # initialization
 dur_fix         = 0.5
-dur_stim        = 5.5
+dur_stim        = 3
 dur_fb          = 1
 text_width      = 0.9
 win_width       = 1100
