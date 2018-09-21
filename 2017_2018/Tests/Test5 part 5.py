@@ -106,6 +106,8 @@ def randomize():
     # extract the trial indices
     index = list(Extended.index)
     
+    print Extended
+    
     # loop over the randomization untill the criterion is met
     stopcriterium = 0
     while stopcriterium != 1:
