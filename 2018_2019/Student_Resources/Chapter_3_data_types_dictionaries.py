@@ -50,7 +50,7 @@ del(dictionary)
 
 ## Dictionaries have some advantages, however, there are also some major disadvantages
 ## An example is the issue with the definition of the name of the keys
-## To illustrate, we define a dictionary which has 'school' two times as a Key name in it
+## To illustrate, we define a dictionary which has 'name' two times as a Key name in it
     ## When this is the case, the last definition wins
     ## In the code below for example, the value 'Stark' is the last variable assigned to the key 'Name'
     ## Therefore, this is the value that is printed when the key 'Name' is called

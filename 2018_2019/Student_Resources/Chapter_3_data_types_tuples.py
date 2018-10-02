@@ -27,7 +27,7 @@
     ## On the other hand, mutable data types such as lists have as an advantage that you can change/replace values as you see fit
 ## Depending on your purpose, you might want to use tuples or lists
 
-tup1 = ("Instruments of Experimental Psychology", "Cognitive Psychology I", 2017, 2018)
+tup1 = ("Instruments of Experimental Psychology", "Cognitive Psychology I", 2018, 2019)
 tup2 = (1, 2, 3, 4, 5)
 tup3 = "a", "b", "c", "d"
 print(tup1)
@@ -38,12 +38,6 @@ print(tup3)
 ## If we only want to assign one value to a tuple, we assign that value, and write a comma after it
     ## If we would neglect the comma, we would have assigned a string or integer to the variable name, not a tuple
     ## In other words, the type of the variable would be 'int' or 'string', not 'tuple'
-        ## If this is not clear to you, try the following:
-            ## tup1 = (50,)
-            ## print type(tup1)
-            
-            ## tup1 = (50)
-            ## print type(tup1)
 
 tup1 = ()
 print(tup1)
@@ -62,11 +56,11 @@ print(type(tup1))
 ## The second one gives the following output:
     ## (2, 3)
 ## Keep in mind that the type of the output differs:
-    ## If one item is selected, it will have the type you would expect ('Instruments of Experimental Psychology' is a string, '2017' is an integer)
+    ## If one item is selected, it will have the type you would expect ('Instruments of Experimental Psychology' is a string, '2018' is an integer)
     ## If we select multiple items, the type of the output will be a tuple!
         ## Remember that tuples are immutable, so replacing values in this output will be impossible!
 
-tup1 = ("Instruments of Experimental Psychology", "Cognitive Psychology I", 2017, 2018)
+tup1 = ("Instruments of Experimental Psychology", "Cognitive Psychology I", 2018, 2019)
 tup2 = (1, 2, 3, 4, 5)
 tup3 = "a", "b", "c", "d"
 
