@@ -1,4 +1,4 @@
-# This file solves class exercise 5.10 in the IEP course 2017-2018
+# This file solves class exercise 3.8 in the IEP course 2018-2019
 # Written by Tom Verguts, Nov 3, 2017
 
 # this is an imaginary score sheet for a student on four courses.
