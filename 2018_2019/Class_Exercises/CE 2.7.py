@@ -4,7 +4,13 @@ import time
 from psychopy import visual,event
 
 # definitions start here
-win = visual.Window(size = [600,400], units = "norm")
+win = visual.Window(fullscr = True, units = "norm")
+
+rect = visual.ImageStim(win, image = "HalloweenPumpkin.jpg")
+
+rect.draw()
+win.flip()
+time.sleep(2)
 
 pumpkinVert     = [(-0.2,0.0),(-0.4,0.1),(-.4,0.4),(-0.2,0.6),(0.2,0.6),(.4,0.4),(.4,0.1),(0.2,0)]
 pumpkin         = visual.ShapeStim( win, lineColor = "black", fillColor = "orange", vertices = pumpkinVert, size = 1)
@@ -44,8 +50,5 @@ eyeRight.draw()
 mouth.draw()
 tekst.draw()
 win.flip()
-
-# keep the final screen active until a key is pressed
-while not event.getKeys():
-    pass
+time.sleep(1)
 win.close()
