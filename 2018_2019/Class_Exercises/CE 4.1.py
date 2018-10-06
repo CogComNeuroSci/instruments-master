@@ -21,34 +21,24 @@ rect.draw()
 win.flip()
 time.sleep(2)
 
-# Now our drawing; with text...
-pumpkin.draw()
-pumpkin_top.draw()
-eyeLeft.draw()
-eyeRight.draw()
-mouth.draw()
-tekst.draw()
-win.flip()
-time.sleep(0.5)
+# Now our drawing; with the text flashing on and off a few times
 
-# and without text
-pumpkin.draw()
-pumpkin_top.draw()
-eyeLeft.draw()
-eyeRight.draw()
-mouth.draw()
-win.flip()
-time.sleep(1)
+for flashes in range(5):
+    
+    # draw the pumpkin
+    pumpkin.draw()
+    pumpkin_top.draw()
+    eyeLeft.draw()
+    eyeRight.draw()
+    mouth.draw()
+    
+    # draw the text only on even iterations of the loop
+    if flashes%2 == 0:
+        tekst.draw()
+    
+    # display what we drew
+    win.flip()
+    time.sleep(0.5)
 
-# and again with text
-# for more flashes, you can copy-paste these two code blocks a number of times.
-# a more efficient way to do this, will be discussed in Chapter 4
-pumpkin.draw()
-pumpkin_top.draw()
-eyeLeft.draw()
-eyeRight.draw()
-mouth.draw()
-tekst.draw()
-win.flip()
-time.sleep(1)
+# close the experiment window
 win.close()

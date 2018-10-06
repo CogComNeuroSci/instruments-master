@@ -8,7 +8,7 @@ import time, numpy
 win = visual.Window(fullscr = True, units = "norm")
 
 # initialize the variables
-duration = 1
+duration = 0.5
 
 # we start with adding the values for the words and the colors
 ColorWord   = numpy.array([ "red", "red", "red", "red",
@@ -66,26 +66,17 @@ Instructions.draw()
 win.flip()
 time.sleep(1)
 
-# display the Stroop stimulus
-Stroop_stim.text    = trials[0,0]
-Stroop_stim.color   = trials[0,1]
-Stroop_stim.draw()
-win.flip()
-time.sleep(duration)
-
-# display the Stroop stimulus
-Stroop_stim.text    = trials[8,0]
-Stroop_stim.color   = trials[8,1]
-Stroop_stim.draw()
-win.flip()
-time.sleep(duration)
-
-# display the Stroop stimulus
-Stroop_stim.text    = trials[15,0]
-Stroop_stim.color   = trials[15,1]
-Stroop_stim.draw()
-win.flip()
-time.sleep(duration)
+# display the Stroop stimuli
+for i in range(trials.shape[0]):
+    
+    # set the color word and the font color for this trial
+    Stroop_stim.text    = trials[i,0]
+    Stroop_stim.color   = trials[i,1]
+    
+    # display the stimulus on the screen
+    Stroop_stim.draw()
+    win.flip()
+    time.sleep(duration)
 
 # display the goodbye message
 TheEndImage.draw()

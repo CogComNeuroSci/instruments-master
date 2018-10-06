@@ -28,9 +28,7 @@ Instructions    = visual.TextStim(win, text = "In this experiment you will see c
                                                 "Any questions?", height = 0.05)
 Stroop_stim     = visual.TextStim(win, text = "red", color = "blue")
 Goodbye         = visual.TextStim(win, text = "Goodbye!", pos = (0,0.75), height = 0.2)
-
-TheEnd          = "the_end.jpg"
-TheEndImage     = visual.ImageStim(win, image = TheEnd)
+TheEndImage     = visual.ImageStim(win, image = "the_end.jpg")
 
 # display the welcome message
 Welcome.draw()

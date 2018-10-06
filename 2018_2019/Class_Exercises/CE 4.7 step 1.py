@@ -5,14 +5,14 @@
 import numpy, time
 from psychopy import visual
 
-# Global variables
+# Initialize variables
 ## There are a number of variables that stay the same across the entire assignment.
 ## These are initialized here as integers, which is logical because we don't want them to be mutable.
-start_value = 1
-end_value = 100
-value = start_value
-mean = 0.10
-sd = 0.025
+start_value     = 1
+end_value       = 100
+value           = start_value
+mean            = 0.10
+sd              = 0.025
 
 # Increase the value to 100
 while value < end_value:

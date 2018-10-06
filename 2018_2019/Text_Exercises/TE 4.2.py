@@ -16,3 +16,14 @@ for i in my_tuple:
 
 for i in range(len(my_tuple)):
     print(my_tuple[i])
+
+
+### Iterate over an array
+import numpy
+my_array = numpy.array(my_list)
+
+for i in my_array:
+    print(i)
+
+for i in range(len(my_array)):
+    print(my_array[i])

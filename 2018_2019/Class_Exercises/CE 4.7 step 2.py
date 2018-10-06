@@ -5,18 +5,21 @@
 import numpy, time
 from psychopy import visual
 
-# Global variables
-## There are number of variables that stay the same across the entire assignment.
-## These are initialized here as integers, which is logical because we don't want them to be mutable.
-start_value = 1
-end_value = 100
-value = start_value
-mean = 0.10
-sd = 0.025
-
 # Display preparation
 ## Initialize the screen to display the stimuli on.
-win = visual.Window(fullscr = True, color = (-1,-1,-1), units="norm")
+win = visual.Window(fullscr = True, color = (-1,-1,-1), units = "norm")
+
+# Initialize variables
+## There are number of variables that stay the same across the entire assignment.
+## These are initialized here as integers, which is logical because we don't want them to be mutable.
+start_value     = 1
+end_value       = 100
+value           = start_value
+mean            = 0.10
+sd              = 0.025
+
+# Initialize the graphical elements
+stim = visual.TextStim(win, text = "test", pos = (0.0,0.5))
 
 # Increase the value to 100
 while value < end_value:
@@ -31,12 +34,13 @@ while value < end_value:
     if blue_green < -1:
         blue_green = -1
 
-    ## Display the message with the current value
-    disp_text = "Current bitcoin value: {:.1f} euro".format(int(value))
-    stim = visual.TextStim(win,text=disp_text,color=(1,blue_green,blue_green),pos=(0.0,0.5))
-    stim.draw()
+    ## Adjust the text and the color of the message
+    stim.text   = "Current bitcoin value: {:.0f} euro".format(int(value))
+    stim.color  = (1, blue_green, blue_green)
 
+    ## Display the message with the current value
     ## Flip the screen and hold for a bit
+    stim.draw()
     win.flip()
     time.sleep(0.1)
 

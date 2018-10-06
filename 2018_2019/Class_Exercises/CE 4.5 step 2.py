@@ -8,7 +8,7 @@ import time, numpy
 win = visual.Window(fullscr = True, units = "norm")
 
 # initialize the variables
-duration = 1
+duration = 0.25
 
 # we start with adding the values for the words and the colors
 ColorWord   = numpy.array([ "red", "red", "red", "red",
@@ -52,7 +52,9 @@ Instructions    = visual.TextStim(win, text = "In this experiment you will see c
                                                 "Answer as quickly as possible, but also try to avoid mistakes.\n" +
                                                 "By all means ignore the meaning of the words, you should only respond to the ink color.\n\n" +
                                                 "Any questions?", height = 0.05)
+Block_start     = visual.TextStim(win, text = "OK")
 Stroop_stim     = visual.TextStim(win, text = "red", color = "blue")
+Feedback        = visual.TextStim(win, text = "OK")
 Goodbye         = visual.TextStim(win, text = "Goodbye!", pos = (0,0.75), height = 0.2)
 TheEndImage     = visual.ImageStim(win, image = "the_end.jpg")
 
@@ -66,26 +68,38 @@ Instructions.draw()
 win.flip()
 time.sleep(1)
 
-# display the Stroop stimulus
-Stroop_stim.text    = trials[0,0]
-Stroop_stim.color   = trials[0,1]
-Stroop_stim.draw()
-win.flip()
-time.sleep(duration)
-
-# display the Stroop stimulus
-Stroop_stim.text    = trials[8,0]
-Stroop_stim.color   = trials[8,1]
-Stroop_stim.draw()
-win.flip()
-time.sleep(duration)
-
-# display the Stroop stimulus
-Stroop_stim.text    = trials[15,0]
-Stroop_stim.color   = trials[15,1]
-Stroop_stim.draw()
-win.flip()
-time.sleep(duration)
+# display the Stroop stimuli
+# in two blocks
+for b in range(2):
+    
+    # announce what block is about to start
+    Block_start.text = "Block " + str(b+1) + " will start now"
+    Block_start.draw()
+    win.flip()
+    time.sleep(1)
+    
+    # in 16 trials
+    for i in range(trials.shape[0]):
+        
+        # set the color word and the font color for this trial
+        Stroop_stim.text    = trials[i,0]
+        Stroop_stim.color   = trials[i,1]
+        
+        # display the stimulus on the screen
+        Stroop_stim.draw()
+        win.flip()
+        time.sleep(duration)
+        
+        # determine the feedback message
+        if trials[i,3] == "d":
+            Feedback.text = "Correct!"
+        else:
+            Feedback.text = "Wrong answer!"
+        
+        # display the feedback message
+        Feedback.draw()
+        win.flip()
+        time.sleep(duration)
 
 # display the goodbye message
 TheEndImage.draw()
