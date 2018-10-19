@@ -3,8 +3,8 @@
 from psychopy import visual
 import time 
 
-win = visual.Window(fullscr = True, monitor = "testMonitor")
-rect = visual.Rect(win, width = 4, height = 4, units = "deg")
+win = visual.Window(fullscr = True, monitor = "testMonitor", units = "deg")
+rect = visual.Rect(win, width = 4, height = 4)
 
 rect.draw()
 win.flip()

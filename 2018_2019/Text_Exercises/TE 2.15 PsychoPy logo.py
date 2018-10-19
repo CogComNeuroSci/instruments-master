@@ -7,9 +7,10 @@ import time
 # time is a module from python containing several time-related methods
 # Hence, the window will be shown for 3 seconds exactly
 
-win = visual.Window([600,400])
+win = visual.Window([400,400])
 
-grating = visual.GratingStim(win, mask = "circle", ori = 45, sf = 4)
+grating = visual.GratingStim(win, mask = "circle", ori = 30, sf = 4)
+
 grating.draw()
 
 win.flip()
