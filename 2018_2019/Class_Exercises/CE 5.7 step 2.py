@@ -1,120 +1,115 @@
-# Code for catching butterflies
-# by Esther De Loof & Tom Verguts, dec 2017
+"""
+some I/O testing in a basic "experiment"
 
-# part 1: loading modules
-from psychopy import visual,event,core
-from time import sleep
-import numpy as np
-from numpy import random
+"""
 
-# part 2: initialization
-n_trials = 5
-max_time = 10 ## measured in seconds
-step_size = 0.1*2 ## 10% of screen
-step_time = 0.1
-pos_bfly_blue_start = (-0.5,0)
-pos_bfly_green_start = (0.5,0)
-blue_counter = 0
-green_counter = 0
+# import modules
+from psychopy import prefs
+prefs.general['audioLib'] = ['pyo']
+from psychopy import visual, event, core, sound
+import time, numpy
+
+# initialize the window
+win = visual.Window(size=[500,400])
+
+# initializing
 my_clock = core.Clock()
-colors = ["blue","green"]
+my_mouse = event.Mouse()
+n_trials = 3
+key_list = ["f","j"]
 
-# part 3: prepare graphic elements
-win = visual.Window([500,400])
-bfly_blue = visual.Circle(win,lineColor="blue",fillColor="blue",pos=pos_bfly_blue_start,size=0.1)
-bfly_green = visual.Circle(win,lineColor="green",fillColor="green",pos=pos_bfly_green_start,size=0.1)
-catcher = visual.Circle(win, radius=30, edges=13, units='pix')
-target_text = visual.TextStim(win,text="")
-slow_text = visual.TextStim(win,text="Too slow!")
-catch_text = visual.TextStim(win,text="Caught!")
-mouse = event.Mouse()
+# hard coded stimulus onset delay and correct response
+OnsetDelay  = numpy.array([1,0.5,2])
+CorResp     = numpy.array(["left","left","right"]) ## right-click means double-click on a Mac
 
-# part 4: flying around
+# add a default RT that will be overwritten during the trial loop
+RT = numpy.repeat(-99.9,n_trials)
+
+# graphical elements
+text_ready      = visual.TextStim(win,text="are you ready...?")
+text_go         = visual.TextStim(win,text="Go!")
+text_correct    = visual.TextStim(win,text="correct :-)")
+text_error      = visual.TextStim(win,text="wrong :-(")
+
+# feedback sound elements
+sound_duration = 0.25
+sound_to_play = sound.Sound("A", octave=1, secs=sound_duration, stereo=True)
+
+# perform three trials
 for trial in range(n_trials):
-    
-    ## Display the trial number
-    trial_text = visual.TextStim(win,text="trial "+str(trial+1)+"!")
-    trial_text.draw()
-    win.flip()
-    sleep(0.5)
-    
-    ## Display which butterlfy to catch
-    target = random.choice(colors)
-    target_text.text = "Catch the {0} butterfly!".format(target)
-    target_text.draw()
-    win.flip()
-    sleep(1)
-    
-    ## Initialize variables for this trial
-    time = 0
-    catch = False
-    bfly_blue.pos = pos_bfly_blue_start
-    bfly_green.pos = pos_bfly_green_start
-    
-    while catch == False:
-        
-        ## Update variables at this moment in time
-        time = time+step_time
-        bfly_blue.pos = bfly_blue.pos+step_size*(2*random.randint(0,2,2)-1)
-        bfly_green.pos = bfly_green.pos+step_size*(2*random.randint(0,2,2)-1)
-        
-        ## Check boundary conditions at this moment in time
-        bfly_blue.pos = np.minimum(np.maximum(bfly_blue.pos,-1),1)
-        bfly_green.pos = np.minimum(np.maximum(bfly_green.pos,-1),1)
-        
-        ## Reset the clock to catch the butterfly in 0.1 seconds
-        my_clock.reset() 
-        
-        while my_clock.getTime() < step_time and catch == False:
-            
-            ## Register the position of the mouse
-            catcher.pos = mouse.getPos() * win.size / 2  # follow the mouse
-            
-            ## Display butterflies at this moment in time
-            bfly_blue.draw()
-            bfly_green.draw()
-            catcher.draw()
-            win.flip()
-            
-            ## Check whether the butterflies are caught
-            if bfly_blue.overlaps(catcher) and target == "blue":
-                catch = True
-                blue_counter += 1
-                catch_text.color="blue"
-                catch_text.draw()
-                win.flip()
-                sleep(1)
-                
-            if bfly_green.overlaps(catcher) and target == "green":
-                catch = True
-                green_counter += 1
-                catch_text.color="green"
-                catch_text.draw()
-                win.flip()
-                sleep(1)
-                
-        ## Escape the while loop when the time is up
-        if time >= max_time:
-            slow_text.draw()
-            win.flip()
-            sleep(1)
-            break
-            
-        ## Escape function to get out of infinite while loop
-        if "f" in event.getKeys():
-            break
 
-# part 5: print results on screen and finish
-if blue_counter==0 and green_counter==0:
-    feedback = "Er zijn geen vlinders gevangen!"
-elif blue_counter==green_counter:
-    feedback = "Ze zijn even vaak gevangen!"
-elif blue_counter>green_counter:
-    feedback = "De blauwe is vaker gevangen!"
-else:
-    feedback = "De groene is vaker gevangen!"
-feedback_text = visual.TextStim(win,text=feedback)
-feedback_text.draw()
+    ## display the first message and wait a second (or two)
+    text_ready.draw()
+    win.flip()
+    time.sleep(OnsetDelay[trial])
+
+    ## draw the Go message on the back buffer
+    text_go.draw()
+    
+    ## clear the mouse input
+    event.clearEvents(eventType = "mouse")
+    
+    ## display the Go message on the screen
+    win.flip()
+
+    ## reset the clock to measure the RT
+    my_clock.reset() 
+
+    ## wait for the mouse press and register it
+    while numpy.sum(my_mouse.getPressed())==0:
+        pass
+
+    ## register the time
+    RT[trial] = my_clock.getTime()
+
+    ## display the accuracy feedback (predetermined)
+    if (my_mouse.getPressed()[0]==1 and CorResp[trial]=="left") or (my_mouse.getPressed()[2]==1 and CorResp[trial]=="right"):
+        text_correct.draw()
+        current_sound = 4
+        sound_adjustment = 0.2
+    else:
+        text_error.draw()
+        current_sound = 3
+        sound_adjustment = -0.2
+    win.flip()
+    for soundi in range(5):
+        current_sound = current_sound + sound_adjustment
+        sound_to_play = sound.Sound("A", octave=current_sound, secs=sound_duration, stereo=True)
+        sound_to_play.play()
+        time.sleep(sound_duration)
+
+# probe the pleasantness and tiredness of the participant
+myRatingScale = visual.RatingScale(win, low=0, high=100, marker="slider",
+    tickMarks=[0, 25, 50, 75, 100], stretch=1.5, tickHeight=1.5,  # singleClick=True,
+    labels=["0%", "25%", "50%", "75%", "100%"])
+myItem = visual.TextStim(win, text="", height=.08, units="norm")
+
+for quest in range(2):
+
+    ## remove any remaining ratings
+    myRatingScale.reset() 
+
+    if quest == 0:
+        myItem.text = "How pleasant was this experiment?"
+    else:
+        myItem.text = "How tired do you feel?"
+
+    ## show & update until a response has been made
+    while myRatingScale.noResponse:
+        myItem.draw()
+        myRatingScale.draw()
+        win.flip()
+        if event.getKeys(["escape"]):
+            core.quit()
+
+    print("Answer to question {0}: {1}%".format(str(quest), myRatingScale.getRating()))
+
+# display the average RT for one second
+meantime = numpy.mean(RT)
+text_feedback = visual.TextStim(win, text = "mean RT = {0:.1f} sec".format(meantime), pos = [0,0.5])
+text_feedback.draw()
 win.flip()
-sleep(3)
+time.sleep(1)
+
+# wrap it up
 win.close()

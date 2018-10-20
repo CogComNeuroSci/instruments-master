@@ -1,108 +1,101 @@
-# Code for crashing cars
-# by Esther De Loof & Tom Verguts, nov 2017
+"""
+some I/O testing in a basic "experiment"
 
-# part 1: loading modules
-from psychopy import visual,event,sound
-from time import sleep
-import numpy as np
-from numpy import random
+"""
 
-# part 2: initialization
-n_trials = 5
-max_time = 10 ## measured in seconds
-step_size = 0.1*2 ## 10% of screen
-step_time = 0.1
-pos_car_blue_start = (-0.5,0)
-pos_car_green_start = (0.5,0)
-blue_counter = 0
-green_counter = 0
-wall_width = 0.1*2 ## 10% of screen width
-wall_height = 0.2*2 ## 20% of screen height
+# import modules
+from psychopy import visual, event, core
+import time, numpy
 
-## checking the audio library just to be sure
-print 'Using %s(with %s) for sounds' % (sound.audioLib, sound.audioDriver)
-## make the sounds
-sound_duration = 3
-sound_to_play = sound.Sound("car_crash.wav",secs=sound_duration,stereo=True)
+# initialize the window
+win = visual.Window(size=[500,400])
 
-# part 3: prepare graphic elements
-win = visual.Window([500,400])
-car_blue = visual.Circle(win,lineColor="blue",fillColor="blue",pos=pos_car_blue_start,size=0.1)
-car_green = visual.Circle(win,lineColor="green",fillColor="green",pos=pos_car_green_start,size=0.1)
-##car_blue = visual.ImageStim(win, image = "Car_blue.png", pos=pos_car_blue_start, size=0.2)
-##car_green = visual.ImageStim(win, image = "Car_green.png", pos=pos_car_green_start, size=0.2)
-wall = visual.Rect(win,width=wall_width,height=wall_height,lineColor="red",fillColor="red")
-crash_text = visual.TextStim(win,text="Botsing!")
+# initializing
+my_clock = core.Clock()
+my_mouse = event.Mouse()
+n_trials = 3
+key_list = ["f","j"]
 
-# part 4: driving around
+# hard coded stimulus onset delay and correct response
+OnsetDelay  = numpy.array([1,0.5,2])
+CorResp     = numpy.array(["left","left","right"]) ## right-click means double-click on a Mac
+
+# add a default RT that will be overwritten during the trial loop
+RT = numpy.repeat(-99.9,n_trials)
+
+# graphical elements
+text_ready      = visual.TextStim(win,text="are you ready...?")
+text_go         = visual.TextStim(win,text="Go!")
+text_correct    = visual.TextStim(win,text="correct :-)")
+text_error      = visual.TextStim(win,text="wrong :-(")
+
+# perform three trials
 for trial in range(n_trials):
-    
-    ## Display the trial number
-    trial_text = visual.TextStim(win,text="trial "+str(trial+1)+"!")
-    trial_text.draw()
-    win.flip()
-    sleep(0.5)
-    
-    ## Initialize variables for this trial
-    time = 0
-    crash = False
-    car_blue.pos = pos_car_blue_start
-    car_green.pos = pos_car_green_start
-    
-    while crash == False and time < max_time:
-        
-        ## Update variables at this moment in time
-        time = time+step_time
-        car_blue.pos = car_blue.pos+step_size*(2*random.randint(0,2,2)-1)
-        car_green.pos = car_green.pos+step_size*(2*random.randint(0,2,2)-1)
-        
-        ## Check boundary conditions at this moment in time
-        car_blue.pos = np.minimum(np.maximum(car_blue.pos,-1),1)
-        car_green.pos = np.minimum(np.maximum(car_green.pos,-1),1)
-        
-        ## Display wall and cars at this moment in time
-        wall.draw()
-        car_blue.draw()
-        car_green.draw()
-        win.flip()
-        sleep(step_time)
-        
-        ## Check wall hitting
-        if np.absolute(car_blue.pos[0])<wall_width/2 and np.absolute(car_blue.pos[1])<wall_height/2:
-            
-            crash = True
-            blue_counter += 1
-            crash_text.color="blue"
-            crash_text.draw()
-            win.flip()
-            sound_to_play.play()
-            sleep(sound_duration)
-            
-        if np.absolute(car_green.pos[0])<wall_width/2 and np.absolute(car_green.pos[1])<wall_height/2:
-            
-            crash = True
-            green_counter += 1
-            crash_text.color="green"
-            crash_text.draw()
-            win.flip()
-            sound_to_play.play()
-            sleep(sound_duration)
-        
-        ## Escape function to get out of infinite while loop
-        if "f" in event.getKeys():
-            break
 
-# part 5: print results on screen and finish
-if blue_counter==0 and green_counter==0:
-    feedback = "Er is niet gebotst!"
-elif blue_counter==green_counter:
-    feedback = "Ze zijn even vaak gebotst!"
-elif blue_counter>green_counter:
-    feedback = "De blauwe is vaker gebotst!"
-else:
-    feedback = "De groene is vaker gebotst!"
-feedback_text = visual.TextStim(win,text=feedback)
-feedback_text.draw()
+    ## display the first message and wait a second (or two)
+    text_ready.draw()
+    win.flip()
+    time.sleep(OnsetDelay[trial])
+
+    ## draw the Go message on the back buffer
+    text_go.draw()
+    
+    ## clear the mouse input
+    event.clearEvents(eventType = "mouse")
+    
+    ## display the Go message on the screen
+    win.flip()
+
+    ## reset the clock to measure the RT
+    my_clock.reset() 
+
+    ## wait for the mouse press and register it
+    while numpy.sum(my_mouse.getPressed())==0:
+        pass
+
+    ## register the time
+    RT[trial] = my_clock.getTime()
+
+    ## display the accuracy feedback (predetermined)
+    if (my_mouse.getPressed()[0]==1 and CorResp[trial]=="left") or (my_mouse.getPressed()[2]==1 and CorResp[trial]=="right"):
+        text_correct.draw()
+    else:
+        text_error.draw()
+    win.flip()
+    time.sleep(1)
+
+# probe the pleasantness and tiredness of the participant
+myRatingScale = visual.RatingScale(win, low=0, high=100, marker="slider",
+    tickMarks=[0, 25, 50, 75, 100], stretch=1.5, tickHeight=1.5,  # singleClick=True,
+    labels=["0%", "25%", "50%", "75%", "100%"])
+myItem = visual.TextStim(win, text="", height=.08, units="norm")
+
+for quest in range(2):
+
+    ## remove any remaining ratings
+    myRatingScale.reset() 
+
+    if quest == 0:
+        myItem.text = "How pleasant was this experiment?"
+    else:
+        myItem.text = "How tired do you feel?"
+
+    ## show & update until a response has been made
+    while myRatingScale.noResponse:
+        myItem.draw()
+        myRatingScale.draw()
+        win.flip()
+        if event.getKeys(["escape"]):
+            core.quit()
+
+    print("Answer to question {0}: {1}%".format(str(quest), myRatingScale.getRating()))
+
+# display the average RT for one second
+meantime = numpy.mean(RT)
+text_feedback = visual.TextStim(win, text = "mean RT = {0:.1f} sec".format(meantime), pos = [0,0.5])
+text_feedback.draw()
 win.flip()
-sleep(3)
+time.sleep(1)
+
+# wrap it up
 win.close()

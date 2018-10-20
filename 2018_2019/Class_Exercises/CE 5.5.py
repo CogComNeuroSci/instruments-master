@@ -4,9 +4,7 @@ some I/O testing in a basic "experiment"
 """
 
 # import modules
-from psychopy import prefs
-prefs.general['audioLib'] = ['pyo']
-from psychopy import visual, event, core, sound
+from psychopy import visual, event, core
 import time, numpy
 
 # initialize the window
@@ -30,11 +28,6 @@ text_ready      = visual.TextStim(win,text="are you ready...?")
 text_go         = visual.TextStim(win,text="Go!")
 text_correct    = visual.TextStim(win,text="correct :-)")
 text_error      = visual.TextStim(win,text="wrong :-(")
-
-# feedback sound elements
-sound_duration = 1.5
-right_sound = sound.Sound("A", octave=4, secs=sound_duration, stereo=True)
-wrong_sound = sound.Sound("A", octave=3, secs=sound_duration, stereo=True)
 
 # perform three trials
 for trial in range(n_trials):
@@ -66,39 +59,10 @@ for trial in range(n_trials):
     ## display the accuracy feedback (predetermined)
     if (my_mouse.getPressed()[0]==1 and CorResp[trial]=="left") or (my_mouse.getPressed()[2]==1 and CorResp[trial]=="right"):
         text_correct.draw()
-        sound_to_play = right_sound
     else:
         text_error.draw()
-        sound_to_play = wrong_sound
     win.flip()
-    sound_to_play.play()
-    time.sleep(sound_duration)
-
-# probe the pleasantness and tiredness of the participant
-myRatingScale = visual.RatingScale(win, low=0, high=100, marker="slider",
-    tickMarks=[0, 25, 50, 75, 100], stretch=1.5, tickHeight=1.5,  # singleClick=True,
-    labels=["0%", "25%", "50%", "75%", "100%"])
-myItem = visual.TextStim(win, text="", height=.08, units="norm")
-
-for quest in range(2):
-
-    ## remove any remaining ratings
-    myRatingScale.reset() 
-
-    if quest == 0:
-        myItem.text = "How pleasant was this experiment?"
-    else:
-        myItem.text = "How tired do you feel?"
-
-    ## show & update until a response has been made
-    while myRatingScale.noResponse:
-        myItem.draw()
-        myRatingScale.draw()
-        win.flip()
-        if event.getKeys(["escape"]):
-            core.quit()
-
-    print("Answer to question {0}: {1}%".format(str(quest), myRatingScale.getRating()))
+    time.sleep(1)
 
 # display the average RT for one second
 meantime = numpy.mean(RT)
