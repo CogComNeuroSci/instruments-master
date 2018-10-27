@@ -1,0 +1,6 @@
+# import my homemade squaring function from an external script
+from my_functions import square_function
+ 
+# square the number via the homemade function and print it
+number = 3
+print(square_function())
