@@ -13,7 +13,7 @@ mouth           = visual.Line(      win, lineColor = "black", start = (-0.2,0.1)
 eyeLeft         = visual.Circle(    win, lineColor = "black", fillColor = "black", pos = (-0.2,0.4), radius = 0.01)
 eyeRight        = visual.Circle(    win, lineColor = "black", fillColor = "black", pos = (0.2,0.4), radius = 0.01)
 pumpkin_top     = visual.Rect(      win, lineColor = "black", fillColor = "green", pos = (0,0.7), width = 0.1, height = 0.2)
-tekst           = visual.TextStim(  win, text = "Happy halloween!", height = 0.3, pos = (0,-0.5), font = "Monotype Corsiva", wrapWidth = 3)
+tekst           = visual.TextStim(  win, text = "Happy halloween!", height = 0.1, pos = (0,-0.5), font = "Monotype Corsiva", wrapWidth = 3)
 tekst.italic    = False
 
 # drawing starts here; first the image

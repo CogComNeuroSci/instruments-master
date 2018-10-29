@@ -8,7 +8,9 @@ import time, numpy
 win = visual.Window(fullscr = True, units = "norm")
 
 # initialize the variables
-duration = 0.25
+duration    = 0.25
+nblocks     = 2
+ntrials     = 16
 
 # we start with adding the values for the words and the colors
 ColorWord   = numpy.array([ "red", "red", "red", "red",
@@ -32,9 +34,14 @@ CorResp[CorResp == "blue"]    = "f"
 CorResp[CorResp == "green"]   = "j"
 CorResp[CorResp == "yellow"]  = "k"
 
+# allow to store the accuracy
+Accuracy = numpy.repeat(-99.9,len(CorResp))
+
 # combine arrays in trial matrix
-trials = numpy.column_stack([ColorWord, FontColor, Congruence, CorResp])
-print(trials)
+trials = numpy.column_stack([ColorWord, FontColor, Congruence, CorResp, Accuracy])
+
+# repeat the trial matrix for the two blocks
+trials = numpy.tile(trials, (nblocks, 1))
 
 # initialize graphical elements
 Welcome         = visual.TextStim(win, text = "Welcome!")
@@ -69,10 +76,10 @@ time.sleep(1)
 
 # display the Stroop stimuli
 # in two blocks
-for b in range(2):
+for b in range(nblocks):
     
     # in 16 trials
-    for i in range(trials.shape[0]):
+    for i in range(b*ntrials,(b+1)*ntrials):
         
         # set the color word and the font color for this trial
         Stroop_stim.text    = trials[i,0]
@@ -83,8 +90,11 @@ for b in range(2):
         win.flip()
         time.sleep(duration)
         
+        # determine accuracy
+        trials[i,4] = int(trials[i,3] == "d")
+        
         # determine the feedback message
-        if trials[i,3] == "d":
+        if int(trials[i,4]) == 1:
             Feedback.text = "Correct!"
         else:
             Feedback.text = "Wrong answer!"
@@ -102,3 +112,5 @@ time.sleep(1)
 
 # close the experiment window
 win.close()
+
+print(trials)

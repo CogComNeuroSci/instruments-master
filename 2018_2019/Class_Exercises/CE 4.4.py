@@ -32,9 +32,11 @@ CorResp[CorResp == "blue"]    = "f"
 CorResp[CorResp == "green"]   = "j"
 CorResp[CorResp == "yellow"]  = "k"
 
+# allow to store the accuracy
+Accuracy = numpy.repeat(-99.9,len(CorResp))
+
 # combine arrays in trial matrix
-trials = numpy.column_stack([ColorWord, FontColor, Congruence, CorResp])
-print(trials)
+trials = numpy.column_stack([ColorWord, FontColor, Congruence, CorResp, Accuracy])
 
 # initialize graphical elements
 Welcome         = visual.TextStim(win, text = "Welcome!")
@@ -79,8 +81,11 @@ for i in range(trials.shape[0]):
     win.flip()
     time.sleep(duration)
     
+    # determine accuracy
+    trials[i,4] = int(trials[i,3] == "d")
+    
     # determine the feedback message
-    if trials[i,3] == "d":
+    if int(trials[i,4]) == 1:
         Feedback.text = "Correct!"
     else:
         Feedback.text = "Wrong answer!"
@@ -98,3 +103,5 @@ time.sleep(1)
 
 # close the experiment window
 win.close()
+
+print(trials)
