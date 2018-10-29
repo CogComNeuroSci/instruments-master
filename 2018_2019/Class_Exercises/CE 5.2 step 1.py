@@ -8,6 +8,8 @@ import time, numpy
 win = visual.Window(fullscr = True, units = "norm")
 
 # initialize the variables
+nblocks     = 2
+ntrials     = 16
 participant = 2
 
 # we start with adding the values for the words and the colors
@@ -39,11 +41,17 @@ CorResp[CorResp == "blue"]    = "f"
 CorResp[CorResp == "green"]   = "j"
 CorResp[CorResp == "yellow"]  = "k"
 
+# allow to store the accuracy
+Accuracy = numpy.repeat(-99.9,len(CorResp))
+
 # add a default response that will be overwritten during the trial loop
 Resp = numpy.repeat(0,len(CorResp))
 
 # combine arrays in trial matrix
-trials = numpy.column_stack([ColorWord, FontColor, Congruence, CorResp, Resp])
+trials = numpy.column_stack([ColorWord, FontColor, Congruence, CorResp, Resp, Accuracy])
+
+# repeat the trial matrix for the two blocks
+trials = numpy.tile(trials, (nblocks, 1))
 
 # initialize graphical elements
 Welcome         = visual.TextStim(win, text = "Welcome!\n\nPress the space bar to continue.")
@@ -103,7 +111,7 @@ event.waitKeys(keyList = ["space"])
 
 # display the Stroop stimuli
 # in two blocks
-for b in range(2):
+for b in range(nblocks):
     
     # announce what block is about to start
     Block_start.text = "Block " + str(b+1) + " will start when you press the space bar."
@@ -112,7 +120,7 @@ for b in range(2):
     event.waitKeys(keyList = ["space"])
     
     # in 16 trials
-    for i in range(trials.shape[0]):
+    for i in range(b*ntrials,(b+1)*ntrials):
         
         # set the color word and the font color for this trial
         Stroop_stim.text    = trials[i,0]
@@ -144,8 +152,11 @@ for b in range(2):
         # Store the response information
         trials[i,4] = keys[0]
         
+        # determine accuracy
+        trials[i,5] = int(trials[i,3] == trials[i,4])
+        
         # determine the feedback message
-        if trials[i,3] == keys[0]:
+        if int(trials[i,5]) == 1:
             Feedback.text = "Correct!"
         else:
             Feedback.text = "Wrong answer!"
