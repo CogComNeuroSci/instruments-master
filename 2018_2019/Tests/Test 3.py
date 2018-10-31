@@ -1,0 +1,196 @@
+# import modules
+from psychopy import visual, event, core, gui
+import time, numpy, pylab
+
+# create a dialog box
+info = {"Participant number":0, "Participant name":"Incognito", "Gender":["male", "female", "third gender"], "Age":0, "Handedness":["right", "left", "ambidextrous"]}
+infoDlg = gui.DlgFromDict(dictionary=info, title="Gabor Experiment")
+if infoDlg.OK:  # this will be True (user hit OK) or False (cancelled)
+    print(info)
+else:
+    print("User Cancelled")
+
+# initialize the window
+win = visual.Window([600,500], units = "norm")
+
+# initialize Gabor properties
+Refresh             = 1000/60
+Orientations        = [330,30]
+SpacialFrequencies  = [2,20]
+PresentationTime    = [Refresh*1, Refresh*2, Refresh*3]
+nOrientations       = len(Orientations)
+nSpacialFrequencies = len(SpacialFrequencies)
+nPresentationTime   = len(PresentationTime)
+
+# cross all the Gabor properties
+nreps = 2
+OrientationTrials       = numpy.tile(Orientations,nSpacialFrequencies*nreps)
+SpacialFrequencyTrials  = numpy.tile(numpy.repeat(SpacialFrequencies,nOrientations),nreps)
+
+# deduce the correct response
+allowedKeys = ["f","j","escape"]
+CorResp = numpy.copy(OrientationTrials)
+CorResp[CorResp == Orientations[0]] = 0
+CorResp[CorResp == Orientations[1]] = 1
+
+# add a default RT that will be overwritten during the trial loop
+RT = numpy.repeat(numpy.nan,len(CorResp))
+
+# add a default response that will be overwritten during the trial loop
+Resp = numpy.repeat("",len(CorResp))
+
+# allow to store the accuracy
+Accuracy = numpy.repeat(numpy.nan,len(CorResp))
+
+# allow to store the accuracy
+PresentationTimeCheck = numpy.repeat(numpy.nan,len(CorResp))
+
+# add a default presentation time
+PresentationTimeTrials= numpy.repeat(numpy.nan,len(CorResp))
+
+# add the participant info
+participant = info["Participant number"]
+Subject     = numpy.repeat(info["Participant number"],len(CorResp))
+Gender      = numpy.repeat("".join(info["Gender"]),len(CorResp))
+Age         = numpy.repeat(info["Age"],len(CorResp))
+Handedness  = numpy.repeat("".join(info["Handedness"]),len(CorResp))
+
+# combine arrays in trial matrix
+trials = numpy.column_stack([Subject, Gender, Age, Handedness, OrientationTrials, SpacialFrequencyTrials, PresentationTimeTrials, CorResp, RT, Resp, Accuracy, PresentationTimeCheck])
+
+# initialize the variables
+nblocks     = len(PresentationTime)
+ntrials     = trials.shape[0]
+
+# repeat the trial matrix for the two blocks
+trials = numpy.tile(trials, (nblocks, 1))
+
+# insert the presentation time
+trials[:,6] = numpy.repeat(PresentationTime, nOrientations*nSpacialFrequencies*nreps)
+
+# initialize graphical elements
+Welcome         = visual.TextStim(win, text = "Welcome " + info["Participant name"] + "!\n\nPress the space bar to continue.")
+Instructions    = visual.TextStim(win, text = "OK", height = 0.05)
+Block_start     = visual.TextStim(win, text = "OK")
+Feedback        = visual.TextStim(win, text = "OK")
+Goodbye         = visual.TextStim(win, text = "Goodbye!")
+GaborPre        = visual.GratingStim(win, mask = "circle", ori = 0, sf = 10)
+GaborPost       = visual.GratingStim(win, mask = "circle", ori = 0, sf = 10)
+Gabor           = visual.GratingStim(win, mask = "circle")
+
+# Initialize a clock to measure the RT
+my_clock = core.Clock()
+
+# Initialize a clock to verify the presentation duration
+my_clock_check = core.Clock()
+
+Instructions.text = (   "In this experiment you will see Gabor patches with vertical stripes.\n" +
+                        "Briefly, this orientation will change to one with a slight right of left tilt.\n" +
+                        "Indicate as quickly as possible whether the tilt is oriented to the left or the right.\n\n" +
+                        "Press the f key for the left tilt (from top left to bottom right).\n" +
+                        "Press the j key for the right tilt (from top right to bottom left).\n\n" +
+                        "Press the space bar to start the experiment.")
+
+# display the welcome message
+Welcome.draw()
+win.flip()
+event.waitKeys(keyList = ["space"])
+
+# display the instructions
+Instructions.draw()
+win.flip()
+event.waitKeys(keyList = ["space"])
+
+# display the blocks
+for b in range(nblocks):
+    
+    # announce what block is about to start
+    Block_start.text = "Block " + str(b+1) + " will start when you press the space bar."
+    Block_start.draw()
+    win.flip()
+    event.waitKeys(keyList = ["space"])
+    
+    # display the trials in this block
+    for i in range(b*ntrials,(b+1)*ntrials):
+        
+        # set the color word and the font color for this trial
+        Gabor.ori   = int(trials[i,4])
+        Gabor.sf    = int(trials[i,5])
+        
+        # display the pre-stimulus mask on the screen
+        GaborPre.draw()
+        win.flip()
+        time.sleep(1)
+        
+        # draw the stimulus on the back buffer
+        Gabor.draw()
+        my_clock_check.reset()
+        
+        # clear the keyboard input
+        event.clearEvents(eventType = "keyboard")
+        
+        # display the stimulus on the screen
+        win.flip()
+        
+        # Now that the stimulus is on the screen, reset the clock
+        my_clock.reset()
+        
+        # wait for the duration of the presentation
+        time.sleep(trials[i,6].astype(numpy.float)/1000)
+        
+        # remove the stimulus from the screen (replace it by the post-stimulus mask)
+        GaborPost.draw()
+        win.flip()
+        
+        # Register the presentation time
+        trials[i,11] = my_clock_check.getTime()
+        
+        # Wait for the response
+        keys = event.waitKeys(keyList = allowedKeys)
+        
+        # Register the RT
+        RT = my_clock.getTime()
+        
+        # escape from the trial loop
+        if keys[0] == "escape":
+            break
+        
+        # Store the response information
+        trials[i,9] = keys[0]
+        
+        # determine accuracy
+        trials[i,10] = int(trials[i,9] == allowedKeys[int(trials[i,7])])
+        
+        # Store the RT
+        trials[i,8] = RT
+        
+        # determine the feedback message
+        if int(trials[i,10]) == 1:
+            Feedback.text = "Correct!"
+        else:
+            Feedback.text = "Wrong answer!"
+        
+        # display the feedback message
+        Feedback.draw()
+        win.flip()
+        time.sleep(1)
+    
+    # escape from the block loop
+    if keys[0] == "escape":
+        break
+
+# display the goodbye message
+Goodbye.draw()
+win.flip()
+time.sleep(1)
+
+# close the experiment window
+win.close()
+
+# plot the presentation time across trials
+pylab.plot(trials[:,11].astype(numpy.float)*1000, '-')
+pylab.ylabel('Presentation time (ms)')
+pylab.xlabel('trials')
+pylab.show()
+
+print(trials)
