@@ -28,8 +28,6 @@ less_green = 2
 # Initialize the radians for the orbit
 PlanetAngles    = numpy.linspace(1, 360, num=300)* numpy.pi / 180.
 MoonAngles      = numpy.tile(numpy.linspace(1, 360, num=50)* numpy.pi / 180.,6)
-#PlanetAngles    = numpy.array(range(1,37*6))/6*10 * numpy.pi / 180.
-#MoonAngles      = numpy.tile(numpy.array(range(1,37))*10 * numpy.pi / 180.,6)
 
 # Restrict the number of planetary angles to match those of the moon
 PlanetAngles = PlanetAngles[range(MoonAngles.shape[0]),]
