@@ -21,10 +21,15 @@ l           = len(scores)
 # initialize the window
 win = visual.Window([800,400])
 
-# note about the next code line: It's also possible to do this with one long string and several arguments in the format() argument
+# a first possible approach:
 messageText = ( "Good morning " + name.split()[0].capitalize() + "!\n\nWe now have the scores of all " +
                 str(l) + " tests that you did. You passed {:.0%}".format(tot_correct/l) + " of your courses." +
                 "Your data will be written to " + directory + "student{:03d}".format(student_nr) + ".txt")
+
+# a second possible approach: It's also possible to do this with one long string and several arguments in the format() argument
+messageText = ( "Good morning {0}!\n\nWe now have the scores of all {1} tests that you did. You passed {2:.0%} of your courses. " +
+                "Your data will be written to {3}student{4:03d}.txt").format(name.split()[0].capitalize(), l, tot_correct/l, directory, student_nr)
+
 message = visual.TextStim(win, text = messageText, wrapWidth = 1.1)
 message.draw()
 win.flip()
