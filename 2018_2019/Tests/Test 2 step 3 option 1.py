@@ -55,7 +55,7 @@ for step in range(len(Planetx)):
     # the red dwarf turns into a red giant
     less_green = less_green*0.98
     sun.color = [1,less_green-1,-1]
-    sun.radius = sun.radius * 1.02
+    sun.radius = sun.radius*1.02
     
     # display the celestial bodies
     sun.draw()

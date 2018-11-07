@@ -26,7 +26,7 @@ for step in range(60):
     # the red dwarf turns into a red giant
     less_green = less_green*0.96
     sun.color = [1,less_green-1,-1]
-    sun.radius = sun.radius * 1.03
+    sun.radius = sun.radius*1.03
     
     # display the celestial bodies
     sun.draw()
@@ -34,8 +34,6 @@ for step in range(60):
     moon.draw()
     win.flip()
     time.sleep(0.01)
-
-time.sleep(10)
 
 # the end!
 win.close()
