@@ -1,5 +1,6 @@
 # This file solves class exercise 3.8 in the IEP course 2018-2019
 # Written by Tom Verguts, Nov 3, 2017
+# Contributions by various students in 2018-2019
 
 # this is an imaginary score sheet for a student on four courses.
 # Max score on each course is 20.
@@ -30,6 +31,14 @@ messageText = ( "Good morning " + name.split()[0].capitalize() + "!\n\nWe now ha
 messageText = ( "Good morning {0}!\n\nWe now have the scores of all {1} tests that you did. You passed {2:.0%} of your courses. " +
                 "Your data will be written to {3}student{4:03d}.txt").format(name.split()[0].capitalize(), l, tot_correct/l, directory, student_nr)
 
+# a third very neat approach if you want to keep the overview
+greet           = "Good morning, "+ name.split()[0].capitalize() + "!"
+courses         = "We now have the scores of all " + str(l) + " courses that you did. "
+succes          = "You passed {:.0%} of your courses. ".format(tot_correct/l)
+written         = "Your data wil be written to {0}{1:03d}. ".format(directory, student_nr)
+messageText     = greet +'\n\n' + courses + succes + written
+
+# display the message on the screen
 message = visual.TextStim(win, text = messageText, wrapWidth = 1.1)
 message.draw()
 win.flip()
