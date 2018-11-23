@@ -1,23 +1,57 @@
-# Importing modules
-import numpy, time
-from psychopy import visual
+#TEST 2: CODIING SOLAR SYSTEM - BY HELENA CORENS 
 
-# Display preparation
-## Initialize the screen to display the stimuli on.
-win = visual.Window(size = [600, 600], color = (-1,-1,-1), units = "norm")
+#Step 1: import modules 
+from psychopy import visual, event,core
+import time, numpy
 
-# Prepare the graphical elements
-sun     = visual.Circle(win, radius=0.15, color = [1,1,-1])
-planet  = visual.Circle(win, radius=0.07, color = "blue")
-moon    = visual.Circle(win, radius=0.02, color = "white")
-message = visual.TextStim(win, text="None of the celestial bodies collided")
+#Step 2: in case of emmergency, ESCAPE:
+for key in ['q', 'escape']:
+    event.globalKeys.add(key, func=core.quit)
 
-# Initialize the redder color
-less_green = 2
+#Step 3: info about the visuals:
+## Esther: let op, de radii van je cirkels zal de helft te klein zijn!
+start_rad_sun = 0.075            #15%/2; startpositie --> laten uitdijen
+pos_sun = (0,0)
+rad_planet = 0.034          #7%/2
+pos_planetx = 0.705
+pos_planety= 0.236  #startpositie
+rad_moon = 0.01             #2%/2
+pos_moonx = (pos_planetx + 0.002)     #Startpositie; 'Relatief tov positie planeet': dus daarom pos_moon_x=0.705 + 0.002/ pos_moon_y=0.236 + 0.12
+pos_moony = (pos_planety + 0.12)
+presenting_time = 1 
 
-# Initialize the collision trackers
-planetCollision = False
-moonCollision = False
+Yellow = (1,1,0)
+Red = (1,-1,-1)
+
+#General Window Graphics
+win = visual.Window([600,600], color = (-1,-1,-1), units = 'norm') 
+
+#Graphics SUN
+x=0.05
+start_rad_sun = 0.075
+while start_rad_sun < 0.1:
+    start_rad_sun += (start_rad_sun*x)
+    stim_sun = visual.Circle(win, radius = start_rad_sun, pos = (0,0), fillColor = 'yellow')
+    stim_sun.draw()
+    ## Esther: je bent je window hier vergeten flippen!
+
+Radius_Sun = numpy.array([0.075,0.08,0.085,0.09,0.095,0.1,0.105,0.110])
+### Ik zit vast
+
+##color changing
+### niet gelukt
+
+#Graphics PLANET
+stim_planet = visual.Circle(win, radius = 0.034, pos = (0.705,0.236), fillColor = "blue")
+
+#Graphics MOON
+stim_moon = visual.Circle(win, radius = 0.01, pos = (pos_moonx,pos_moony), fillColor = "white")
+
+# stationary solar sytem: celectial bodies positions
+Planetx = 0.705
+Planety = 0.236
+Moonx = 0.002   # this coordinate is relative to the position of the planet!
+Moony = 0.12    # this coordinate is relative to the position of the planet!
 
 # Series of positions for orbits (the coordinates for the moon are again relative to the position of the planet!)
 Planetx = [  0.014,  0.099,  0.182,  0.264,  0.342,  0.417,  0.487,  0.552,  0.61,   0.661,
@@ -45,47 +79,24 @@ Moony = [   0.12,   0.091,  0.019, -0.061, -0.113, -0.112, -0.059,  0.021,  0.09
             0.12,   0.091,  0.019, -0.061, -0.113, -0.112, -0.059,  0.021,  0.092,  0.12,
             0.12,   0.091,  0.019, -0.061, -0.113, -0.112, -0.059,  0.021,  0.092,  0.12]
 
-# Let the sun grow to a red giant
-for step in range(len(Planetx)):
-    
-    # set the horizontal and vertical position for the planet and moon at this point in time
-    planet.pos  = [Planetx[step],Planety[step]]
-    moon.pos    = [Planetx[step]+Moonx[step],Planety[step]+Moony[step]]
-    
-    # the yellow star turns into a red giant
-    less_green = less_green*0.97
-    sun.color = [1,less_green-1,-1]
-    sun.radius = sun.radius*1.03
-    
-    # display the celestial bodies
-    sun.draw()
-    planet.draw()
-    moon.draw()
-    win.flip()
-    time.sleep(0.1)
-    
-    # verify whether the sun hit a celestial object
-    if sun.overlaps(planet):
-        planetCollision = True
-    
-    if sun.overlaps(moon):
-        moonCollision = True
-    
-    if planetCollision == True or moonCollision == True:
-        break
 
-# verify what text to display
-if planetCollision == True and moonCollision == True:
-    message.text = "The planet and moon hit the red giant at the same time"
-elif planetCollision == True :
-    message.text = "The planet hit the red giant"
-elif moonCollision == True:
-    message.text = "The moon hit the red giant"
+# Crash
+##voor de botsing gebruik maken van boolean --> TRUE / FALSE 
 
-# display the message
-message.draw()
+
+#Drawing the visuals
+stim_sun.draw()
+stim_planet.draw()
+stim_moon.draw()
+
 win.flip()
-time.sleep(1)
+time.sleep(5)
 
-# the end!
 win.close()
+
+
+
+
+
+
+

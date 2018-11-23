@@ -30,9 +30,6 @@ MoonAxisV = 0.12
 PlanetAngles    = numpy.linspace(1, 360, num=300)* numpy.pi / 180.
 MoonAngles      = numpy.tile(numpy.linspace(1, 360, num=50)* numpy.pi / 180.,6)
 
-# Restrict the number of planetary angles to match those of the moon (quick fix)
-PlanetAngles = PlanetAngles[range(MoonAngles.shape[0]),]
-
 # Compute the orbit for the planet around a midpoint
 Planetx = PlanetAxisH * numpy.sin(PlanetAngles)
 Planety = PlanetAxisV * numpy.cos(PlanetAngles)
@@ -59,7 +56,7 @@ for step in range(len(PlanetAngles)):
     # reposition the LunarArc
     #LunarArc.pos = PlanetaryOrbit[step,]
     
-    # the red dwarf turns into a red giant
+    # the yellow star turns into a red giant
     less_green = less_green*0.98
     sun.color = [1,less_green-1,-1]
     sun.radius = sun.radius*1.02

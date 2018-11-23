@@ -1,25 +1,38 @@
-# Importing modules
+#test 2
+#import modules
 import numpy, time
 from psychopy import visual
 
-# Display preparation
-## Initialize the screen to display the stimuli on.
-win = visual.Window(size = [600, 600], color = (-1,-1,-1), units = "norm")
+#positie maan en planeet+size
+#pos_planeet: 0.705-2, 0.236-12)
+pos_maan= (0.703,0.224)
+pos_planeet= (0.705,0.236)
+#radius_zon=0.15
+#radius_maan=0.07
+#radius_planeet=0.02
 
-# Prepare the graphical elements
-sun     = visual.Circle(win, radius=0.15, color = [1,1,-1])
-planet  = visual.Circle(win, radius=0.07, color = "blue")
-moon    = visual.Circle(win, radius=0.02, color = "white")
-message = visual.TextStim(win, text="None of the celestial bodies collided")
+#window
+win= visual.Window([600,600],color = (-1,-1,-1), units = "norm")
+zon= visual.Circle(win,lineColor="yellow", fillColor="yellow",radius=0.15)
+maan= visual.Circle(win,lineColor="white", fillColor="white",pos=pos_maan, radius=0.07)
+planeet= visual.Circle(win,lineColor="blue", fillColor="blue", pos=pos_planeet, radius=0.02)
 
-# Initialize the redder color
-less_green = 2
+#zon laten groeien
+#for loop waar je 60x doorgaat (aantal vanop opgave) en telkens de radius te vergroten
+#het werkt niet omdat hij telkens die 0.15 opnieuw neemt en gewoon terug + 0.04doet maar ik vind niet hoe ik het moet aanpassen dat hij die waarde telkens opnieuw gebruikt
 
-# Initialize the collision trackers
-planetCollision = False
-moonCollision = False
+radius_begin=0.15
+for radius_zon in range(60):
+    radius_zon =radius_begin+0.04
+    zon= visual.Circle(win,lineColor="yellow", fillColor="yellow",radius=radius_zon)
+    zon.draw()
 
-# Series of positions for orbits (the coordinates for the moon are again relative to the position of the planet!)
+#botsing
+#lukte nog niet omdat ik derest nog niet gevonden had
+
+#roteren hemellichamen
+#geen idee hoe ik hieraan moest beginnen..
+#proberen opzoeken maar zonder succes
 Planetx = [  0.014,  0.099,  0.182,  0.264,  0.342,  0.417,  0.487,  0.552,  0.61,   0.661,
              0.705,  0.741,  0.769,  0.788,  0.798,  0.799,  0.792,  0.775,  0.749,  0.715,
              0.673,  0.624,  0.567,  0.504,  0.435,  0.362,  0.284,  0.203,  0.12,   0.035,
@@ -45,47 +58,12 @@ Moony = [   0.12,   0.091,  0.019, -0.061, -0.113, -0.112, -0.059,  0.021,  0.09
             0.12,   0.091,  0.019, -0.061, -0.113, -0.112, -0.059,  0.021,  0.092,  0.12,
             0.12,   0.091,  0.019, -0.061, -0.113, -0.112, -0.059,  0.021,  0.092,  0.12]
 
-# Let the sun grow to a red giant
-for step in range(len(Planetx)):
-    
-    # set the horizontal and vertical position for the planet and moon at this point in time
-    planet.pos  = [Planetx[step],Planety[step]]
-    moon.pos    = [Planetx[step]+Moonx[step],Planety[step]+Moony[step]]
-    
-    # the yellow star turns into a red giant
-    less_green = less_green*0.97
-    sun.color = [1,less_green-1,-1]
-    sun.radius = sun.radius*1.03
-    
-    # display the celestial bodies
-    sun.draw()
-    planet.draw()
-    moon.draw()
-    win.flip()
-    time.sleep(0.1)
-    
-    # verify whether the sun hit a celestial object
-    if sun.overlaps(planet):
-        planetCollision = True
-    
-    if sun.overlaps(moon):
-        moonCollision = True
-    
-    if planetCollision == True or moonCollision == True:
-        break
 
-# verify what text to display
-if planetCollision == True and moonCollision == True:
-    message.text = "The planet and moon hit the red giant at the same time"
-elif planetCollision == True :
-    message.text = "The planet hit the red giant"
-elif moonCollision == True:
-    message.text = "The moon hit the red giant"
+#stimuli op scherm laten verschijnen
 
-# display the message
-message.draw()
+maan.draw()
+planeet.draw()
+
 win.flip()
 time.sleep(1)
-
-# the end!
 win.close()

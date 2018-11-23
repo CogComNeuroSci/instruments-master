@@ -1,23 +1,8 @@
-# Importing modules
-import numpy, time
-from psychopy import visual
-
-# Display preparation
-## Initialize the screen to display the stimuli on.
-win = visual.Window(size = [600, 600], color = (-1,-1,-1), units = "norm")
-
-# Prepare the graphical elements
-sun     = visual.Circle(win, radius=0.15, color = [1,1,-1])
-planet  = visual.Circle(win, radius=0.07, color = "blue")
-moon    = visual.Circle(win, radius=0.02, color = "white")
-message = visual.TextStim(win, text="None of the celestial bodies collided")
-
-# Initialize the redder color
-less_green = 2
-
-# Initialize the collision trackers
-planetCollision = False
-moonCollision = False
+# stationary solar sytem: celectial bodies positions
+Planetx = 0.705
+Planety = 0.236
+Moonx = 0.002   # this coordinate is relative to the position of the planet!
+Moony = 0.12    # this coordinate is relative to the position of the planet!
 
 # Series of positions for orbits (the coordinates for the moon are again relative to the position of the planet!)
 Planetx = [  0.014,  0.099,  0.182,  0.264,  0.342,  0.417,  0.487,  0.552,  0.61,   0.661,
@@ -45,47 +30,69 @@ Moony = [   0.12,   0.091,  0.019, -0.061, -0.113, -0.112, -0.059,  0.021,  0.09
             0.12,   0.091,  0.019, -0.061, -0.113, -0.112, -0.059,  0.021,  0.092,  0.12,
             0.12,   0.091,  0.019, -0.061, -0.113, -0.112, -0.059,  0.021,  0.092,  0.12]
 
-# Let the sun grow to a red giant
-for step in range(len(Planetx)):
-    
-    # set the horizontal and vertical position for the planet and moon at this point in time
-    planet.pos  = [Planetx[step],Planety[step]]
-    moon.pos    = [Planetx[step]+Moonx[step],Planety[step]+Moony[step]]
-    
-    # the yellow star turns into a red giant
-    less_green = less_green*0.97
-    sun.color = [1,less_green-1,-1]
-    sun.radius = sun.radius*1.03
-    
-    # display the celestial bodies
-    sun.draw()
-    planet.draw()
-    moon.draw()
-    win.flip()
-    time.sleep(0.1)
-    
-    # verify whether the sun hit a celestial object
-    if sun.overlaps(planet):
-        planetCollision = True
-    
-    if sun.overlaps(moon):
-        moonCollision = True
-    
-    if planetCollision == True or moonCollision == True:
-        break
+# import modules
+from psychopy import visual, event
+import time, numpy
 
-# verify what text to display
-if planetCollision == True and moonCollision == True:
-    message.text = "The planet and moon hit the red giant at the same time"
-elif planetCollision == True :
-    message.text = "The planet hit the red giant"
-elif moonCollision == True:
-    message.text = "The moon hit the red giant"
+# initialize the window
+win = visual.Window([600,600], units = "norm", color = (-1,-1,-1))
 
-# display the message
-message.draw()
+# initialize the variables
+positie_Zon = (0,0)
+positie_Maan = (0.705,0.4) #ik weet niet hoe het relatief moet, met dit: (Moonx, Moony) werkt het niet. Daarom heb ik random waarden genomen.
+positie_Planeet = (0.705, 0.236)
+radius_Zon = (0.15*2)/2
+radius_Planeet = (0.07*2)/2
+radius_Maan = (0.02*2)/2
+Maxradius = radius=1
+
+# Initialize the graphical elements
+Zon = visual.Circle(win, radius= radius_Zon, edges=32, lineColor="yellow",fillColor="yellow",pos= positie_Zon)
+Planeet = visual.Circle(win,radius=radius_Planeet, edges=32, lineColor="blue",fillColor="blue",pos= positie_Planeet)
+Maan = visual.Circle(win, radius=radius_Maan, edges=32, lineColor="white",fillColor="white",pos= positie_Maan)
+Botsing_tekst = visual.TextStim(win,text="Botsing!")
+
+# eerst de startfase
+Zon.draw()
+Planeet.draw()
+Maan.draw()
 win.flip()
 time.sleep(1)
 
-# the end!
+#de zon laten groeien
+while radius_Zon < Maxradius:
+    radius = radius_Zon + radius_Zon*1.03
+    if "f" in event.getKeys():
+        break
+
+#voorbeeld van een for loop
+for i in range (10):
+    print("Ik kan er niks van!")
+
+#voorbeeld if/else-statement
+gebuisd = "minder dan een 10 op 20"
+if gebuisd == "minder dan een 10 op 20":
+    print("Luna gaat nog een beetje wenen!")
+else: 
+    print("Dat zal toch niet gebeuren want ik kan er nooit door zijn!")
+
+#voorbeeld van een whileloop
+i = 0
+while i < 5:
+    print(i)
+    i = i + 1
+
+#if #hier moet nog iets komen:
+#    botsing = "Geen enkele van de hemellichamen heeft de rode reus geraakt!"
+#elif #hier moet nog iets komen:
+#    botsing = "De planneet en de maan hebben tegelijk de rode reus geraakt!"
+#elif #hier moet nog iets komen:
+#    botsing = "De planneet heeft de rode reus geraakt!"
+#else:
+#    botsing = "De maan heeft de rode reus geraakt!"
+#Botsing_tekst = visual.TextStim(win,text=botsing)
+#Botsing_tekst.draw()
+#win.flip()
+#sleep(1)
+
 win.close()

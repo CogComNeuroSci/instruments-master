@@ -1,23 +1,15 @@
-# Importing modules
-import numpy, time
+#importion modules
+from psychopy import visual,event
+import time
+from time import sleep
+import numpy as np
 from psychopy import visual
 
-# Display preparation
-## Initialize the screen to display the stimuli on.
-win = visual.Window(size = [600, 600], color = (-1,-1,-1), units = "norm")
 
-# Prepare the graphical elements
-sun     = visual.Circle(win, radius=0.15, color = [1,1,-1])
-planet  = visual.Circle(win, radius=0.07, color = "blue")
-moon    = visual.Circle(win, radius=0.02, color = "white")
-message = visual.TextStim(win, text="None of the celestial bodies collided")
-
-# Initialize the redder color
-less_green = 2
-
-# Initialize the collision trackers
-planetCollision = False
-moonCollision = False
+Planetx = 0.705
+Planety = 0.236
+Moonx = 0.002   # this coordinate is relative to the position of the planet!
+Moony = 0.12    # this coordinate is relative to the position of the planet!
 
 # Series of positions for orbits (the coordinates for the moon are again relative to the position of the planet!)
 Planetx = [  0.014,  0.099,  0.182,  0.264,  0.342,  0.417,  0.487,  0.552,  0.61,   0.661,
@@ -45,47 +37,57 @@ Moony = [   0.12,   0.091,  0.019, -0.061, -0.113, -0.112, -0.059,  0.021,  0.09
             0.12,   0.091,  0.019, -0.061, -0.113, -0.112, -0.059,  0.021,  0.092,  0.12,
             0.12,   0.091,  0.019, -0.061, -0.113, -0.112, -0.059,  0.021,  0.092,  0.12]
 
-# Let the sun grow to a red giant
-for step in range(len(Planetx)):
-    
-    # set the horizontal and vertical position for the planet and moon at this point in time
-    planet.pos  = [Planetx[step],Planety[step]]
-    moon.pos    = [Planetx[step]+Moonx[step],Planety[step]+Moony[step]]
-    
-    # the yellow star turns into a red giant
-    less_green = less_green*0.97
-    sun.color = [1,less_green-1,-1]
-    sun.radius = sun.radius*1.03
-    
-    # display the celestial bodies
-    sun.draw()
-    planet.draw()
-    moon.draw()
-    win.flip()
-    time.sleep(0.1)
-    
-    # verify whether the sun hit a celestial object
-    if sun.overlaps(planet):
-        planetCollision = True
-    
-    if sun.overlaps(moon):
-        moonCollision = True
-    
-    if planetCollision == True or moonCollision == True:
-        break
 
-# verify what text to display
-if planetCollision == True and moonCollision == True:
-    message.text = "The planet and moon hit the red giant at the same time"
-elif planetCollision == True :
-    message.text = "The planet hit the red giant"
-elif moonCollision == True:
-    message.text = "The moon hit the red giant"
+#startelementen
+rad_zon=.15
+pos_zon=(0,0)
+n_trials=60
+pos_planet_start=(0.014,0.5)
+pos_moon_start=(0.002,0.12)
+#planet_counter=0
+#moon_counter=0
+#zon_counter=0
+#idee was om met counter de grote en positie te regelen
 
-# display the message
-message.draw()
+
+#startelementen visuel
+win= visual.Window([600,600],color="black", units="norm")
+planet= visual.Circle(win,radius = 0.07, pos = pos_planet_start, fillColor = "Blue", lineColor = "Blue")
+moon=  visual.Circle(win,radius = 0.02, pos =pos_moon_start, fillColor = "white", lineColor = "White")
+zon=visual.Circle(win,lineColor="yellow",fillColor="yellow",pos=pos_zon,radius=rad_zon)
+planet.draw()
+moon.draw()
+zon.draw()
 win.flip()
 time.sleep(1)
+#idee hier om stationair zonnestelset 1 seconde te tonen, maar positie werkt niet?!
 
-# the end!
-win.close()
+#crash_text_gelijk = visual.TextStim(win,text="De planeet en de maand hebben tegelijk de rode reud geraakt")
+#crash_text_planeet=visual.TextStim(win,text="De planeet heeft de rode reus geraakt")
+#crash_text_maan=visual.TextStim(win,text="De maan heeft de rode reus geraakt")
+#crash_text_not=visual.TextStim(win, text="Geen enkele van de hemellichamen heeft de rode reus geraakt")
+
+
+#eigenlijk was het idee om de zon te laten groien door .15*1.03 te doen, maar omdat dat blijkbaar niet werkt zoals + nu met enkele warden in sizes
+
+sizes=(.15, .16, .17,.18,.19,.20,.25,.30,.4,.5,.6,.7,.8,2)
+
+for i in sizes:
+    circle=visual.Circle(win, radius=i,pos=(0,0), fillColor=(1,1,-1))
+    circle.draw()
+    
+    #i=sizes*1.03
+    win.flip()
+    time.sleep(0.1)
+
+
+
+for i in range(60):
+        planet= visual.Circle(win,radius = 0.07, pos = (Planetx[i],Planety[i]), fillColor = "Blue", lineColor = "Blue")
+        planet.draw()
+        moon=  visual.Circle(win,radius = 0.02, pos = (Planetx[i]+Moonx[i],Moony[i]+Planety[i]), fillColor = "white", lineColor = "White")
+        moon.draw()
+        time.sleep(0.05)
+        win.flip()
+
+#probleem bij stimuli te gelijker tijd op scherm te tonen, omdat dan beweging niet meer lukt

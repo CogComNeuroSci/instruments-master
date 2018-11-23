@@ -28,7 +28,7 @@ moonCollision = False
 # Let the sun grow to a red giant
 for step in range(60):
     
-    # the red dwarf turns into a red giant
+    # the yellow star turns into a red giant
     less_green = less_green*0.96
     sun.color = [1,less_green-1,-1]
     sun.radius = sun.radius*1.03

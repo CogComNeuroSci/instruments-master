@@ -1,25 +1,18 @@
-# Importing modules
-import numpy, time
 from psychopy import visual
+import time
+import numpy as np
+import math
 
-# Display preparation
-## Initialize the screen to display the stimuli on.
-win = visual.Window(size = [600, 600], color = (-1,-1,-1), units = "norm")
+win=visual.Window(size=(600,600),color=[-1,-1,-1],units="norm")
 
-# Prepare the graphical elements
-sun     = visual.Circle(win, radius=0.15, color = [1,1,-1])
-planet  = visual.Circle(win, radius=0.07, color = "blue")
-moon    = visual.Circle(win, radius=0.02, color = "white")
-message = visual.TextStim(win, text="None of the celestial bodies collided")
+#creating planets
+## Esther: de radii zijn ongeveer de helft zo groot als we gevraagd hadden
+sun=visual.Circle(win, pos=(0,0), radius= 0.075)
+planet=visual.Circle(win,fillColor="blue",lineColor="blue", radius= 0.045)
+moon=visual.Circle(win,fillColor="white", radius= 0.01)
 
-# Initialize the redder color
-less_green = 2
+#position of planets
 
-# Initialize the collision trackers
-planetCollision = False
-moonCollision = False
-
-# Series of positions for orbits (the coordinates for the moon are again relative to the position of the planet!)
 Planetx = [  0.014,  0.099,  0.182,  0.264,  0.342,  0.417,  0.487,  0.552,  0.61,   0.661,
              0.705,  0.741,  0.769,  0.788,  0.798,  0.799,  0.792,  0.775,  0.749,  0.715,
              0.673,  0.624,  0.567,  0.504,  0.435,  0.362,  0.284,  0.203,  0.12,   0.035,
@@ -45,47 +38,60 @@ Moony = [   0.12,   0.091,  0.019, -0.061, -0.113, -0.112, -0.059,  0.021,  0.09
             0.12,   0.091,  0.019, -0.061, -0.113, -0.112, -0.059,  0.021,  0.092,  0.12,
             0.12,   0.091,  0.019, -0.061, -0.113, -0.112, -0.059,  0.021,  0.092,  0.12]
 
-# Let the sun grow to a red giant
-for step in range(len(Planetx)):
-    
-    # set the horizontal and vertical position for the planet and moon at this point in time
-    planet.pos  = [Planetx[step],Planety[step]]
-    moon.pos    = [Planetx[step]+Moonx[step],Planety[step]+Moony[step]]
-    
-    # the yellow star turns into a red giant
-    less_green = less_green*0.97
-    sun.color = [1,less_green-1,-1]
-    sun.radius = sun.radius*1.03
-    
-    # display the celestial bodies
+
+#putting planets on screen
+
+G=1
+i=1
+Sun_planet=1
+Sun_moon=1
+while Sun_planet>0 and Sun_moon>0:
+
+    #making sun bigger en darker
+    ## Esther: dit is niet de stijging tot 103% van de vorige waarde als gevraagd
+    sun.radius+=0.00225
+    G-=0.01
+    sun.fillColor=[1,G,-1]
+    sun.lineColor=[1,G,-1]
     sun.draw()
+    
+    #moving planets and moon
+    planet.pos=(Planetx[i],Planety[i])
     planet.draw()
+    moon.pos=((Planetx[i]+Moonx[i]),(Planety[i]+Moony[i]))
     moon.draw()
+    
+    #calculating euclidian distance
+    Sun_planet=math.sqrt((-Planetx[i])**2+(-Planety[i])**2)-sun.radius-planet.radius
+    Sun_moon=math.sqrt((-(Planetx[i]+Moonx[i]))**2+(-(Planety[i]+Moony[i]))**2)-sun.radius-moon.radius
+    
+    ## Esther: je hebt hier inderdaad een reset moeten doen gezien de zon niet groeide op de voorziene manier en omdat de radii van de cirkels te klein waren
+    if i==59:
+        i=1
+    else:
+        i+=1
     win.flip()
     time.sleep(0.1)
-    
-    # verify whether the sun hit a celestial object
-    if sun.overlaps(planet):
-        planetCollision = True
-    
-    if sun.overlaps(moon):
-        moonCollision = True
-    
-    if planetCollision == True or moonCollision == True:
-        break
 
-# verify what text to display
-if planetCollision == True and moonCollision == True:
-    message.text = "The planet and moon hit the red giant at the same time"
-elif planetCollision == True :
-    message.text = "The planet hit the red giant"
-elif moonCollision == True:
-    message.text = "The moon hit the red giant"
 
-# display the message
-message.draw()
+
+#creating final screen
+
+
+Message=visual.TextStim(win, color="white")
+if Sun_planet<0 and Sun_moon<0:
+    Message.text="De planeet en de maan hebben tegelijk de rode reus geraakt"
+elif Sun_planet<0 and Sun_moon>=0:
+    Message.text="De planeet  heeft de rode reus geraakt"
+elif Sun_planet>=0 and Sun_moon<0:
+    Message.text="De maan heeft de rode reus geraakt"
+else:
+    Message.text="Geen enkele van de hemellichamen heeft de rode reus geraakt"
+
+Message.draw()
 win.flip()
-time.sleep(1)
+time.sleep(4)
 
-# the end!
+
+#close window
 win.close()

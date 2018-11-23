@@ -53,10 +53,10 @@ for step in range(len(Planetx)):
     planet.pos  = [Planetx[step],Planety[step]]
     moon.pos    = [Planetx[step]+Moonx[step],Planety[step]+Moony[step]]
     
-    # the red dwarf turns into a red giant
-    less_green = less_green*0.98
+    # the yellow star turns into a red giant
+    less_green = less_green*0.97
     sun.color = [1,less_green-1,-1]
-    sun.radius = sun.radius*1.02
+    sun.radius = sun.radius*1.03
     
     # display the celestial bodies
     sun.draw()
