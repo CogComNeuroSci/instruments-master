@@ -11,7 +11,6 @@ win = visual.Window(fullscr = True, color = (-1,-1,-1), units = "norm")
 
 # Initialize variables
 ## There are number of variables that stay the same across the entire assignment.
-## These are initialized here as integers, which is logical because we don't want them to be mutable.
 start_value     = 1
 end_value       = 100
 value           = start_value
@@ -44,7 +43,7 @@ while value < end_value:
         blue_green = -1
 
     ## Adjust the text and the color of the message
-    stim.text   = "Current bitcoin value: {:.0f} euro".format(int(value))
+    stim.text   = "Current bitcoin value: {} euro".format(int(value))
     stim.color  = (1, blue_green, blue_green)
 
     ## draw evolving value

@@ -7,7 +7,6 @@ from psychopy import visual
 
 # Initialize variables
 ## There are a number of variables that stay the same across the entire assignment.
-## These are initialized here as integers, which is logical because we don't want them to be mutable.
 start_value     = 1
 end_value       = 100
 value           = start_value

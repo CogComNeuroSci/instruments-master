@@ -70,7 +70,7 @@ win.flip()
 time.sleep(1)
 
 # display the Stroop stimuli
-for i in range(trials.shape[0]):
+for i in range(2): #trials.shape[0]):
     
     # set the color word and the font color for this trial
     Stroop_stim.text    = trials[i,0]
