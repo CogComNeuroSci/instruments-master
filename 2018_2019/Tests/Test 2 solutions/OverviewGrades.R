@@ -43,6 +43,11 @@ tiff("Test 2.5 Hemellichamen laten roteren advanced.tiff", width = 700, height =
 	barplot(colMeans(data[,c(34:30)], na.rm = T)*100, horiz = T, las = 2, xlim = c(0,100), col = "purple", main = "Rotating the celestial objects (advanced)", xlab = "percentage")
 dev.off()
 
+tiff("Test 1 verus Test 2.tiff", width = 500, height = 500)
+	par(mar = c(4, 7, 3, 2))
+	plot(x = data$Test1, y = data$Test2, xlim = c(0,20), ylim = c(0,20), xlab = "Test 1", ylab = "Test 2")
+	abline(h = 10, v = 10)
+dev.off()
 
 
 
