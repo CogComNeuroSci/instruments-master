@@ -111,7 +111,7 @@ for i in range(60):
             time.sleep(1)
             
         #Aarde en maan botsen met zon
-        ## Esther: pas op! dit moet je eigenlijk eerst checken! Anders zal je dit bericht nooit tonen
+        ## Esther: pas op! dit moet je eigenlijk eerst checken! Anders zal je meer berichten tonen dan nodig is!
         if radMZ >= afstMZ and radAZ >= afstAZ:
             botsallebei.draw()
             win.flip()

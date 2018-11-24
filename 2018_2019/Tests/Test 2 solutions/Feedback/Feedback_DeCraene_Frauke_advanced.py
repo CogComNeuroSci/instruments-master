@@ -1,4 +1,4 @@
-## Esther: super goed, zo mogelijk perfecte code (op die ene ontbrekende melding na), enkel dingen die van persoonlijke smaak afhangen. Proficiat Frauke!
+## Esther: super goed, zo mogelijk perfecte code (op die ene ontbrekende melding na). Proficiat Frauke!
 
 
 from psychopy import visual
