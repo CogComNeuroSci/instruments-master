@@ -14,7 +14,7 @@ my_clock2 = core.Clock()
 my_clock3 = core.Clock()
 
 # Perform a few trials
-for triali in range(3):
+for trial in range(3):
     
     # Reset the clock a the start of the trial
     my_clock1.reset()
