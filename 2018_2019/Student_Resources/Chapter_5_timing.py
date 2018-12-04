@@ -59,6 +59,8 @@ print("# Wait function 3 #")
 
 ## When looking at the PsychoPy documentation, we see that some other functions involving time are offered.
 ## An example of this is the 'core.wait()' function, which strongly resembles the time.sleep() function discussed earlier.
+## An important nuance is that core.wait() suppresses all other processes on your computer and gives priority to PsychoPy to deliver accurate timing. 
+## However, this suppression only lasts for 10 seconds maximum, after that point time.sleep() is used instead of core.wait().
 ## 'core.CountdownTimer()' is a function that can be used to count down, as the name already tells us.
 ## When we use the extension .add() on a clock, this means that we add extra time, which may come in handy when using a count down timer.
 ## We strongly recommend to take a look at the demo on timing, which can be found in PsychoPy:
