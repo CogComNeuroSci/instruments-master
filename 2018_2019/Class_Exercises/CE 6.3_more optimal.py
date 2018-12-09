@@ -16,6 +16,7 @@ if infoDlg.OK:  # this will be True (user hit OK) or False (cancelled)
     print(info)
 else:
     print("User Cancelled")
+device = "".join(info["Device"])
 
 # initialize the window
 win = visual.Window(size=[500,400])
@@ -73,9 +74,9 @@ def target_and_response():
         keys = event.waitKeys(keyList = ["f","j"])
         response = keys[0]
     elif device == "mouse":
-        while numpy.sum(my_mouse.getPressed())==0:
-            pass
-        response = my_mouse.getPressed()
+        response = [0,0,0]
+        while numpy.sum(response)==0:
+            response = my_mouse.getPressed()
     
     return response
 

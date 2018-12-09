@@ -13,7 +13,7 @@ else:
     print("User Cancelled")
 
 # initialize the window
-win = visual.Window(fullscr = True, units = "norm")
+win = visual.Window(fullscr = False, units = "norm")
 
 # initialize the variables
 nblocks     = 2
