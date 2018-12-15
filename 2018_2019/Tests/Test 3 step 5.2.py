@@ -5,10 +5,6 @@ import numpy, pylab
 # create a dialog box
 info = {"Participant number":0, "Participant name":"Incognito", "Gender":["male", "female", "third gender"], "Age":0, "Handedness":["right", "left", "ambidextrous"]}
 infoDlg = gui.DlgFromDict(dictionary=info, title="Gabor Experiment")
-if infoDlg.OK:  # this will be True (user hit OK) or False (cancelled)
-    print(info)
-else:
-    print("User Cancelled")
 
 # initialize the window
 win = visual.Window([600,500], units = "norm")
