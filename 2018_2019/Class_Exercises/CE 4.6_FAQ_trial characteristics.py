@@ -6,7 +6,7 @@ import time, numpy, pandas
 # initialize the variables
 nblocks     = 2
 ntrials     = 16
-participant = 2
+participant = 1
 
 # we start with adding the values for the words and the colors
 ColorWord   = numpy.array([ "red", "red", "red", "red",
