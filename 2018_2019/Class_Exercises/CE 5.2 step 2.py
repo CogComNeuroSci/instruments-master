@@ -105,12 +105,12 @@ my_clock = core.Clock()
 # display the welcome message
 Welcome.draw()
 win.flip()
-event.waitKeys(keyList = ["space"])
+event.waitKeys(keyList = "space")
 
 # display the instructions
 Instructions.draw()
 win.flip()
-event.waitKeys(keyList = ["space"])
+event.waitKeys(keyList = "space")
 
 # display the Stroop stimuli
 # in two blocks
@@ -120,7 +120,7 @@ for b in range(nblocks):
     Block_start.text = "Block " + str(b+1) + " will start when you press the space bar."
     Block_start.draw()
     win.flip()
-    event.waitKeys(keyList = ["space"])
+    event.waitKeys(keyList = "space")
     
     # in 16 trials
     for i in range(b*ntrials,(b+1)*ntrials):

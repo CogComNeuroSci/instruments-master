@@ -96,7 +96,7 @@ for quest in range(2):
         myItem.draw()
         myRatingScale.draw()
         win.flip()
-        if event.getKeys(["escape"]):
+        if event.getKeys("escape"):
             core.quit()
 
     print("Answer to question {0}: {1}%".format(str(quest), myRatingScale.getRating()))
