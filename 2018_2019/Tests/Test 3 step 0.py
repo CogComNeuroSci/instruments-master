@@ -25,12 +25,12 @@ Instructions.text = (   "In this experiment you will see Gabor patches with vert
 # display the welcome message
 Welcome.draw()
 win.flip()
-event.waitKeys(keyList = ["space"])
+event.waitKeys(keyList = "space")
 
 # display the instructions
 Instructions.draw()
 win.flip()
-event.waitKeys(keyList = ["space"])
+event.waitKeys(keyList = "space")
 
 # display the blocks
 for b in range(3):
@@ -39,7 +39,7 @@ for b in range(3):
     Block_start.text = "Block " + str(b+1) + " will start when you press the space bar."
     Block_start.draw()
     win.flip()
-    event.waitKeys(keyList = ["space"])
+    event.waitKeys(keyList = "space")
 
 # display the goodbye message
 Goodbye.draw()
