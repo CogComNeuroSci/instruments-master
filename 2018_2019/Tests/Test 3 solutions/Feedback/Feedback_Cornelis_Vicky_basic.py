@@ -28,6 +28,7 @@ bloks = [1,2,3]
 
 ##lijsten met de eigenschappen voor de gabor
 ###Oriëntatie voor elk blok volledig doorlopen
+### Esther: die 350 moest 330 zijn
 orie = [30,30,30,30,350,350,350,350]
 ##spatiele frequentie voor elk blok volledig doorlopen
 spat_freq = [2,2,20,20,2,2,20,20]

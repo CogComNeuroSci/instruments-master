@@ -53,6 +53,7 @@ event.waitKeys(keyList=['space'])
 ########################
 # Initialize trails gabor
 rotation_trials = numpy.array([30, 30, 30, 30, -30, -30, -30, -30])
+### Esther: pas op, hieronder heb je al een syntax error
 sf_trials = numpy.array([2, 20, 2, 20, 2, 20, 2,20,])
 ##Sf_trials geschranst om te zorgen dat verschillende combinaties sf en rotatie even vaak voorkomen
 

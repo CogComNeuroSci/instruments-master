@@ -32,7 +32,7 @@ Reaction_time=[]
 ##Orientations and frequency
 frequency_gabor1   =[[2,0],[20,0],[2,0],[20,0],[2,0],[20,0],[2,0],[20,0]]
 frequency_gabor2   =[[2,0],[20,0],[2,0],[20,0],[20,0],[2,0],[20,0],[2,0]]
-### ESther: die 120 had 150 or 330 moeten zijn
+### Esther: die 120 had 150 of 330 moeten zijn
 orientations_gabor2=[120,120,120,120,30,30,30,30]
 
 #visual features

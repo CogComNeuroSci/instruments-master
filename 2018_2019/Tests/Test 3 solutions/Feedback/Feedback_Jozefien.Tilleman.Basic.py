@@ -5,6 +5,7 @@ import time, numpy as np
 
 
 # create a dialog box
+### Esther: er ontbreekt nog een response optie bij de handpreferences
 info = {"Participant number":0, "Participant name":"Unknown", "Gender":["male", "female","other"], "Age":0,"handpreference":["Left","Right"]}
 infoDlg = gui.DlgFromDict(dictionary=info, title="grating experiment")
 if infoDlg.OK:  # this will be True (user hit OK) or False (cancelled)
@@ -95,7 +96,7 @@ for b in range (3):
         ### Esther: hierboven heb je een syntax error 
         
         #feedback
-        ### Esther: dit zal niet lukken gezien de correcte response nog niet bepaald is
+        ### Esther: dit zal niet lukken gezien de correcte response nog niet bepaald is (of toch in elk geval nog op -30 of 30 staat)
         if trials[2,i]==trials[3,i]:
             print("correct")
         else:

@@ -17,6 +17,7 @@ bloks = [1,2,3]
 
 
 ###Oriëntatie in een array => kunnen we in een trialmatrix zetten door een trials = (array, array, array) structuur te maken
+### Esther: die 350 moest 330 zijn
 orie = numpy.array([30,30,30,30,350,350,350,350,
                      30,30,30,30,350,350,350,350,
                      30,30,30,30,350,350,350,350])

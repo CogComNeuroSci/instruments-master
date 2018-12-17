@@ -5,6 +5,7 @@ import time, numpy
 
 ### Esther: waarom was dit uitgecomment? Het ziet er nochtans goed uit
 # create a dialog box
+### Esther: het is nog beter om numerische eigenschappen ook te initializeren als nummers
 info = {'Naam proefpersoon':'', 'Leeftijd':'', 'Gender':['man', 'vrouw', 'andere'], 'Handvoorkeur':['links', 'rechts', 'ambidexter']}
 info_dialog = gui.DlgFromDict(dictionary = info, title = 'Experiment')
 if info_dialog.OK:

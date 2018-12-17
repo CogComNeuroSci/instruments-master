@@ -1,3 +1,4 @@
+### Esther: hier ben je vergeten om de library van de gui in te laden
 from psychopy import visual, event, core
 import time 
 

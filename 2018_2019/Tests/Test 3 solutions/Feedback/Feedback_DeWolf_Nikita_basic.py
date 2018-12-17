@@ -6,6 +6,7 @@ import psychopy.core
 import psychopy.event
 
 # Create a DlgFromDict: we create a window in which name, age, hand preference and participant number will be asked
+### Esther: het is nog beter om numerische eigenschappen ook te initializeren als nummers
 info = {'Name':'','Gender':['male', 'female', 'third gender'], 'Age':'', 'Participant Number': '0', 'Hand Preference': ['right', 'left', 'ambidextrous']}
 infoDlg = gui.DlgFromDict(dictionary=info, title='TestExperiment')
 if infoDlg.OK:  # this will be True (user hit OK) or False (cancelled)
@@ -114,7 +115,7 @@ for b in range(nblocks):
           #Feedback.text = "Wrong answer!"
         
         
-        ### Esther: waarom zo een moeilijke aanpak om je feedback message te laten staan voor een bepaalde tijd? core.wait(1.0) volstaat
+        ### Esther: waarom zo een moeilijke aanpak om je feedback message te laten staan voor een bepaalde tijd? core.wait(1.0) of time.sleep(1) volstaat
         #display the feedback message 
         timer = core.Clock()
         timer.add(0.25)

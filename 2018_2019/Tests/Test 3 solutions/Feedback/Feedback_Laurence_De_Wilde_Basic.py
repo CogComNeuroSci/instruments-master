@@ -77,6 +77,7 @@ for block in range(n_blocks):
             ## gabors tonen
             ### Esther: hier mis je nog de mask om een echte Gabor te tekenen
             masked_gabor = visual.GratingStim(win, ori = 90)
+            ### Esther: 45 or 135 is niet iets wat Python kan uitvoeren
             turned_gabor = visual.GratingStim(win, ori = 45 or 135)
             masked_gabor.draw() 
             win.flip()

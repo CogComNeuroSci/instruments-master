@@ -16,6 +16,7 @@ spat_frequentie = numpy.array ([2, 2, 20, 20, 2, 2, 20, 20])
 ###aanbiedtijd = numpy.array([0.16, 0.33,0.5])
 
 # correct antwoord bepalen
+### Esther: dit was een goede strategie, maar je botste op het probleem dat de orientatie nummers zijn en het correcte antwoord een string
 ##cor_resp = numpy.copy (oriëntatie)
 ##cor_resp [cor_resp == 30] = "j"
 ##cor_resp [cor_resp == 330] = "f"

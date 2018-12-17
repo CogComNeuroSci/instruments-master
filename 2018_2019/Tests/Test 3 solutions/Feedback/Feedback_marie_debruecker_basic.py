@@ -15,7 +15,7 @@ nblocks = 3
 ntrials = 8
 participant = info["Participant name"]
 key_list = ["f","j"]
-### Esther: pas op, deze aanbiedingstijden zijn 
+### Esther: pas op, deze aanbiedingstijden zijn 10 keer te lang!
 Stimulus_presentation  = numpy.array([0.16, 0.33, 0.50])
 my_clock = core.Clock()
 

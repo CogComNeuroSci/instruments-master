@@ -27,6 +27,7 @@ def dialoguebox():
     return participant
 
 # create a window to draw in
+### Esther: deze allowGUI=False komt waarschijnlijk ook uit de gabor.py demo
 win = visual.Window(units = 'norm', size = [600, 500], allowGUI=False)
 
 #some variables for the text
@@ -134,6 +135,7 @@ def verticalegabor():
 # INITIALISE SOME STIMULI
     gabor = visual.GratingStim(win, tex="sin", mask="circle", texRes=256, 
                size=[1.0, 1.0], sf=[4, 0], ori = 90, name='gabor1')
+    ### Esther: je hebt zeker geen autoDraw nodig in dit experiment, let op met wat je overneemt uit andere scripts
     gabor.autoDraw = True
     message = visual.TextStim(win, units = 'norm', pos=(0.0, -0.9), text='Hit Q to quit')
     trialClock = core.Clock()

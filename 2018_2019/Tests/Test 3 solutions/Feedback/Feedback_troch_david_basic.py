@@ -72,7 +72,7 @@ event.waitKeys(keyList = "spacebar")
 
 for b in range(nBlocks):
     
-    ### Esther: 
+    ### Esther: dit is niet een goede manier om met de indexen in je loop om te gaan!
     for trial in range(b*nTrials, (b+1)*nTrials, (b+2)*nTrials):
         ##first gabor
         gabor.sf = random.choice(gaborsf)
@@ -85,6 +85,7 @@ for b in range(nBlocks):
         gabor.sf = random.choice(gaborsf)
         
         ### Esther: pas op, hoofdletter typo
+        ### Esther: je had hierboven een random orientatie en sf toegewezen aan de Gabor, amar hier overschrijf je dat met lege waarden in de trial matrix
         gabor.ori = Matrix[Trial, 0]
         gabor.sf = Matrix[Trial, 1]
         gabor.draw()

@@ -3,7 +3,7 @@ from psychopy import visual, core, gui, event
 import time, numpy
 
 #Dialog Box
-### Esther: het is nog beter 
+### Esther: het is nog beter om numerische eigenschappen ook te initializeren als nummers
 info = {"name": "unknown", "participant number": "", "age": "", "gender": ["male", "female", "third gender"], "hand preference": ["left", "right", "ambidexter"]}
 Box = gui.DlgFromDict(info)
 if Box.OK:

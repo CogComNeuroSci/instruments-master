@@ -71,7 +71,6 @@ for blocks in range(nblocks):
     #zegt in welk blok ze zitten
     message(message_text = "Blok " + str(blocks+1) +" begint nadat u op de spatiebalk drukt.", response_key="space")
     
-    ### Esther: let op, op deze manier 
     for trials in range(8):
         #bepaal de waarden van ori en sf
         myGabor_zonderdraai.sf = sf_verandering[trials]

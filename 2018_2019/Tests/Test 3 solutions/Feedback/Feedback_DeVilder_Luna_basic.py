@@ -38,7 +38,7 @@ RT = numpy.repeat(-99.9,len(CorResp))
 # combine arrays in trial matrix
 trials = numpy.column_stack([oriëntatie, CorResp, Resp, Accuracy, RT])
 
-### esther: pas op, hier heb je nu nog maar twee trials per block en niet de 8 trials per blok die nodig zijn
+### Esther: pas op, hier heb je nu nog maar twee trials per block en niet de 8 trials per blok die nodig zijn
 # repeat the trial matrix for the three blocks
 trials = numpy.tile(trials, (nblocks, 1))
 
@@ -63,8 +63,6 @@ my_clock = core.Clock()
 def feedback_message(message_text = "", response_key = "space", duration = 0, height = None, pos = (0.0, 0.0), color = "white"):
     
     MessageOnSCreen.text    = message_text
-    
-    ## Esther: deze drie hieronder veranderen nooit, dus je hoeft ze niet meer opnieuw in te stellen
     MessageOnSCreen.height  = height
     MessageOnSCreen.pos     = pos
     MessageOnSCreen.color   = color

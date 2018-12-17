@@ -59,7 +59,7 @@ for i in range(4): #We'll use a loop so we don't have to copy-paste this 4 times
     win.flip()
     core.wait(1)
     gabor1.draw()
-    ### Esther: het clearen gebeurt beter hier
+    ### Esther: het clearen van het keyboard gebeurt beter hier
     win.flip()
     # clear the keyboard input
     event.clearEvents(eventType = "keyboard")
@@ -68,7 +68,7 @@ for i in range(4): #We'll use a loop so we don't have to copy-paste this 4 times
     ### Esther: pas op, dit is 10 keer te lang!
     core.wait(0.16)
     gabor3.draw()
-    ### Esther: niet vergetebn flippen hier!
+    ### Esther: niet vergeten flippen hier!
     core.wait(1)
     event.waitKeys(keyList = ["j","f"])
     # Register the RT

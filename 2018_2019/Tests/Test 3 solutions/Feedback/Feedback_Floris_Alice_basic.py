@@ -168,6 +168,7 @@ for b in range(nblock):
     message(text = "Press the space bar to continue to the block " + str(b+2) + ".", response_key = "space")
     
     ## YOU HAVE 8 TRIALS EACH BLOCK
+    ### Esther: dit is geen correcte manier van indexing
     for i in range(b*ntrials,(b+1)*ntrials, (b+2)*ntrials):
         
         ## Set everything ready
