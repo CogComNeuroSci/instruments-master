@@ -11,45 +11,43 @@ from psychopy import data, visual, event, core, gui, os
 
 info = {"Participant number": 0, "Name": "Tom", "Session": 0}
 
-visual_targets = range(1,8)
-targets_responses = []
-data_file="experimental_data_"
+data_file = "experimental_data_"
 directory_to_write_to = os.getcwd() + "/data/"
-already_exists = True
 
+already_exists = True
 while already_exists:
-    myDlg = gui.DlgFromDict(info, title=u"get subject info")
+    myDlg = gui.DlgFromDict(info, title = u"get subject info")
     number = str(info["Participant number"])
     filename = directory_to_write_to + data_file + number
-    if not os.path.isfile(filename+ ".csv"):
+    if not os.path.isfile(filename + ".csv"):
         already_exists = False
 
 thisExp = data.ExperimentHandler(dataFileName = filename)
 
+visual_targets = range(1,8)
+targets_responses = []
 for loop in visual_targets:
     if loop%2 == 0:
         correct_response = 'f' # even numbers, press f
     else:
         correct_response = 'j' # odd numbers, press j
     targets_responses.append({'target':loop, 'correct_response':correct_response})
-trials = data.TrialHandler(targets_responses, nReps=1, method='random')
-win = visual.Window([400,400])
-experiment_timer = core.Clock()
+
+trials = data.TrialHandler(targets_responses, nReps = 1, method = 'random')
 thisExp.addLoop(trials)
 
+win = visual.Window([400,400])
+experiment_timer = core.Clock()
+
 for trial in trials: # a TrialHandler object is iterable
-    experiment_timer.reset()
-    the_text = visual.TextStim(win, text=trial['target'], color='white')
+    the_text = visual.TextStim(win, text = trial['target'], color = 'white')
     the_text.draw()
     win.flip()
-    trial_continue = True
-    while trial_continue:
-        response=event.getKeys()
-        if response:
-            trial_continue = False
+    experiment_timer.reset()
+    response = event.waitKeys()
     rt = experiment_timer.getTime()
     accuracy = 0
-    if response[0]==trial['correct_response']:
+    if response[0] == trial['correct_response']:
         accuracy = 1
     trials.addData('response', response[0])
     trials.addData('accuracy', accuracy)
