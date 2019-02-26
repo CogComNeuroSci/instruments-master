@@ -49,7 +49,7 @@ blockTrials = numpy.tile(Design, (nReps, 1))
 ntrials = nBlocks * nBlockTrials
 
 ## make empty trial matrix
-trials = numpy.ones((ntrials,3)) * -1
+trials = numpy.ones((ntrials,3)) * numpy.nan
 
 
 # fill in the random trial order per block
@@ -79,7 +79,7 @@ trials = pandas.DataFrame.from_records(trials)
 trials.columns = ["ColorWord", "FontColor", "Block"]
 
 ## cross table validation
-print(pandas.crosstab(trials.ColorWord, [trials.FontColor, trials.Block]))
+print(pandas.crosstab([trials.ColorWord, trials.FontColor], trials.Block))
 
 ## export
 trials.to_csv(path_or_buf = "CE8_1_output_arrays.csv", index = False)

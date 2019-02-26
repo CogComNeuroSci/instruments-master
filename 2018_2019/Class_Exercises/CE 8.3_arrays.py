@@ -49,7 +49,7 @@ blockTrials = numpy.tile(Design, (nReps, 1))
 ntrials = nBlocks * nBlockTrials
 
 ## make empty trial matrix
-trials = numpy.ones((ntrials,6)) * -1
+trials = numpy.ones((ntrials,6)) * numpy.nan
 
 
 # fill in the random trial order per block

@@ -74,7 +74,7 @@ blockTrialsUnbalanced = numpy.tile(DesignUnbalanced, (nRepsUnbalanced, 1))
 ntrials = nBlocks * nBlockTrials
 
 ## make empty trial matrix
-trials = numpy.ones((ntrials,7)) * -1
+trials = numpy.ones((ntrials,7)) * numpy.nan
 
 
 # fill in the random trial order per block
