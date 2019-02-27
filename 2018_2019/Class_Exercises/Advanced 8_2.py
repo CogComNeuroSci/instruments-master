@@ -125,3 +125,8 @@ os.chdir(stim_folder)
 files = os.listdir()
 print(len(files))
 print(files)
+
+# how to access the right picture on each trial
+for triali in trials:
+    
+    print(files[int(triali["stimulus_nr"])])

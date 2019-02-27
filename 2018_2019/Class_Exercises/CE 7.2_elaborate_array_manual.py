@@ -87,7 +87,7 @@ Design = [{"Number": 1, "Color": "red"}, {"Number": 2, "Color": "red"}, {"Number
           {"Number": 1, "Color": "green"}, {"Number": 2, "Color": "green"}, {"Number": 3, "Color": "green"}, {"Number": 4, "Color": "green"} ]
 
 # randomization step 2: deduce the correct response (even numbers, press f)
-correct = [0,1,0,1,0,1,0,1]
+correct = [1,0,1,0,1,0,1,0]
 
 # randomization step 3: create the trials for the entire experiment via the TrialHandler
 trials = data.TrialHandler(trialList = Design, nReps = 1, name = "Exp", method = "random")
@@ -118,7 +118,7 @@ for trial in trials:
     RT = my_clock.getTime()
     
     ## calculate the derived properties
-    CorResp = correct[trial["Number"]-1]
+    CorResp = RespOptions[correct[trial["Number"]-1]]
     accuracy = (keys[0] == CorResp) * 1
     
     ## store the information in the ExperimentHandler

@@ -94,7 +94,7 @@ for blocki in range(nBlocks):
         trial_list = pandas.DataFrame.to_dict(blockTrialsUnbalanced, orient = "records")
     
     ## completely random trial order
-    blockTrialsHandler = data.TrialHandler(trial_list, nReps = 1, method = "sequential")
+    blockTrialsHandler = data.TrialHandler(trial_list, nReps = 1, method = "fullRandom")
     
     ## add the block to the ExperimentHandler
     thisExp.addLoop(blockTrialsHandler)

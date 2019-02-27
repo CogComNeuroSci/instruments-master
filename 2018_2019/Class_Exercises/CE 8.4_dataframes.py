@@ -92,6 +92,10 @@ for blocki in range(nBlocks):
     else:
         blockTrials = blockTrialsUnbalanced
     
+    ## randomize the trial order
+    numpy.random.shuffle(index)
+    blockTrials = blockTrials.iloc[index]
+    
     ## fill in the block number (starting from 1 instead of 0)
     blockTrials["Block"] = blocki+1
     

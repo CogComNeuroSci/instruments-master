@@ -67,7 +67,6 @@ nRepsUnbalanced = int(nBlockTrials/DesignUnbalanced.shape[0])
 ## repeat the unbalanced design
 blockTrialsUnbalanced = numpy.tile(DesignUnbalanced, (nRepsUnbalanced, 1))
 
-
 # make the trial stucture for the entire experiment
 
 ## number of trials in the experiment
@@ -90,6 +89,9 @@ for blocki in range(nBlocks):
     
     ## trial number for this block
     currentTrials = numpy.array(range(nBlockTrials)) + blocki*nBlockTrials
+    
+    ## randomize the trial order
+    numpy.random.shuffle(blockTrials)
     
     ## store the trials for this block in the experiment array
     trials[currentTrials, 0:4] = blockTrials
@@ -118,6 +120,7 @@ print(pandas.crosstab(trials.Congruence, trials.Balance))
 print(pandas.crosstab(trials.Congruence, trials.Block))
 print("Correct answers")
 print(pandas.crosstab(trials.FontColor, trials.CorAns))
+print(pandas.crosstab(trials.Block, trials.StimType))
 
 ## export
 trials.to_csv(path_or_buf = "CE8_4_output_arrays.csv", index = False)
