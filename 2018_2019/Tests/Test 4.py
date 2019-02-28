@@ -11,7 +11,7 @@ import pandas, numpy, os
 my_directory = os.getcwd()
 
 ## initialize the participant information dialog box
-info = {"Participant number":0, "Participant name":"Incognito", "Gender":["male", "female", "third gender"], "Age":0, "Handedness":["right", "left", "ambidextrous"]}
+info = {"Participant name":"Incognito", "Participant number":0, "Age":0, "Gender":["male", "female", "third gender"], "Handedness":["right", "left", "ambidextrous"]}
 
 ## make sure the data file has a novel name
 already_exists = True
