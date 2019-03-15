@@ -10,8 +10,15 @@ import pandas, numpy, os
 ## set the directory
 my_directory = os.getcwd()
 
+## construct the name of the folder that will hold the data
+directory_to_write_to = my_directory + "/data"
+    
+## if the folder doesn't exist yet, make it
+if not os.path.isdir(directory_to_write_to):
+    os.mkdir(directory_to_write_to)
+
 ## initialize the participant information dialog box
-info = {"Participant name":"Incognito", "Participant number":0, "Age":0, "Gender":["male", "female", "third gender"], "Handedness":["right", "left", "ambidextrous"]}
+info = {"Participant name":"Incognito", "Participant number":str(0), "Age":0, "Gender":["male", "female", "third gender"], "Handedness":["right", "left", "ambidextrous"]}
 
 ## make sure the data file has a novel name
 already_exists = True
@@ -19,13 +26,6 @@ while already_exists:
     
     ## present the dialog box
     myDlg = gui.DlgFromDict(dictionary = info, title = "Test 4")
-    
-    ## construct the name of the folder that will hold the data
-    directory_to_write_to = my_directory + "/data"
-    
-    ## if the folder doesn't exist yet, make it
-    if not os.path.isdir(directory_to_write_to):
-        os.mkdir(directory_to_write_to)
     
     ## construct the name of the data file
     file_name = directory_to_write_to + "/Test4_subject_" + str(info["Participant number"])
@@ -92,6 +92,9 @@ Position        = numpy.floor(UniqueTrials / 1) %  Npositions
 ## determine the congruency
 Congruence      = numpy.array(Arrow == Position) * 1
 
+## overwrite the congruency of the neutral trials
+Congruence[Position == 2] = -1
+
 
 ## make the block structure
 ############################
@@ -119,8 +122,14 @@ trials          = numpy.ones((ntrials,8)) * numpy.nan
 ## randomize the block order
 #############################
 
+## basic version: use the block number to determine the mapping
+print(numpy.array(range(nBlocks)) % 3 == 0)
+print(numpy.array(range(nBlocks)) < int(nBlocks/3))
+
 ## make an array with all the block instuctions
 BlockTypes      = numpy.concatenate([numpy.repeat(0,nBlocks*2/3),numpy.repeat(1,nBlocks*1/3)])
+
+## advanced version: no repetitions of the position instructions (1)
 
 stopcriterium = 0
 while stopcriterium != 1:
@@ -244,7 +253,7 @@ for trial in trials:
         else:
             instruct_pos.draw()
         win.flip()
-        event.waitKeys(keyList = "space")
+        #event.waitKeys(keyList = "space")
     
     ## display the number on the screen
     stimulus.pos = (PositionOptions[int(trial["Position"])],0)
@@ -255,7 +264,8 @@ for trial in trials:
     ## wait for the response
     event.clearEvents(eventType = "keyboard")
     my_clock.reset()
-    keys = event.waitKeys(keyList = RespOptions)
+    keys = ["d"]
+    #keys = event.waitKeys(keyList = RespOptions)
     RT = my_clock.getTime()
     
     ## calculate the derived response properties
@@ -270,7 +280,12 @@ for trial in trials:
     ## let the ExperimentHandler proceed to the next trial
     thisExp.nextEntry()
 
+## let the experimentHandler know its job is done
+thisExp.close()
+
 ## say goodbye to the participant
 goodbye.draw()
 win.flip()
 event.waitKeys(keyList = "space")
+
+win.close()
