@@ -12,6 +12,8 @@ my_directory = os.getcwd()
 
 os.chdir(my_directory) 
 
+# Esther: dis is een nuloperatie ;)
+
 # Aanmaken dialogbox___________________________________________________________________
 info = {"naam": "", "nummer": "0", "leeftijd": "0", "gender":["man", "vrouw", "x"], 
         "handvoorkeur": ["links", "rechts", "ambidexter"]}
@@ -102,6 +104,8 @@ event.waitKeys(keyList = "space")
 event.clearEvents(eventType = "keyboard")
 
 My_Clock_RT.reset()
+
+# Esther: pas op, de klok mag pas gereset worden na het flippen van het scherm
 
 Stimulus.draw()
 T4win.flip()

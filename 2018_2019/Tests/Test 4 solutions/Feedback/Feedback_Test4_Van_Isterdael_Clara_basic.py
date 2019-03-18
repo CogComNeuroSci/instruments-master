@@ -65,6 +65,8 @@ nBlockTrials = 60
 ArrowOrient = numpy.array(["<",">"])
 ArrowPos    = numpy.array([0.25,0.75,0.5]) #we will fill these number in in place of the horizontal coordinates of the stimulus position
 
+# Esther: pas op, hiermee staan je stimuli enkel aan de rechter kant van het scherm
+
 #determine the number of levels for the factor
 Npos = len(ArrowPos)
 Norient = len(ArrowOrient)

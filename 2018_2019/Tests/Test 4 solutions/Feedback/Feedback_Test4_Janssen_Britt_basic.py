@@ -52,6 +52,8 @@ while already_exists:
     myDlg = gui.DlgFromDict(dictionary = extra_info, title = "Test 4")
     myDlg = gui.DlgFromDict(dictionary = info, title = "Test 4")
     
+    # Esther: het is nog beter om de naam van de proefpersoon voor de GUI loop te bevragen
+    
     directory_to_write_to = "data"
     
     if not os.path.isdir(directory_to_write_to):

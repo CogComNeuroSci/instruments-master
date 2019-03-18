@@ -59,7 +59,7 @@ Design_richting=10*[{"pijltje":"<","positie":(-0.75,0),'correct':'left'},{"pijlt
 Design_positie=10*[{"pijltje":"<","positie":(-0.75,0),'correct':'left'},{"pijltje":"<","positie":(0,0),'correct':'down'},{"pijltje":"<","positie":(0.75,0),'correct':'right'},
                  {"pijltje":">","positie":(-0.75,0),'correct':'left'},{"pijltje":">","positie":(0,0),'correct':'down'},{"pijltje":">","positie":(0.75,0),'correct':'right'}]
 
-## Esther: je had hierboven ook nog de congruentie kunnen toevoegen aan je design, net zoals je de correcte resopnse hebt toegevoegd ;)
+## Esther: je had hierboven ook nog de congruentie kunnen toevoegen aan je design, net zoals je de correcte response hebt toegevoegd ;)
 
 #grafische elementen
 stimulus        = visual.TextStim(win,text="")
@@ -95,6 +95,9 @@ def announce_blockstart(blocknr):
 
 ##als de instructies gegeven zijn (hierboven), dan wijs ik het juiste design toe -> zodat de correcte accuraatheid kan bepaald worden
 def choose_trials(bloknr):
+    
+    # esther: pas op, dit had < 8 moeten zijn want python telt van 0 tot 11 in plaats van 1 tot 12
+    
     # maken van de  trials
     if bloknr < 9:
         Design_block = Design_richting

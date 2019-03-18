@@ -113,6 +113,8 @@ for blocknr in range(nblocks):
     ##add the block to the experimenthandler
     thisExp.addLoop(blockTrials)
     
+    # esther: pas op, dit had < 8 moeten zijn ipv < 9
+    
     ##zorgen dat 2/3 ze op 2/3 van de blokken op de pijltjes reageren en 1/3 op positie
     if (blocknr) < 9:
         pijlInstructies.draw()

@@ -34,6 +34,8 @@ while already_exists:
         albestaand.draw()
         win.flip()
         event.waitKeys(keyList = ["space"])
+        
+        # esther: ik ben er niet super fan van om hier plots met een window te gaan werken in plaats van met een dialogue box
 
 subject_name = info["Naam"]
 info.pop("Naam")

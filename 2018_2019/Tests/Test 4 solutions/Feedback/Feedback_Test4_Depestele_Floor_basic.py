@@ -27,6 +27,8 @@ while already_exists:
     if not os.path.isdir(directory):
         os.mkdir(directory)
     
+    # Esther: hier ben je de slash voor Test4 vergeten
+    
     # determine the file name
     file_name = directory + "Test4_subject_"+ str(number) +".txt"
     print(file_name)
@@ -53,7 +55,7 @@ win_width = 1000
 win_height = 700
 win = visual.Window(size=[win_width, win_height], units="pix")
 
-# Esther: ow pas op, we hadden gevraagd om in het norm cooredinatenstelsel te werken!
+# Esther: ow pas op, we hadden gevraagd om in het norm coordinatenstelsel te werken!
 
 text_width  = 0.9
 
@@ -140,6 +142,8 @@ for blocki in range(nBlocks):
     
 #    loop over de geshuffelde trials voor dat block
     for trial in blockTrials:
+        
+        # Esther: de code hieronder zal niet werken om de text en positie aan te spreken
         
         ##present the stimulus with its position
         stimulus.text= blockTrials[trial, 0]

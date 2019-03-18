@@ -14,6 +14,7 @@ info    = {"Naam?": "",
            "Gender?" : "man, vrouw, derde gender",
            "Handvoorkeur?" : "links, rechts, ambidexter"}
 
+# Esther: kijk nog eens goed naar de feedback van Test 3 om te zien hoe je deze GUI efficienter kan implementeren! (met een drop-down menu)
 
 ##DATA_________________________________________________________________________________________________________________________________________
 
@@ -58,6 +59,7 @@ instructions.draw()
 win.flip()
 k = event.waitKeys(keyList = "space")
 
+# Esther: niet nodig om je antwoord hier weg te schrijven naar een variabele k die later niet meer gebruikt zal worden, dat voorkomt fouten
 
 ##STIMULI_____________________________________________________________________________________________________________________________________
 
@@ -75,6 +77,8 @@ output_file_name = "file_name"
 
 ## Implement the ExperimentHandler
 thisExp = data.ExperimentHandler(dataFileName = output_file_name)
+
+## esther: hm, een tweede experimenthandler hier?
 
 ## Couple the TrialHandler to the ExperimentHandler 
 thisExp.addLoop(trials)
@@ -95,7 +99,7 @@ reageeroppositie = visual.TextStim(win,text = "Reageer op de positie van de pijl
 
 for block in range(12):
 
-    
+    # Esther: dit had <= 7 moeten zijn of < 8
     if block < 7:
         reageeroprichting.draw()
         win.flip()

@@ -59,6 +59,8 @@ event.waitKeys(keyList = "space")
 
 for block in range(12):
     
+    # Esther: dit was een goede plaats voor de instructies voor dit blok
+    
     # Esther: hier hadden we eigenlijk gevraag om een fullRandom randomisatie
     
     trials = data.TrialHandler(trialList = Design, nReps = 10, method = "random")

@@ -93,6 +93,8 @@ for block in range(nblocks):
         win.flip()
         event.waitKeys(keyList = ["<",">"]) # Esther: dit zijn niet de correcte response opties
         my_clock.getTime()
+        
+        # Esther: het is niet nodig om trial te updaten, dat gebeurt automatisch in de trial loop
         trial = trial +1
     
     #tweede soort blok

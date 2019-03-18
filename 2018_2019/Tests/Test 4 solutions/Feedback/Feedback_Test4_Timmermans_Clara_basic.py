@@ -120,6 +120,9 @@ goodbye         = visual.TextStim(win,text=(    "This is the end of the experime
                                     wrapWidth = win_width*text_width)
 
 def announce_blockstart(bloknr):
+    
+    # Esther: pas op, dit had hier < 8 moeten zijn gezien python test van 0 tot 11 in plaats van 1 tot 12
+    
     if bloknr < 9:
         instructions = instruct_dir
     else:

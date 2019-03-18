@@ -189,6 +189,8 @@ message(message_text = InstrAlgemeen)
 #12 blokken:
 for b in range(nBlok):
     
+    # Esther: pas op, hieronder moest het <= 7 zijn ofwel < 8
+    
     #bepaal wat moet gedaan worden in het blok en store de correcte resp en display de instructies voor het specifieke blok
     if (b+1) <= 1:  #8
         blocktrials = blocktrialsRicht
@@ -226,6 +228,8 @@ for b in range(nBlok):
         
         ###de reactietijd
         blocktrials[h,6] = RT
+    
+    # Esther: hieronder ben je de indices van je kolommen vergeten
     
     #schrijf in trials
     trials[b*nBlockTrials:(b+1)*nBlockTrials] = blocktrials

@@ -84,6 +84,7 @@ positie_op=np.array([links,rechts,midden])
 #blok
 opdracht_resp=np.array([richt,pos,richt,pos,richt,pos,richt,pos,richt,richt,richt,richt])
 
+# Esther: nu nog deze door elkaar gooien tot er geen herhalingen van pos zijn en je bent er helemaal
 
 #creating factorial design
 trial_list = data.createFactorialTrialList({"richting":richting_op,"positie":positie_op})

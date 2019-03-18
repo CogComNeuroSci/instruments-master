@@ -23,7 +23,7 @@ RespOptions = ['right', 'left', 'up']
 Stimuli     = numpy.array(["<", ">"])
 Positie     = [-0.75,0], [0,0], [0.75,0]
 
-# Esther: pas op, de code hierboven resulteert in een foutmelding want je moet die arrays nog verzamelen een in een overkoepelende datastructuur
+# Esther: pas op, de code hierboven resulteert in een foutmelding want je moet die 3 lijsten nog verzamelen in een overkoepelende datastructuur
 # Esther: bijkomende tip: behandel de x en y coordinaat apart, één waarde per kolom in je array
 
 # data file

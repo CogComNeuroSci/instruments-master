@@ -173,6 +173,8 @@ for blocki in range(nBlocks):
     # start trial loop
     for i in trials:
         
+        # Esther: de intructies hoefden niet op elke trial herhaald te worden
+        
         # present instructions
         Instr.draw()
         win.flip()
@@ -213,7 +215,7 @@ win.flip()
 core.wait(3)
 
 
-# Esther: goed dat je hier 
+# Esther: goed dat je hier de kruistabellen uitvoert, maar het is wat vijgen na pasen gezien de trials al uitgevoerd zijn
 
 # Validation and export
 
@@ -230,5 +232,5 @@ print(pandas.crosstab([trials.Direction, trials.Position], trials.Block))
 # export as a comma separated file
 numpy.savetxt("Test_4.txt", trials, delimiter = ",", fmt = "%.0d")
 
-
+# Esther: waarom hier de output naam gebruiken die je bovenaan bepaald hebt?
 

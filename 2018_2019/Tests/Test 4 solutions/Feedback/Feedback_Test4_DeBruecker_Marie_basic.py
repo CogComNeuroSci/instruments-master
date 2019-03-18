@@ -154,6 +154,7 @@ for blocki in range(nBlocks):
         stimulusright.draw()
         win.flip()
     
+    ## Esther: de voorwaarde van dit if-statement is dezelfde als hierboven
     elif blocki%3 == 0:
         instructsposition.draw()
         pijltjes.draw()

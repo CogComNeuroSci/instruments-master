@@ -81,7 +81,7 @@ def congruence_function():
 #INSTRUCTIONFUNCTION
 def choose_instruction(bloknr):
     
-    # Esther: dit had <=8 moeten zijn
+    # Esther: dit had < 8 moeten zijn
     
     if bloknr < 9:
         instructions.text = ("Responds to the direction of the arrows. \n \n" +

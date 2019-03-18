@@ -112,6 +112,8 @@ for b in range(nblocks):
     # randomization
     trial_list = data.createFactorialTrialList({"Richting": arrows, "Orientatie":positions})
     
+    # Esther: hier gaat het mis, want je tracht hier een factorieel design te maken met herhaalde waarden
+    
     #Create trials
     trials = data.TrialHandler(trialList = trial_list, nReps = 1, method = "random")
     thisExp.addLoop(trials)

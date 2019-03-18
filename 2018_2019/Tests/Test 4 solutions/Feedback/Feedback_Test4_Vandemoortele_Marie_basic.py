@@ -91,6 +91,8 @@ def announce_blockstart():
 def randomize():
     Design = data.createFactorialTrialList({"arrow_orientation": orientation_options, "arrow_position": position_options})
 
+    # Esther: dit had <=7 moeten zijn
+
     # create the trials
     if block <= 8:
         trials = data.TrialHandler(trialList = Design, nReps = 10, method = "random")

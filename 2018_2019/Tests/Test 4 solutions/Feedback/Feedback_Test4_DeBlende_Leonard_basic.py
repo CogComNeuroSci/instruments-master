@@ -32,7 +32,7 @@ stimulus        = visual.TextStim(win,text="", pos = (0.0 , 0.0))
     #stimuli5 = visual.TextStim(win, text = ">", pos = (0,0))
     #stimuli6 = visual.TextStim(win, text = ">", pos = (0.5,0))
 
-# Esther: hieronder is de correcte response altijd gebaseerd op de stimulus text en niet op de positievan de stimulus
+# Esther: hieronder is de correcte response altijd gebaseerd op de stimulus text en niet op de positie van de stimulus
 # Esther: eigenlijk was het niet nog niet mogelijk om de correcte response te bepalen, maar wel de congruentie van de stimulus
 
 Design = [{"Stimulus": "<", "CorResp": "f", "pos": (-0.5,0)}, {"Stimulus": "<", "CorResp": "f", "pos": (0,0)},{"Stimulus": "<", "CorResp": "f", "pos": (0.5,0)}, 

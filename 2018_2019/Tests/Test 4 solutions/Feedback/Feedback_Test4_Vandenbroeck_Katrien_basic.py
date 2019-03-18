@@ -11,7 +11,7 @@ from time import sleep
 core.wait(0.5)
 clock = core.Clock()
 
-## Esther: laat geen pruntjes liggen door bv. niet de dimensies van het scherm in de voeren
+## Esther: laat geen puntjes liggen door bv. niet de dimensies van het scherm in de voeren
 
 #Make a window
 win= vis.Window()
@@ -171,7 +171,6 @@ for block in range (int(nb_blocks*(2/3))):
         print(k)
         Resp[i]=k[0][0]
         RT[i]  =k[0][1]
-    
 
 #last 4 blocks
 instructieB.draw()

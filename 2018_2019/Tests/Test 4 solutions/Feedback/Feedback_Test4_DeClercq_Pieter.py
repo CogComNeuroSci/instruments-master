@@ -95,7 +95,7 @@ which_type=["Instructions1","Instructions1","Instructions2","Instructions1","Ins
 Design = [{"Pijltje": "<", "Positie": (-0.5,0.0)}, {"Pijltje": "<", "Positie": (0.5,0.0)}, {"Pijltje": "<", "Positie": (0.0,0.0)},\
           {"Pijltje": ">", "Positie": (-0.5,0.0)}, {"Pijltje": ">", "Positie": (0.5,0.0)}, {"Pijltje": ">", "Positie": (0.0,0.0)}]
 
-## Esther: je kon ook heel gemakkelijk in dit design ook al de congruente gehardcode hebben ;)
+## Esther: je kon ook heel gemakkelijk in dit design ook al de congruentie gehardcode hebben ;)
 
 #trials lopen
 for blok in range(12):

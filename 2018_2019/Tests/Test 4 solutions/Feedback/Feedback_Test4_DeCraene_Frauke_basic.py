@@ -119,7 +119,7 @@ for block in range(nBlocks):
         else:
             Congruency[TrialIndex]= "Incongruent"
         
-        # Esther: hier hadden we graag ook nog de neutrale trials apart bedoeld gezien
+        # Esther: hier hadden we graag ook nog de neutrale trials apart benoemd gezien
         
         Stimulus.text=ArrowOptions[factorial[trial,0]]
         Stimulus.pos=(PositionOptions[factorial[trial,1]],0)

@@ -150,6 +150,8 @@ def perform_trial():
     # Wait for the response
     keys = event.waitKeys(keyList = [">","<","escape","tab"])
     
+    # Esther: dit zijn niet de keys die we gevraagd hadden
+    
     # Register the RT
     RT = my_clock.getTime()
     
