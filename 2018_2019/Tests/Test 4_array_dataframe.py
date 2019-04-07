@@ -4,6 +4,9 @@
 from psychopy import visual, event, core, gui, data
 import pandas, numpy, os
 
+# set to 1 if you want to execute the code in speedy mode
+speedy = 1
+
 
 # file management and participant info
 
@@ -18,7 +21,7 @@ if not os.path.isdir(directory_to_write_to):
     os.mkdir(directory_to_write_to)
 
 ## initialize the participant information dialog box
-info = {"Participant name":"Incognito", "Participant number":str(0), "Age":0, "Gender":["male", "female", "third gender"], "Handedness":["right", "left", "ambidextrous"]}
+info = {"Participant name":"Incognito", "Participant number":0, "Age":0, "Gender":["male", "female", "third gender"], "Handedness":["right", "left", "ambidextrous"]}
 
 ## make sure the data file has a novel name
 already_exists = True
@@ -28,10 +31,10 @@ while already_exists:
     myDlg = gui.DlgFromDict(dictionary = info, title = "Test 4")
     
     ## construct the name of the data file
-    file_name = directory_to_write_to + "/Test4_subject_" + str(info["Participant number"])
+    file_name = directory_to_write_to + "/Test4_subject_" + str(info["Participant number"]) + ".csv"
     
     ## check whether the name of the data file has already been used
-    if not os.path.isfile(file_name + ".csv"):
+    if not os.path.isfile(file_name):
         
         ## if there isn't a data file with this name used yet, we're ready to start
         already_exists = False
@@ -42,15 +45,6 @@ while already_exists:
         myDlg2 = gui.Dlg(title = "Error")
         myDlg2.addText("Try another participant number")
         myDlg2.show()
-
-## extract the name of the participant from the dialog box information
-subject_name = info["Participant name"]
-
-## remove the name of the participant from the dialog box information (anonimity!)
-info.pop("Participant name")
-
-## start the ExperimentHandler, add the output file name and store the dialog box info (without the participant name!)
-thisExp = data.ExperimentHandler(dataFileName = file_name, extraInfo = info)
 
 
 # randomization
@@ -116,7 +110,7 @@ blockTrials     = numpy.tile(Design, (nReps, 1))
 ntrials         = nBlocks * nBlockTrials
 
 ## make empty trial matrix
-trials          = numpy.ones((ntrials,8)) * numpy.nan
+trials          = numpy.ones((ntrials,15)) * numpy.nan
 
 
 ## randomize the block order
@@ -130,7 +124,6 @@ print(numpy.array(range(nBlocks)) < int(nBlocks/3))
 BlockTypes      = numpy.concatenate([numpy.repeat(0,nBlocks*2/3),numpy.repeat(1,nBlocks*1/3)])
 
 ## advanced version: no repetitions of the position instructions (1)
-
 stopcriterium = 0
 while stopcriterium != 1:
     
@@ -175,33 +168,40 @@ for blocki in range(nBlocks):
     ## insert the trial number within the block
     trials[currentTrials, 7] = numpy.array(range(nBlockTrials))+1
 
+## store the participant information
+trials[:,11] = info["Participant number"]
+trials[:,12] = info["Age"]
+if info["Gender"] == "male":
+    trials[:,13] = 0
+elif info["Gender"] == "female":
+    trials[:,13] = 1
+else:
+    trials[:,13] = 2
+if info["Handedness"] == "right":
+    trials[:,14] = 0
+elif info["Handedness"] == "left":
+    trials[:,14] = 1
+else:
+    trials[:,14] = 2
+
 
 # validation and export
 
 ## creating pandas dataframe from numpy array
-trials = pandas.DataFrame.from_records(trials)
+trialsDF = pandas.DataFrame.from_records(trials)
 
 ## add the column names
-trials.columns = ["Arrow", "Position", "UniqueStim", "Congruence", "Block", "Mapping", "CorResp", "TrialInBlock"]
+trialsDF.columns = ["Arrow", "Position", "UniqueStim", "Congruence", "Block", "Mapping", "CorResp", "TrialInBlock", 
+                  "response", "Acc", "RT", "Participant number", "Age", "Gender", "Handedness"]
 
 ## cross table validation
-print(pandas.crosstab([trials.Arrow, trials.Position], trials.Congruence))
-print(pandas.crosstab(trials.Mapping, [trials.Arrow, trials.Position]))
-print(pandas.crosstab(trials.Block, trials.Mapping))
-print(pandas.crosstab([trials.Arrow, trials.Position], [trials.Mapping, trials.CorResp]))
+print(pandas.crosstab([trialsDF.Arrow, trialsDF.Position], trialsDF.Congruence))
+print(pandas.crosstab(trialsDF.Mapping, [trialsDF.Arrow, trialsDF.Position]))
+print(pandas.crosstab(trialsDF.Block, trialsDF.Mapping))
+print(pandas.crosstab([trialsDF.Arrow, trialsDF.Position], [trialsDF.Mapping, trialsDF.CorResp]))
 
 ## export (just to be able to check the randomization)
-trials.to_csv(path_or_buf = "Test4.csv", index = False)
-
-
-# insert randomization in TrialHandler
-
-## convert dataframe to list of dictionaries
-trial_list = pandas.DataFrame.to_dict(trials, orient = "records")
-
-## create the trials for the entire experiment via the TrialHandler
-trials = data.TrialHandler(trialList = trial_list, nReps = 1, method = "sequential")
-thisExp.addLoop(trials)
+trialsDF.to_csv(path_or_buf = "Test4.csv", index = False)
 
 
 # initializing
@@ -219,7 +219,7 @@ text_width      = 0.5
 stimulus        = visual.TextStim(win,text="")
 welcome         = visual.TextStim(win,text=(    "Hi {},\n"+
                                                 "Welcome to this experiment!\n\n"+
-                                                "Push the space bar to proceed.").format(subject_name),
+                                                "Push the space bar to proceed.").format(info["Participant name"]),
                                     wrapWidth = win_width*text_width)
 instruct_dir    = visual.TextStim(win,text=(    "Push left when the arrow points to the left or\n"+
                                                 "Push right when the arrow points to the right. \n\n"+
@@ -244,44 +244,55 @@ win.flip()
 event.waitKeys(keyList = "space")
 
 ## trial loop
-for trial in trials:
+trialcounter = 0
+while trialcounter < trialsDF.shape[0]:
     
     ## present the instructions at the start of the block
-    if trial["TrialInBlock"] == 1:
-        if trial["Mapping"] == 0:
+    if trialsDF.TrialInBlock[trialcounter] == 1:
+        if trialsDF.Mapping[trialcounter] == 0:
             instruct_dir.draw()
         else:
             instruct_pos.draw()
         win.flip()
-        #event.waitKeys(keyList = "space")
+        if speedy == 1:
+            pass
+        else:
+            event.waitKeys(keyList = "space")
     
     ## display the number on the screen
-    stimulus.pos = (PositionOptions[int(trial["Position"])],0)
-    stimulus.text = ArrowOptions[int(trial["Arrow"]) ]
+    stimulus.pos = (PositionOptions[int(trialsDF.Position[trialcounter])],0)
+    stimulus.text = ArrowOptions[int(trialsDF.Arrow[trialcounter]) ]
     stimulus.draw()
     win.flip()
     
     ## wait for the response
     event.clearEvents(eventType = "keyboard")
     my_clock.reset()
-    keys = ["d"]
-    #keys = event.waitKeys(keyList = RespOptions)
+    if speedy == 1:
+        keys = ["left"]
+    else:
+        keys = event.waitKeys(keyList = RespOptions)
     RT = my_clock.getTime()
     
     ## calculate the derived response properties
-    CorResp = RespOptions[int(trial["CorResp"])]
+    CorResp = RespOptions[int(trialsDF.CorResp[trialcounter])]
     accuracy = (keys[0] == CorResp) * 1
     
-    ## store the response information in the ExperimentHandler
-    trials.addData("response", keys[0])
-    trials.addData("Acc", accuracy)
-    trials.addData("RT", RT)
+    ## store the response information
+    if keys[0] == "left":
+        trialsDF.response[trialcounter] = 0
+    elif keys[0] == "down":
+        trialsDF.response[trialcounter] = 1
+    else:
+        trialsDF.response[trialcounter] = 2
     
-    ## let the ExperimentHandler proceed to the next trial
-    thisExp.nextEntry()
+    trialsDF.Acc[trialcounter]   = accuracy
+    trialsDF.RT[trialcounter]    = RT
+    
+    trialcounter = trialcounter + 1
 
-## let the experimentHandler know its job is done
-thisExp.close()
+## export data
+trialsDF.to_csv(path_or_buf = file_name, index = False)
 
 ## say goodbye to the participant
 goodbye.draw()
