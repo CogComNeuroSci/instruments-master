@@ -30,8 +30,10 @@ mini_block  = np.repeat(triplet, nreps_stim)
 hand_block  = np.repeat(hands, nreps_hand)
 
 ## make empty trial matrix
-trials      = np.ones((ntrials,8)) * -1
+trials      = np.ones((ntrials,13)) * -1
 trials[:,0] = range(ntrials)
+trials[:,8] = trials[:,0]%(len(hand_block)*len(mini_block))
+trials[:,9] = trials[:,0]%len(mini_block)
 
 
 # stimulus shuffling (different order for each participant)
@@ -87,6 +89,9 @@ for cue_block_i in range(len(cue_blocks)):
             trials[triali,7] = mini_block                   ## correct response button for first response mapping
         else:
             trials[triali,7] = mini_block + nstim_mini      ## correct response button for second response mapping
+        trials[triali,10] = stimi[0]
+        trials[triali,11] = stimi[1]
+        trials[triali,12] = stimi[2]
         
         ## update the mini_block counter
         mini_block_counter += 1
@@ -99,11 +104,16 @@ for cue_block_i in range(len(cue_blocks)):
 dataframe = pd.DataFrame.from_records(trials)
 
 ## name the columns
-dataframe.columns = ['trial_nr', 'cue_block_nr', 'cue_block_type', 'hand_block_nr', 'hand_block_type', 'mini_block_nr', 'stimulus_nr', 'CorResp']
+dataframe.columns = [   'trial_nr', 'cue_block_nr', 'cue_block_type', 'hand_block_nr', 'hand_block_type', 'mini_block_nr', 'stimulus_nr', 'CorResp', 'trial_cueblock_nr', 'trial_miniblock_nr',\
+                        'stim1', 'stim2', 'stim3']
 
 print(pd.crosstab(dataframe.hand_block_type, dataframe.CorResp))
 print(pd.crosstab(dataframe.stimulus_nr, dataframe.CorResp))
 print(pd.crosstab(dataframe.cue_block_type, dataframe.hand_block_type))
+
+## export (just to be able to check the randomization)
+dataframe.to_csv(path_or_buf = "A8_2.csv", index = False)
+
 
 # Convert dataframe to list of dictionaries
 trial_list = pd.DataFrame.to_dict(dataframe, orient = "records")
@@ -128,5 +138,21 @@ print(files)
 
 # how to access the right picture on each trial
 for triali in trials:
+    
+    if triali["trial_cueblock_nr"] == 0:
+        if triali["cue_block_type"] == 0:
+            pass #(one set of instructions: ACC versus RT)
+        else:
+            pass #(other set of instructions: ACC versus RT)
+    
+    if triali["trial_miniblock_nr"] == 0:
+        print(files[int(triali["stim1"])])
+        print(files[int(triali["stim2"])])
+        print(files[int(triali["stim3"])])
+        
+        if triali["hand_block_type"] == 0:
+            pass # sdf
+        else:
+            pass # jkl
     
     print(files[int(triali["stimulus_nr"])])
