@@ -2,7 +2,7 @@
 
 # import modules
 from psychopy import visual
-import time, numpy
+import time
 
 # initialize the window
 win = visual.Window(fullscr = True, units = "norm")

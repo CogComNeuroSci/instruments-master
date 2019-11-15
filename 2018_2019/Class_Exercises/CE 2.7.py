@@ -1,7 +1,7 @@
 # This is an example of a Halloween pumpkin written using PsychoPy code
 # By Tom Verguts, October 2017, updated in September 2018, by way of illustration for the Instruments in Psychology course
 import time
-from psychopy import visual,event
+from psychopy import visual
 
 # definitions start here
 win = visual.Window(fullscr = True, units = "norm")

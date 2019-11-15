@@ -1,5 +1,5 @@
 '''
-This FAQ script contains some explanation on the use of puples, lists or an array in the Stroop task exercise (CE 3.9).
+This FAQ script contains some explanation on the use of tuples, lists or an array in the Stroop task exercise (CE 3.9).
 
 '''
 

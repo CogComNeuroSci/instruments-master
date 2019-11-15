@@ -6,6 +6,7 @@ from psychopy import visual
 # definitions start here
 win = visual.Window(fullscr = True, units = "norm")
 
+# make the shapes
 rect            = visual.ImageStim(win, image = "HalloweenPumpkin.jpg")
 pumpkinVert     = [(-0.2,0.0),(-0.4,0.1),(-.4,0.4),(-0.2,0.6),(0.2,0.6),(.4,0.4),(.4,0.1),(0.2,0)]
 pumpkin         = visual.ShapeStim( win, lineColor = "black", fillColor = "orange", vertices = pumpkinVert, size = 1)
@@ -15,7 +16,7 @@ eyeRight        = visual.Circle(    win, lineColor = "black", fillColor = "black
 pumpkin_top     = visual.Rect(      win, lineColor = "black", fillColor = "green", pos = (0,0.7), width = 0.1, height = 0.2)
 tekst           = visual.TextStim(  win, text = "Happy halloween!", height = 0.3, pos = (0,-0.5), font = "Monotype Corsiva", wrapWidth = 3)
 tekst.italic    = False
-
+ 
 # drawing starts here; first the image
 rect.draw()
 win.flip()
@@ -24,6 +25,17 @@ time.sleep(2)
 # Now our drawing; with the text flashing on and off a few times
 
 for flashes in range(5):
+       
+    if flashes%2 == 0:
+        eyeLeft.lineColor = "black" 
+        eyeLeft.fillColor = "black"
+        eyeRight.lineColor = "black"
+        eyeRight.fillColor = "black"
+    else:
+        eyeLeft.lineColor = "red" 
+        eyeLeft.fillColor = "red"
+        eyeRight.lineColor = "red"
+        eyeRight.fillColor = "red"
     
     # draw the pumpkin
     pumpkin.draw()
