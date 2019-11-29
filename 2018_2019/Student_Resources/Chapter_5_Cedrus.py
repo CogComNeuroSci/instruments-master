@@ -1,5 +1,5 @@
 # import the Cedrus response box module
-import pyxid
+import pyxid2 as pyxid
 
 # detect the occupied port numbers and display them
 devices = pyxid.get_xid_devices()
