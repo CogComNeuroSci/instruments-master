@@ -7,15 +7,30 @@ win = visual.Window(size = [800, 800], color = (-1,-1,-1), units = "norm")
 
 # Prepare the graphical elements
 message = visual.TextStim(win, text = "test")
-dot     = visual.Circle(win, radius = 0.05)
-   
+dot     = visual.Circle(win, radius = 0.03)
+
 # Determine the number of dots
 ndots = 10
 
 ## Sample from the normal distribution for the color
-red = numpy.random.normal(loc = 0, scale = 0.5, size = ndots)
-red[red < -1] = -1
-red[red >  1] =  1
+hue = numpy.random.normal(loc = 0, scale = 0.5, size = ndots)
+hue2 = hue * 2
+R = numpy.repeat(-1.,ndots)
+G = numpy.repeat(1.,ndots)
+B = numpy.repeat(-1.,ndots)
+R[hue < 0] = -1
+G[hue < 0] = hue2[hue < 0]+1
+B[hue < 0] = -(hue2[hue < 0]+1)
+R[hue > 0] = hue2[hue > 0]-1
+G[hue > 0] = 1
+B[hue > 0] = -1
+
+R[R < -1] = -1
+R[R >  1] =  1
+G[G < -1] = -1
+G[G >  1] =  1
+B[B < -1] = -1
+B[B >  1] =  1
 
 ## Sample from the normal distribution for the position
 pos_h = numpy.random.normal(loc = 0, scale = 0.5, size = ndots)
@@ -24,7 +39,7 @@ pos_h[pos_h < -0.9] = -0.9
 pos_h[pos_h >  0.9] =  0.9
 pos_v[pos_v < -0.9] = -0.9
 pos_v[pos_v >  0.9] =  0.9
-    
+
 # Display the welcome message
 message.text = "Welcome!"
 message.draw()
@@ -33,17 +48,17 @@ time.sleep(1)
 
 # Display the dots
 for doti in range(ndots):
-    dot.color = [red[doti],-1,-red[doti]]
+    dot.color = [R[doti],G[doti],B[doti]]
     dot.pos = (pos_h[doti], pos_v[doti])
     dot.draw()
 win.flip()
 time.sleep(1)
 
 # Determine whether the dots are on average more red or more blue
-if numpy.mean(red) > 0.05:
-    message.text = "More red"
-    message.color = [1,-1,-1]
-elif numpy.mean(red) < -0.05:
+if numpy.mean(hue) > 0.05:
+    message.text = "More yellow"
+    message.color = [1,1,-1]
+elif numpy.mean(hue) < -0.05:
     message.text = "More blue"
     message.color = [-1,-1,1]
 else:
