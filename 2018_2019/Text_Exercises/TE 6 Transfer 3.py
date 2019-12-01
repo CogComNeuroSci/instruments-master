@@ -1,4 +1,4 @@
-# a homemade squaring function (well, only if your number if 4)
+# a homemade squaring function (well, only if your number is 4)
 def square_function():
     number = 16
     return number
