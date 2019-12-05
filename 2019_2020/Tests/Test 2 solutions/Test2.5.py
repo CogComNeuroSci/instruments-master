@@ -63,6 +63,7 @@ for trial in range(8):
         win.flip()
         time.sleep(1)
 
+
 # Display the goodbye message
 message.text = "The end!"
 message.color = [1,1,1]

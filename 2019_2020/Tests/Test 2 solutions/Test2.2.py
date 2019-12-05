@@ -8,6 +8,8 @@ win = visual.Window(size = [800, 800], color = (-1,-1,-1), units = "norm")
 # Prepare the graphical elements
 message = visual.TextStim(win, text = "test")
 dot     = visual.Circle(win, radius = 0.05)
+#dot     = visual.Circle(win, radius = 0.025, units = "height")
+#dot     = visual.Polygon(win, edges = 100, radius = 0.05)
 
 ## Sample from the normal distribution for the color
 red = numpy.random.normal(loc = 0, scale = 0.5, size = 1)
