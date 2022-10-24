@@ -9,7 +9,7 @@ import time
 
 win = visual.Window([600,400])
 stim = visual.TextStim(win, text = "hello world!", color = (0,1,0))
-rect = visual.Rect(win, width = 2, height = 2, lineColor = (1,0,0))
+rect = visual.rect.Rect(win, width = 2, height = 2, lineColor = (1,0,0))
 
 stim.draw()
 rect.draw()
