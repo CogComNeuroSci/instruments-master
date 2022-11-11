@@ -21,7 +21,7 @@ wall_width = 0.02*10 ## 10% of screen width
 wall_height = 0.02*50 ## 20% of screen height
 
 # part 3: prepare graphic elements
-win = visual.Window([500,400])
+win = visual.Window([800,600], units = "norm")
 car_blue = visual.Circle(win,lineColor="blue",fillColor="blue",pos=pos_car_blue_start,size=0.1)
 car_green = visual.Circle(win,lineColor="green",fillColor="green",pos=pos_car_green_start,size=0.1)
 ##car_blue = visual.ImageStim(win, image = "Car_blue.png", pos=pos_car_blue_start, size=0.2)
