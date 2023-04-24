@@ -15,12 +15,12 @@ feedback_time = 0.4
 speedy = 0
 
 # make a function for presenting messages on screen
-def message(message_text = "", response_key = "space", duration = 0, height = None, pos = (0.0, 0.0), color = "white"):
+def message(message_text = "", response_key = "space", duration = 0, height = None, pos = (0.0, 0.0), kleur = "white"):
     message_on_screen = visual.TextStim(win, text = "OK")
     message_on_screen.text    = message_text
     message_on_screen.height  = height
     message_on_screen.pos     = pos
-    message_on_screen.color   = color
+    message_on_screen.color   = kleur
     
     message_on_screen.draw()
     win.flip()
@@ -165,7 +165,7 @@ for block_i in range(n_blocks):
     trials[current_trials, n_columns_block + 1] = block_type[block_i]
         
     ## determine the correct response (based on color and instruction_mapping)
-    trials[current_trials, n_columns_block + 2] = instruction_mapping + (1-2*instruction_mapping)*trials[current_trials, 0]
+    trials[current_trials, n_columns_block + 2] = 1 - instruction_mapping + (2*instruction_mapping-1)*trials[current_trials, 0]
 
 # validation and export
 
@@ -206,8 +206,8 @@ instructions_real = "Ok, that was practice.. we start after you hit the space bu
 # execute experiment
 
 ## welcome and instructions
-message(message_text = welcome)
-message(message_text = instructions[instruction_mapping])
+message(message_text = welcome, kleur = "red")
+message(message_text = instructions[instruction_mapping], kleur = "white")
 
 for experiment_phase in range(2):
     if not experiment_phase: # practice phase
