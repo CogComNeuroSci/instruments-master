@@ -42,13 +42,14 @@ class boxed_stimulus_extra(boxed_stimulus):
             self.box2.draw()
         super().draw() # take the drawing functionality of boxed_stimulus
 
-win = visual.Window(size = (800, 800), units = 'norm', color = 'black')
+if __name__ == "__main__": # this is to avoid that the code below is run when the objects are imported in another script
+    win = visual.Window(size = (800, 800), units = 'norm', color = 'black')
 
-s1 = boxed_stimulus(win, text = "hello", color = "green", draw_box = True)
-s2 = boxed_stimulus_extra(win, text = "do you feel boxed?", color = "red", n_box = 2)
+    s1 = boxed_stimulus(win, text = "hello", color = "green", draw_box = True)
+    s2 = boxed_stimulus_extra(win, text = "do you feel boxed?", color = "red", n_box = 2)
 
-s1.draw()
-time.sleep(1)
-s2.draw()
-time.sleep(1)
-win.close()
+    s1.draw()
+    time.sleep(1)
+    s2.draw()
+    time.sleep(1)
+    win.close()
