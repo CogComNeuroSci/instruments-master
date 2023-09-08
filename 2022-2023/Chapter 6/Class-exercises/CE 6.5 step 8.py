@@ -319,19 +319,19 @@ for b in range(nblocks):
         # check whether there was a preference
         if numpy.sum(blockRatings == max) > 1:
             summary_text = ("You found both blocks equally difficult.\n\n"+
-                            "In the {0} block, your average RT was {1:.0f} milliseconds\n"+
-                            "and the accuracy was {2:.0f}%\n\n"+
-                            "In the {3} block, your average RT was {4:.0f} milliseconds\n"+
-                            "and the accuracy was {5:.0f}%\n\n"+
-                            "Push the space bar to proceed.").format(which_type[0],averageRT[0],averageACC[0],which_type[1],averageRT[1],averageACC[1])
+                            f"In the {which_type[0]} block, your average RT was {averageRT[0]:.0f} milliseconds\n"+
+                            f"and the accuracy was {averageACC[0]:.0f}%\n\n"+
+                            f"In the {which_type[1]} block, your average RT was {averageRT[1]:.0f} milliseconds\n"+
+                            f"and the accuracy was {averageACC[1]:.0f}%\n\n"+
+                            "Push the space bar to proceed.")
         else:
             i,j = numpy.unravel_index(blockRatings.argmax(), blockRatings.shape)
-            summary_text = ("You found the {0} block most difficult.\n\n"+
-                            "In the {1} block, your average RT was {2:.0f} milliseconds\n"+
-                            "and the accuracy was {3:.0f}%\n\n"+
-                            "In the {4} block, your average RT was {5:.0f} milliseconds\n"+
-                            "and the accuracy was {6:.0f}%\n\n"+
-                            "Push the space bar to proceed.").format(which_type[j],which_type[0],averageRT[0],averageACC[0],which_type[1],averageRT[1],averageACC[1])
+            summary_text = (f"You found the {which_type[j]} block most difficult.\n\n"+
+                            f"In the {which_type[0]} block, your average RT was {averageRT[0]:.0f} milliseconds\n"+
+                            f"and the accuracy was {averageACC[0]:.0f}%\n\n"+
+                            f"In the {which_type[1]} block, your average RT was {averageRT[1]:.0f} milliseconds\n"+
+                            f"and the accuracy was {averageACC[1]:.0f}%\n\n"+
+                            "Push the space bar to proceed.")
         
         # give feedback on the difficulty
         message(message_text = summary_text, response_key = "space")

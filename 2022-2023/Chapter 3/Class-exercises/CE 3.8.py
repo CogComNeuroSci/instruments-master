@@ -1,4 +1,4 @@
-# This file solves class exercise 3.8 in the IEP course 2018-2019
+# This file solves class exercise 3.8 in the IEP course
 # Written by Tom Verguts, Nov 3, 2017
 # Contributions by various students in 2018-2019
 
@@ -24,18 +24,18 @@ win = visual.Window([800,400])
 
 # a first possible approach:
 messageText = ( "Good morning " + name.split()[0].capitalize() + "!\n\nWe now have the scores of all " +
-                str(l) + " tests that you did. You passed {:.0%}".format(tot_correct/l) + " of your courses." +
-                "Your data will be written to " + directory + "student{:03d}".format(student_nr) + ".txt")
+                str(l) + f" tests that you did. You passed {tot_correct/l:.0%}" + " of your courses." +
+                "Your data will be written to " + directory + f"student{student_nr:03d}" + ".txt")
 
 # a second possible approach: It's also possible to do this with one long string and several arguments in the format() argument
-messageText = ( "Good morning {0}!\n\nWe now have the scores of all {1} tests that you did. You passed {2:.0%} of your courses. " +
-                "Your data will be written to {3}student{4:03d}.txt").format(name.split()[0].capitalize(), l, tot_correct/l, directory, student_nr)
+messageText = ( f"Good morning {name.split()[0].capitalize()}!\n\nWe now have the scores of all {l} tests that you did. You passed {tot_correct/l:.0%} of your courses. " +
+                f"Your data will be written to {directory}student{student_nr:03d}.txt")
 
 # a third very neat approach if you want to keep the overview
 greet           = "Good morning, "+ name.split()[0].capitalize() + "!"
 courses         = "We now have the scores of all " + str(l) + " courses that you did. "
-succes          = "You passed {:.0%} of your courses. ".format(tot_correct/l)
-written         = "Your data wil be written to {0}{1:03d}. ".format(directory, student_nr)
+succes          = f"You passed {tot_correct/l:.0%} of your courses. "
+written         = f"Your data wil be written to {directory}{student_nr:03d}. "
 messageText     = greet +'\n\n' + courses + succes + written
 
 # display the message on the screen

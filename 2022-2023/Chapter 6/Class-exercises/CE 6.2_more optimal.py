@@ -56,10 +56,11 @@ def target_and_response():
     my_clock.reset() 
 
     ## wait for the mouse press and register it
-    while numpy.sum(my_mouse.getPressed())==0:
-        pass
+    mouseResponses = [0,0,0]
+    while numpy.sum(mouseResponses)==0:
+        mouseResponses = my_mouse.getPressed()
     
-    return my_mouse.getPressed()
+    return mouseResponses
 
 def determine_feedback():
     ## display the accuracy feedback (predetermined)

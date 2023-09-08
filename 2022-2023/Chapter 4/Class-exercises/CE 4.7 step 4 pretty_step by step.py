@@ -51,7 +51,7 @@ adjusted_color_array = -((value_array/50)-1)
 for step in range(value_array.shape[0]):
 
     ## Adjust the text and the color of the message
-    stim.text   = "Current bitcoin value: \n {0} euro, \t {1} euro \n {2} euro, \t {3} euro".format(int(value_array[step,0]),int(value_array[step,1]),int(value_array[step,2]),int(value_array[step,3]))
+    stim.text   = f"Current bitcoin value: \n {int(value_array[step,0])} euro, \t {int(value_array[step,1])} euro \n {int(value_array[step,2])} euro, \t {int(value_array[step,3])} euro"
 
     ## for each of the four values
     for f in range(value_array.shape[1]):

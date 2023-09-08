@@ -25,6 +25,8 @@ my_clock = core.Clock()
 my_mouse = event.Mouse()
 n_trials = 3
 
+device = info['Device']
+
 # hard coded stimulus onset delay and correct response
 OnsetDelay  = numpy.array([1,0.5,2])
 if device == "keyboard":
@@ -156,11 +158,11 @@ for quest in range(2):
         if event.getKeys("escape"):
             core.quit()
 
-    print("Answer to question {0}: {1}%".format(str(quest), myRatingScale.getRating()))
+    print(f"Answer to question {str(quest)}: {myRatingScale.getRating()}%")
 
 # display the average RT for one second
 meantime = numpy.mean(RT)
-text_feedback = visual.TextStim(win, text = "mean RT = {0:.1f} sec".format(meantime), pos = [0,0.5])
+text_feedback = visual.TextStim(win, text = f"mean RT = {meantime:.1f} sec", pos = [0,0.5])
 text_feedback.draw()
 win.flip()
 time.sleep(1)

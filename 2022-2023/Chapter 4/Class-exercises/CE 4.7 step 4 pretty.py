@@ -40,7 +40,7 @@ while numpy.any(value_array > 100) == False:
     value_array = numpy.vstack([value_array, value])
 
     ## Adjust the text and the color of the message
-    stim.text   = "Current bitcoin value: \n {0} euro, \t {1} euro \n {2} euro, \t {3} euro".format(int(value[0]),int(value[1]),int(value[2]),int(value[3]))
+    stim.text   = f"Current bitcoin value: \n {int(value[0])} euro, \t {int(value[1])} euro \n {int(value[2])} euro, \t {int(value[3])} euro"
 
     ## for each of the four values
     for f in range(value_array.shape[1]):

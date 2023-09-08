@@ -42,7 +42,7 @@ while value < end_value:
         blue_green = -1
 
     ## Adjust the text and the color of the message
-    stim.text   = "Current bitcoin value: {} euro".format(value[0])
+    stim.text   = f"Current bitcoin value: {value[0]} euro"
     stim.color  = (1, blue_green, blue_green)
     ## draw evolving value
     for i in range(1,value_array.size):

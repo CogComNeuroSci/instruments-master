@@ -21,7 +21,7 @@ tot_correct = len(tests_passed)
 ## total of items
 l           = len(scores)
 
-print("You passed {:.0%} of your courses.".format(tot_correct/l))
+print(f"You passed {tot_correct/l:.0%} of your courses.")
 
 # As an intermezzo, let's unpack that line of code from the Web (especially if you already understand the for-loops and if-statements from Chapter 4):
 ## this dense line of code uses list comprehension to solve your problem.
@@ -33,7 +33,7 @@ tests_passed = []
 ## The index i will consecutively take on the values 12, 13, 9 and 18
 for i in scores:
     ## we print out the value of i in this iteration of the loop
-    print("i = {}".format(i))
+    print(f"i = {i}")
     ## we check whether i is larger than 9
     if i > 9:
         ## if is is larger than 9 (Jasper passed the test), this score is added to our list tests_passed
@@ -64,4 +64,4 @@ tot_correct = sum(scores>=10)
 ## total of items
 l           = len(scores)
 
-print("You passed {:.0%} of your courses.".format(tot_correct/l))
+print(f"You passed {tot_correct/l:.0%} of your courses.")

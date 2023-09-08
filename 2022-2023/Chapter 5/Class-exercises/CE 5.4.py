@@ -66,7 +66,7 @@ print(RT)
 
 # display the average RT for one second
 meantime = numpy.mean(RT)
-text_feedback = visual.TextStim(win, text = "mean RT = {0:.1f} sec".format(meantime), pos = [0,0.5])
+text_feedback = visual.TextStim(win, text = f"mean RT = {meantime:.1f} sec", pos = [0,0.5])
 text_feedback.draw()
 win.flip()
 time.sleep(1)
