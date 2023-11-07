@@ -21,9 +21,13 @@ FontColor   = numpy.array([ "red", "blue", "green", "yellow",
                             "red", "blue", "green", "yellow"])
 
 # deduce the congruence
-CongruenceLevels    = numpy.array(["Incongruent", "Congruent"])
-CongruenceBoolean   = numpy.array(ColorWord == FontColor)
-Congruence          = CongruenceLevels[[CongruenceBoolean*1]]
+Congruence = numpy.repeat('incongruent', len(ColorWord))
+Congruence[ColorWord == FontColor] = 'congruent'
+
+#Alternative:
+#CongruenceLevels    = numpy.array(["Incongruent", "Congruent"])
+#CongruenceBoolean   = numpy.array(ColorWord == FontColor)
+#Congruence          = CongruenceLevels[CongruenceBoolean*1]
 
 # deduce the correct response
 CorResp = numpy.copy(FontColor)

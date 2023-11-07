@@ -36,13 +36,13 @@ print(numpy.array([True,False,False,False])*1)
 CongruenceBoolean   = numpy.array(ColorWord == FontColor)
 print(CongruenceBoolean)
 ## Convert them to 0 and 1
-Congruence          = CongruenceLevels[[CongruenceBoolean*1]]
+Congruence          = CongruenceLevels[CongruenceBoolean*1]
 print(Congruence)
 
 ## last but not least, we clean up all the print statements and end up with these three elegant lines of code:
 #CongruenceLevels    = numpy.array(["Incongruent", "Congruent"])
 #CongruenceBoolean   = numpy.array(ColorWord == FontColor)
-#Congruence          = CongruenceLevels[[CongruenceBoolean*1]]
+#Congruence          = CongruenceLevels[CongruenceBoolean*1]
 
 # deduce the correct response
 ## I'll now use the same strategy of using True and False values to determine the correct response.
