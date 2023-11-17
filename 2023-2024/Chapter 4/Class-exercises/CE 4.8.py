@@ -18,7 +18,7 @@ pos_car_green_start = [0.5,0]
 blue_counter = 0
 green_counter = 0
 wall_width = 0.02*10 ## 10% of screen width
-wall_height = 0.02*50 ## 20% of screen height
+wall_height = 0.02*20 ## 20% of screen height
 
 # part 3: prepare graphic elements
 win = visual.Window([800,600], units = "norm")
