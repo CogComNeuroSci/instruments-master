@@ -22,7 +22,6 @@ for loop in visual_targets:
         correct_response = 'j' # odd numbers, press j
     targets_responses.append({'target':loop, 'correct_response':correct_response})
 
-
 win = visual.Window([400,400])
 experiment_timer = core.Clock()
 
@@ -36,11 +35,7 @@ for block_loop in range(2):
         experiment_timer.reset()
         response = event.waitKeys()
         rt = experiment_timer.getTime()
-        accuracy = 0
-        if response[0]==trial['correct_response']:
-            accuracy = 1
         trials.addData('response', response[0])
-        trials.addData('accuracy', accuracy)
         trials.addData('RT',rt)
         thisExp.nextEntry()
 
