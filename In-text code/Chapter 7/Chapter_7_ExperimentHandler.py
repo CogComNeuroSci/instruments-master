@@ -31,11 +31,7 @@ for trial in trials: # a TrialHandler object is iterable
     experiment_timer.reset()
     response = event.waitKeys()
     rt = experiment_timer.getTime()
-    accuracy = 0
-    if response[0]==trial['correct_response']:
-        accuracy = 1
     trials.addData('response', response[0])
-    trials.addData('accuracy', accuracy)
     trials.addData('RT',rt)
     thisExp.nextEntry()
 
