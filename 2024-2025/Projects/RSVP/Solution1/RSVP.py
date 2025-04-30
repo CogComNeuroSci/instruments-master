@@ -75,8 +75,12 @@ RTClock = core.Clock() #Initialize the clock
 win = visual.Window(fullscr = True, units = 'norm')
 stim = visual.TextStim(win, text = '')
 
-SliderScale1 = visual.Slider(win, ticks = [0, 1], labels = ['Yes', 'No'], style = "radio", size = (1.5, .1), pos = (0,-0.5))
-SliderScale2 = visual.Slider(win, ticks = list(range(0,4)), labels = ['Yellow', 'Green', 'Black', 'Red'], style = "radio", size = (1.5, .1), pos = (0,-0.5))
+RatingScale1 = visual.RatingScale(win, low = 0, high = 1, marker = 'slider', textSize = 1,
+    tickMarks = [0, 1], stretch = 1.5, showValue = False,
+    labels = ['Yes', 'No'])
+RatingScale2 = visual.RatingScale(win, low = 0, high = 3, marker = 'slider',  textSize = 1,
+    tickMarks = [0, 1, 2, 3], stretch = 1.5, showValue = False,
+    labels = ['Yellow', 'Green', 'Black', 'Red'])
 
 stim.text = f'Welcome to this experiment!\n\nYou will see sequences of 14 numbers.\n\nIf a letter is included,\nplease indicate this letter at the end of\nthe sequence by pressing the\ncorresponding key.\n\nIf you did not see any letter in the sequence, press {LettersAndButtons[-2]}.\n\nGood luck!\n\nPress space to start practicing' 
 stim.draw()
@@ -93,7 +97,7 @@ for phase in ['practice','main']:
         event.waitKeys(keyList = LettersAndButtons[-2])
         trials = data.TrialHandler(TrialListMain, nReps = 1, method = 'random') #Shuffles the rows
     ThisExp.addLoop(trials)
-
+    
     for trial in trials:
         stim.text = '+'
         stim.color = FixationCrossColors[int(trial['FixationCrossColor'])] #We now constructed the colored fixation cross at the start of the trial
@@ -169,29 +173,31 @@ for phase in ['practice','main']:
     if keys[0] == LettersAndButtons[-1]:
         break
 
-keys = ['a']
 if not keys[0] == LettersAndButtons[-1]: #If not doing so, you'll see the ratingscale questions after escaping the experiment
-    SliderScale1.reset()
-    while not SliderScale1.getRating():
+    RatingScale1.reset()
+    while RatingScale1.noResponse:
         stim.text = 'Did you feel or think during the experiment that you performed better or worse after different colors?'
         stim.draw()
-        SliderScale1.draw()
+        RatingScale1.draw()
         win.flip()
-    trials.addData('Rating_BetterPerformanceAfterParticularColor?', SliderScale1.getRating())
+    trials.addData('Rating_BetterPerformanceAfterParticularColor?', ['Yes','No'][int(RatingScale1.getRating())])
 
-    if SliderScale1.getRating() == 'Yes':
-        SliderScale2.reset()
-        while not SliderScale2.getRating():
+    if RatingScale1.getRating() == 0:
+        RatingScale2.reset()
+        while RatingScale2.noResponse:
             stim.text = 'After which color(s) did you feel/think you performed better?'
             stim.draw()
-            SliderScale2.draw()
+            RatingScale2.draw()
             win.flip()
-        trials.addData('Rating_FeelBetterAfterParticularColor?', SliderScale2.getRating())
+        trials.addData('Rating_FeelBetterAfterParticularColor?', ['Yellow', 'Green', 'Black', 'Red'][int(RatingScale2.getRating())])
 
-        SliderScale2.reset()
-        while not SliderScale2.getRating():
+        RatingScale2.reset()
+        while RatingScale2.noResponse:
             stim.text = 'After which color(s) did you feel/think you performed worse?'
             stim.draw()
-            SliderScale2.draw()
+            RatingScale2.draw()
             win.flip()
-        trials.addData('Rating_WorsePerformanceAfterParticularColor?', SliderScale2.getRating())
+        trials.addData('Rating_WorsePerformanceAfterParticularColor?', ['Yellow', 'Green', 'Black', 'Red'][int(RatingScale2.getRating())])
+
+win.close()
+core.quit()
