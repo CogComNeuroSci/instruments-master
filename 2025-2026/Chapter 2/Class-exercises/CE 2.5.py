@@ -2,43 +2,13 @@
 
 # import modules
 from psychopy import visual
-import time, numpy
+import time
 
 # initialize the window
 win = visual.Window(fullscr = True, units = "norm")
 
 # initialize the variables
 duration = 1
-
-# we start with adding the values for the words and the colors
-ColorWord   = numpy.array([ "red", "red", "red", "red",
-                            "blue", "blue", "blue", "blue",
-                            "green", "green", "green", "green",
-                            "yellow", "yellow", "yellow", "yellow"])
-FontColor   = numpy.array([ "red", "blue", "green", "yellow",
-                            "red", "blue", "green", "yellow",
-                            "red", "blue", "green", "yellow",
-                            "red", "blue", "green", "yellow"])
-
-# deduce the congruence
-Congruence = numpy.repeat('Incongruent', len(ColorWord))
-Congruence[ColorWord == FontColor] = 'Congruent'
-
-#Alternative:
-#CongruenceLevels    = numpy.array(["Incongruent", "Congruent"])
-#CongruenceBoolean   = numpy.array(ColorWord == FontColor)
-#Congruence          = CongruenceLevels[CongruenceBoolean*1]
-
-# deduce the correct response
-CorResp = numpy.copy(FontColor)
-CorResp[CorResp == "red"]     = "d"
-CorResp[CorResp == "blue"]    = "f"
-CorResp[CorResp == "green"]   = "j"
-CorResp[CorResp == "yellow"]  = "k"
-
-# combine arrays in trial matrix
-trials = numpy.column_stack([ColorWord, FontColor, Congruence, CorResp])
-print(trials)
 
 # initialize graphical elements
 Welcome         = visual.TextStim(win, text = "Welcome!")
@@ -71,25 +41,9 @@ win.flip()
 time.sleep(1)
 
 # display the Stroop stimulus
-Stroop_stim.text    = trials[0,0]
-Stroop_stim.color   = trials[0,1]
 Stroop_stim.draw()
 win.flip()
-time.sleep(duration)
-
-# display the Stroop stimulus
-Stroop_stim.text    = trials[8,0]
-Stroop_stim.color   = trials[8,1]
-Stroop_stim.draw()
-win.flip()
-time.sleep(duration)
-
-# display the Stroop stimulus
-Stroop_stim.text    = trials[15,0]
-Stroop_stim.color   = trials[15,1]
-Stroop_stim.draw()
-win.flip()
-time.sleep(duration)
+time.sleep(1)
 
 # display the goodbye message
 TheEndImage.draw()
