@@ -4,5 +4,5 @@
 # initializing
 name        = "jasper francken"
 student_nr  = 2
-scores      = [12, 13, 9, 18]
+scores      = numpy.array([12, 13, 9, 18])
 directory   = "/Users/tom/Documents/student_data/"  ## you'll want to insert a path for your own directory
