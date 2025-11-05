@@ -6,7 +6,7 @@ from psychopy import visual
 # definitions start here
 win = visual.Window(fullscr = True, units = "norm")
 
-rect            = visual.ImageStim(win, image = "HalloweenPumpkin.jpg")
+rect            = visual.ImageStim(win, image = "HalloweenPumpkin.jpg") #You can download an image from here: https://pp02bevragingen.ugent.be/HalloweenPumpkin.jpg
 pumpkinVert     = [(-0.2,0.0),(-0.4,0.1),(-.4,0.4),(-0.2,0.6),(0.2,0.6),(.4,0.4),(.4,0.1),(0.2,0)]
 pumpkin         = visual.ShapeStim( win, lineColor = "black", fillColor = "orange", vertices = pumpkinVert, size = 1)
 mouth           = visual.Line(      win, lineColor = "black", start = (-0.2,0.1), end = (0.2,0.1))
