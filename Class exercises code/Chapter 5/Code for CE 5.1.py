@@ -57,7 +57,7 @@ Block_start     = visual.TextStim(win, text = "OK")
 Stroop_stim     = visual.TextStim(win, text = "red", color = "blue")
 Feedback        = visual.TextStim(win, text = "OK")
 Goodbye         = visual.TextStim(win, text = "Goodbye!", pos = (0,0.75), height = 0.2)
-TheEndImage     = visual.ImageStim(win, image = "the_end.jpg")
+TheEndImage     = visual.ImageStim(win, image = "the_end.jpg") #you can download an image from here: https://pp02bevragingen.ugent.be/TheEnd.jpg
 
 # deduce the task instruction
 if participant%2 == 0:
