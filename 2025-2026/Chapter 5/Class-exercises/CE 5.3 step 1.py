@@ -34,11 +34,6 @@ FontColor   = numpy.array([ "red", "blue", "green", "yellow",
 Congruence = numpy.repeat('Incongruent', len(ColorWord))
 Congruence[ColorWord == FontColor] = 'Congruent'
 
-#Alternative:
-#CongruenceLevels    = numpy.array(["Incongruent", "Congruent"])
-#CongruenceBoolean   = numpy.array(ColorWord == FontColor)
-#Congruence          = CongruenceLevels[CongruenceBoolean*1]
-
 # deduce the task instruction
 if participant%2 == 0:
     # participants with an even number have to respond to the color word
@@ -64,7 +59,7 @@ RT = numpy.repeat(-99.9,len(CorResp))
 
 # add the participant info
 Subject = numpy.repeat(info["Participant number"],len(CorResp))
-Gender  = numpy.repeat("".join(info["Gender"]),len(CorResp))
+Gender  = numpy.repeat(info["Gender"],len(CorResp))
 Age     = numpy.repeat(info["Age"],len(CorResp))
 
 # combine arrays in trial matrix
