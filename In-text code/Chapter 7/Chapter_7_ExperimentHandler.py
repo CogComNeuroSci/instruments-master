@@ -24,7 +24,6 @@ win = visual.Window([400,400])
 experiment_timer = core.Clock()
 
 for trial in trials: # a TrialHandler object is iterable
-
     the_text = visual.TextStim(win, text=trial['target'], color='white')
     the_text.draw()
     win.flip()
