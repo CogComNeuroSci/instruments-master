@@ -279,8 +279,7 @@ for b in range(nblocks):
     # display the feedback message at a block level
     averageRT   = numpy.nanmean(trials[range(b*ntrials,(b+1)*ntrials),6].astype(float))*1000
     averageACC  = numpy.nanmean(trials[range(b*ntrials,(b+1)*ntrials),5].astype(float))*100
-    message(message_text = "In block {0} \n\nyour average RT was {1:.0f} milliseconds \nyour accuracy was {2:.0f}%.\n\nPush the space bar to proceed.".format(b+1, averageRT, averageACC), response_key = "space")
-
+    message(message_text = f"In block {b+1} \n\nyour average RT was {averageRT:.0f} milliseconds \nyour accuracy was {averageACC:.0f}%.\n\nPush the space bar to proceed.", response_key = "space")
 
 # display the goodbye message
 TheEndImage.draw()
