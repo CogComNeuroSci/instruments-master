@@ -74,6 +74,7 @@ TrialsDataFrame = pandas.DataFrame.from_records(FullExperimentTrialsArray)
 TrialsDataFrame.columns = ['words', 'WordPresentationTimes', 'InstructedWaits', 'UniqueTrialIdentifier', 'BlockNr']
 TrialList = pandas.DataFrame.to_dict(TrialsDataFrame, orient = 'records')
 trials = data.TrialHandler(TrialList, nReps = 1, method = 'sequential')
+ThisExp.addLoop(trials)
 
 ##def functions
 def EscFunc(check):
